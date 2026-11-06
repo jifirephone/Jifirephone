@@ -98,3 +98,4 @@
 - 2026-11-06 — ig-reel tools patched for Iraqi Arabic, voice.md created, first scripted reel (iPhone repair, 40 s) in `scripts_reels/iphone-repair/`.
 - 2026-11-06 — Correction: `app.jifrephone.workers.dev` is the **app link (Google Play + App Store)** and `jifirephone.com` is the **website**. Both spellings are right; don't flag them again.
 - 2026-11-06 — Owner delegated two calls ("اعمل من يمك"): (1) no invented price/warranty; script lines rewritten to need none, and the «السعر» comment brings the price; (2) safe zone raised to 230/1440/right 230, captions 90 px.
+- 2026-11-06 — B-roll repair reel (VID_20261106_122837, no speech) approved and exported (`out/jifire_repair-before-after_final.mp4`, 15.8 s). New `RepairReel` composition: soft crossfade+push-in transitions, one gold sweep at «بعد», قبل/بعد tags, on-screen text written by Claude (no model name, no price). Old burned-in watermark delogo'd + top shade; source end card replaced.
