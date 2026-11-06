@@ -27,7 +27,11 @@
 - Premium, bold Arabic animated captions, synced word by word.
 - White text, **gold** highlight on the active word or keyword, black shadow.
 - RTL, modern motion graphics, clean and professional.
-- Brand colours: **black, gold, white**. (Exact hex values, fonts and sizes go in `design-system.md` after the reference reels are measured in step 2.)
+- Brand colours: **black, gold `#F3B406`, white**, silver `#DCDCDC`. Font **Cairo** (900 captions).
+- Captions sit lower-right, right-aligned, 96 px, max 3 words/line and 2 lines. The spoken word is gold.
+- Consecutive English words/numbers are one LTR run ("iPhone 16 Pro", never reversed).
+- Logo bug (`brand/logo.png`) top-right the whole reel. End card: black, logo, «التقنية باعلى ذروتها», then «اكتب السعر بالتعليقات».
+- **Full rules and measurements: `design-system.md`. Read it before every edit.**
 
 ## Colour / look
 - Premium cinematic Apple/Samsung-style tech ad look.
