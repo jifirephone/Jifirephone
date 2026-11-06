@@ -61,6 +61,12 @@
 - Its brand rules don't replace ours: colours, fonts, captions and the end card still come from `design-system.md`.
   Its "Arabic: direction = 'rtl'" rule applies, with the Cairo font.
 
+- `ig-*` (13 skills from github.com/Jakeschincariol/instagram-agent-skill @ d03c56b, MIT, installed 2026-11-06):
+  scripts, hooks, captions, carousels, stories, DMs, comments, plans, audits, humanizer. They never post or send anything.
+  **Limitation:** `hookscore.py` and `beats.py` only count Latin letters, so Arabic lines score 0 words
+  (our hook scored 8.4 WEAK only because of that). Don't trust their scores or timings on Arabic text until patched.
+  They read `~/.claude/instagram/voice.md` (not created yet).
+
 ## Corrections log
 - 2026-11-06 — Step 2 approved. Captions white + gold, no rainbow shimmer (default kept; user can ask for it).
 - 2026-11-06 — Re-edit of refs/ref1.mov approved and exported (`out/jifire_sim-offer_final.mp4`). The 5 doubtful words (سعر/دينار, مليون وثمانين دولار, وين تلقونها, شركة التقنية الهواتف, زاد→زائد) were exported as transcribed and are still unconfirmed by the user.
