@@ -1,0 +1,132 @@
+{
+ "video": "clip/repair.mp4",
+ "xfade": 0.4,
+ "revealShot": 5,
+ "musicFadeSec": 1.2,
+ "shots": [
+  {
+   "from": 0.0,
+   "to": 2.85,
+   "speed": 1
+  },
+  {
+   "from": 2.95,
+   "to": 5.45,
+   "speed": 1,
+   "tag": "before"
+  },
+  {
+   "from": 5.55,
+   "to": 8.05,
+   "speed": 1.25
+  },
+  {
+   "from": 8.35,
+   "to": 10.7,
+   "speed": 1.25
+  },
+  {
+   "from": 10.95,
+   "to": 13.45,
+   "speed": 1.25
+  },
+  {
+   "from": 13.85,
+   "to": 16.85,
+   "speed": 1,
+   "tag": "after"
+  }
+ ],
+ "hook": {
+  "start": 0.1,
+  "end": 2.45,
+  "line1": "ايفونك متكسر؟",
+  "line2": "شوف شلون رجعناه جديد"
+ },
+ "words": [
+  {
+   "text": "الظهر",
+   "start": 2.75,
+   "end": 3.05,
+   "phrase": 0,
+   "keyword": false
+  },
+  {
+   "text": "متكسر",
+   "start": 3.05,
+   "end": 3.45,
+   "phrase": 0,
+   "keyword": true
+  },
+  {
+   "text": "بالكامل",
+   "start": 3.45,
+   "end": 4.2,
+   "phrase": 0,
+   "keyword": false
+  },
+  {
+   "text": "نفتحه",
+   "start": 4.75,
+   "end": 5.15,
+   "phrase": 1,
+   "keyword": false
+  },
+  {
+   "text": "بدقة",
+   "start": 5.15,
+   "end": 5.9,
+   "phrase": 1,
+   "keyword": true
+  },
+  {
+   "text": "وننقل",
+   "start": 6.3,
+   "end": 6.7,
+   "phrase": 2,
+   "keyword": false
+  },
+  {
+   "text": "القطع",
+   "start": 6.7,
+   "end": 7.1,
+   "phrase": 2,
+   "keyword": false
+  },
+  {
+   "text": "لهيكل",
+   "start": 7.1,
+   "end": 7.5,
+   "phrase": 2,
+   "keyword": false
+  },
+  {
+   "text": "جديد",
+   "start": 7.5,
+   "end": 8.3,
+   "phrase": 2,
+   "keyword": true
+  },
+  {
+   "text": "رجع",
+   "start": 9.6,
+   "end": 9.95,
+   "phrase": 3,
+   "keyword": false
+  },
+  {
+   "text": "كأنه",
+   "start": 9.95,
+   "end": 10.3,
+   "phrase": 3,
+   "keyword": false
+  },
+  {
+   "text": "جديد",
+   "start": 10.3,
+   "end": 11.2,
+   "phrase": 3,
+   "keyword": true
+  }
+ ]
+}
