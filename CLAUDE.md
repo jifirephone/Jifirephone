@@ -24,7 +24,7 @@
 5. Hook in the first 3 seconds: **«تدور موبايل بأفضل سعر وأقوى ضمان؟ شوف عروض جي فاير للموبايل!»**
 6. One graphic per phrase, timed to the creator's words.
 7. Background music sits under the voice (ducked, voice always clear).
-8. End card: **comment «السعر»** call to action, with the brand name.
+8. End card: black, logo and tagline only. **No «اكتب السعر بالتعليقات» call to action** (owner, 2026-11-06).
 
 ## Caption style
 - Premium, bold Arabic animated captions, synced word by word.
@@ -34,7 +34,7 @@
 - Captions sit lower-right, right-aligned, 90 px, max 3 words / 14 chars per line and 2 lines. The spoken word is gold.
 - **Safe zone: text only between y=230 and y=1440, 64 px from the left, 230 px from the right** (Instagram UI).
 - Consecutive English words/numbers are one LTR run ("iPhone 16 Pro", never reversed).
-- Logo bug (`brand/logo.png`) top-right the whole reel. End card: black, logo, «التقنية باعلى ذروتها», then «اكتب السعر بالتعليقات».
+- Logo bug (`brand/logo.png`) top-right the whole reel. End card: black, logo, «التقنية باعلى ذروتها». Nothing else (no comment CTA).
 - **Full rules and measurements: `design-system.md`. Read it before every edit.**
 
 ## Colour / look
@@ -99,3 +99,4 @@
 - 2026-11-06 — Correction: `app.jifrephone.workers.dev` is the **app link (Google Play + App Store)** and `jifirephone.com` is the **website**. Both spellings are right; don't flag them again.
 - 2026-11-06 — Owner delegated two calls ("اعمل من يمك"): (1) no invented price/warranty; script lines rewritten to need none, and the «السعر» comment brings the price; (2) safe zone raised to 230/1440/right 230, captions 90 px.
 - 2026-11-06 — B-roll repair reel (VID_20261106_122837, no speech) approved and exported (`out/jifire_repair-before-after_final.mp4`, 15.8 s). New `RepairReel` composition: soft crossfade+push-in transitions, one gold sweep at «بعد», قبل/بعد tags, on-screen text written by Claude (no model name, no price). Old burned-in watermark delogo'd + top shade; source end card replaced.
+- 2026-11-06 — **Correction (owner):** drop «اكتب السعر بالتعليقات» everywhere: end cards and default CTAs. Don't add it back unless the owner asks. Repair reel re-cut with the owner's lines: «شاصي مكسر وتعبان · نبدله الى جديد · ونحوله الى 18 Pro Max هم! · يعني سعر اقل كشخة اكثر» (18 Pro Max is the owner's claim).

@@ -46,7 +46,6 @@ export const logoBug = {
 
 export const endCard = {
   tagline: 'التقنية باعلى ذروتها',
-  keyword: 'السعر',
   logoWidth: 620,
   durationSec: 3.5,
 } as const;

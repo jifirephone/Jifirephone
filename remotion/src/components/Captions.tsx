@@ -2,7 +2,7 @@ import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {caption, color, font} from '../brand';
 
-export type Word = {text: string; start: number; end: number; keyword?: boolean; phrase?: number};
+export type Word = {text: string; start: number; end: number; keyword?: boolean; phrase?: number; br?: boolean};
 
 // Word-by-word Arabic captions. Words appear as they are spoken; the word being
 // spoken (and any keyword) is gold, everything else white. Latin words keep LTR.
@@ -22,7 +22,10 @@ export const Captions: React.FC<{words: Word[]}> = ({words}) => {
   shown.forEach((w) => {
     const last = lines[lines.length - 1];
     const chars = last ? last.reduce((n, x) => n + x.text.length + 1, 0) + w.text.length : 0;
-    if (!last || last.length >= caption.maxWordsPerLine || chars > caption.maxCharsPerLine) lines.push([w]);
+    // A run of English words/numbers ("18 Pro Max") counts as one word, so it is never split across lines.
+    const units = (ws: Word[]) => ws.filter((x, k) => !(k > 0 && isLatin(x.text) && isLatin(ws[k - 1].text))).length;
+    const joinsRun = !!last && isLatin(w.text) && isLatin(last[last.length - 1].text);
+    if (!last || w.br || (!joinsRun && (units(last) >= caption.maxWordsPerLine || chars > caption.maxCharsPerLine))) lines.push([w]);
     else last.push(w);
   });
   const visible = lines.slice(-caption.maxLines);

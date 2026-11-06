@@ -45,7 +45,7 @@ left blank. Never fill it with an invented number.
 - **Brand:** black and gold (`#F3B406`), white text, the official logo (`brand/logo.png`) top-right; font Cairo.
 - **Hook:** inside the first 3 seconds. Default: «تدور موبايل بأفضل سعر وأقوى ضمان؟ شوف عروض جي فاير للموبايل!».
   The spoken part is the first sentence (≤ 3 s). The second sentence goes on screen.
-- **End card:** black, logo, «التقنية باعلى ذروتها», then «اكتب **السعر** بالتعليقات».
+- **End card:** black, logo, «التقنية باعلى ذروتها». No «اكتب السعر بالتعليقات» (owner dropped it 2026-11-06).
 - Full rules: `design-system.md` and `CLAUDE.md`.
 
 ## My positions
@@ -71,6 +71,5 @@ Real offers already said on camera (refs/ref1.mov, Asiacell RED SIM lines). Thes
 
 ## The ask
 
-- **My keyword CTA:** **السعر** (comment «السعر»)
-- **What the keyword sends them:** _(to confirm: price list / offer details by DM, sent only after the owner approves)_
+- **My keyword CTA:** none. The «اكتب السعر بالتعليقات» CTA is not used (owner, 2026-11-06).
 - **Where my link goes:** website https://jifirephone.com · app (Android + iPhone) https://app.jifrephone.workers.dev

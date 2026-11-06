@@ -7,7 +7,7 @@ Status: **based on 1 reference reel.** Re-measure when more references arrive.
 ## 1. Colour tokens
 | Token | Hex | Where it comes from / use |
 |---|---|---|
-| `gold` | `#F3B406` | Logo gold (median of 58k px). Active word, keywords, CTA pill, price highlights |
+| `gold` | `#F3B406` | Logo gold (median of 58k px). Active word, keywords, badges, price highlights |
 | `goldDeep` | `#C98F00` | Darker gold for gradients and edges |
 | `silver` | `#DCDCDC` | Logo swoosh. Secondary lines, dividers |
 | `white` | `#FFFFFF` | Caption body text |
@@ -43,7 +43,7 @@ Status: **based on 1 reference reel.** Re-measure when more references arrive.
 - **0–2 s:** product close-up in hand (hook visual), then hard cut to talking head.
 - Talking head is mostly one continuous shot. Captions carry the rhythm.
 - **One stylised transition mid-reel:** torn-paper reveal with a black-and-white halftone frame (reference at 10.2–10.6 s). Use at most once per reel, at a topic change.
-- **End card (last ~3.5 s):** black background, centred logo pops in, then the white tagline **«التقنية باعلى ذروتها»** (Cairo 800, 64 px), then the CTA **اكتب [السعر] بالتعليقات** with «السعر» in a gold pill. The reference ends with a glitch/burn-out of the logo.
+- **End card (last ~3.5 s):** black background, centred logo pops in, then the white tagline **«التقنية باعلى ذروتها»** (Cairo 800, 64 px), both centred. **No comment CTA** (owner dropped «اكتب السعر بالتعليقات» on 2026-11-06). The reference ends with a glitch/burn-out of the logo.
 
 ## 7. Graphics (one per phrase)
 - Gold-accented cards on dark glass: product name (English), price in IQD/USD (gold), "ضمان" / "أقساط" badges.

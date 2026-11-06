@@ -45,88 +45,125 @@
  },
  "words": [
   {
-   "text": "الظهر",
+   "text": "شاصي",
    "start": 2.75,
-   "end": 3.05,
+   "end": 3.1,
    "phrase": 0,
    "keyword": false
   },
   {
-   "text": "متكسر",
-   "start": 3.05,
-   "end": 3.45,
+   "text": "مكسر",
+   "start": 3.1,
+   "end": 3.5,
    "phrase": 0,
    "keyword": true
   },
   {
-   "text": "بالكامل",
-   "start": 3.45,
-   "end": 4.2,
+   "text": "وتعبان",
+   "start": 3.5,
+   "end": 4.4,
    "phrase": 0,
-   "keyword": false
+   "keyword": true
   },
   {
-   "text": "نفتحه",
-   "start": 4.75,
-   "end": 5.15,
+   "text": "نبدله",
+   "start": 4.7,
+   "end": 5.05,
    "phrase": 1,
    "keyword": false
   },
   {
-   "text": "بدقة",
-   "start": 5.15,
-   "end": 5.9,
+   "text": "الى",
+   "start": 5.05,
+   "end": 5.3,
+   "phrase": 1,
+   "keyword": false
+  },
+  {
+   "text": "جديد",
+   "start": 5.3,
+   "end": 6.0,
    "phrase": 1,
    "keyword": true
   },
   {
-   "text": "وننقل",
+   "text": "ونحوله",
    "start": 6.3,
-   "end": 6.7,
+   "end": 6.75,
    "phrase": 2,
    "keyword": false
   },
   {
-   "text": "القطع",
-   "start": 6.7,
-   "end": 7.1,
+   "text": "الى",
+   "start": 6.75,
+   "end": 7.05,
    "phrase": 2,
    "keyword": false
   },
   {
-   "text": "لهيكل",
-   "start": 7.1,
-   "end": 7.5,
+   "text": "18",
+   "start": 7.05,
+   "end": 7.3,
    "phrase": 2,
-   "keyword": false
+   "keyword": true,
+   "br": true
   },
   {
-   "text": "جديد",
-   "start": 7.5,
-   "end": 8.3,
+   "text": "Pro",
+   "start": 7.3,
+   "end": 7.55,
    "phrase": 2,
    "keyword": true
   },
   {
-   "text": "رجع",
+   "text": "Max",
+   "start": 7.55,
+   "end": 8.0,
+   "phrase": 2,
+   "keyword": true
+  },
+  {
+   "text": "هم!",
+   "start": 8.0,
+   "end": 8.8,
+   "phrase": 2,
+   "keyword": false
+  },
+  {
+   "text": "يعني",
    "start": 9.6,
-   "end": 9.95,
+   "end": 9.9,
    "phrase": 3,
    "keyword": false
   },
   {
-   "text": "كأنه",
-   "start": 9.95,
-   "end": 10.3,
+   "text": "سعر",
+   "start": 9.9,
+   "end": 10.2,
    "phrase": 3,
    "keyword": false
   },
   {
-   "text": "جديد",
-   "start": 10.3,
-   "end": 11.2,
+   "text": "اقل",
+   "start": 10.2,
+   "end": 10.6,
    "phrase": 3,
    "keyword": true
+  },
+  {
+   "text": "كشخة",
+   "start": 10.6,
+   "end": 10.95,
+   "phrase": 3,
+   "keyword": true,
+   "br": true
+  },
+  {
+   "text": "اكثر",
+   "start": 10.95,
+   "end": 11.8,
+   "phrase": 3,
+   "keyword": false
   }
  ]
 }
