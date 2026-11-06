@@ -82,6 +82,16 @@
   Every line the owner approves or rewrites goes into `samples.md` (Approved / Rejected). `scripts/arabic_ig.py` is a
   copy of `ig-reel/arabic_ig.py`; tests fail if they differ, so copy it after every change.
 
+- **Owner's 4 Ji Fire skills** (installed 2026-11-07 from the owner's zips; instructions only, no code):
+  `jifire-video-editor` (reels), `jifire-ads-designer` (ads, Firebase 1200×600 notifications, posts),
+  `jifire-hello-bot-engineer` (MSG91 Hello bot, Shopify product search, Instagram/Messenger, ViaSocket),
+  `jifire-shopify-manager` (catalog, used devices, SEO). They share `references/brand.md` (location, hours, phone, links).
+  **Precedence:** for reels in this project, this file + `design-system.md` win (phased approval, safe zone, captions);
+  the skills add rules on top. Their strict rules apply everywhere: never invent product data or offers; **past offers
+  (e.g. the 25,000 IQD discount, J2026, USED codes) are historical until the owner reconfirms them**; no eSIM mention;
+  one design per product; never claim an upload/publish/integration worked without read-back verification.
+  **No Shopify / MSG91 / Firebase / Meta connection exists yet**: give copy-ready plans, never claim live edits.
+
 ## Script rules (every reel script, permanent)
 1. Write in natural **Iraqi dialect**. Device names and tech terms stay in English on screen (iPhone, Face ID, Swap).
 2. Check each script with the three tools before showing it:
@@ -111,3 +121,4 @@
 - 2026-11-07 — Correction: movement sound was the same whoosh on every camera move. **Rule:** each move gets its own sound by motion type (doppler pan, low swoosh tilt, tonal up/down, shimmer roll, whoomp, glass, reverse swell zoom-through), and the same sound never repeats within 5 moves (`make_camera_sfx.py`). In-scene accents vary too.
 - 2026-11-07 — Owner sent a voiceover and asked to improve it. **Workflow for every recorded voice:** `scripts/enhance_voice.sh` (HPF, denoise, soft gate, de-mud EQ, presence, de-ess, compress, −16 LUFS), Whisper to check no words were lost, then `scripts/vo_timeline.py` so the **voice is the master clock**: each sentence plays in its scene hold, moves keep their speed, headlines appear on the word (`useStoryFrame` / `promo_warp.json`). Music and movement sounds duck under the voice; final mix −14 LUFS.
 - 2026-11-07 — Owner sent two ElevenLabs takes (voice "Ali Al Bazzaz – Iraqi Narration/Commercials") and asked me to pick. File 1 held the script twice; **chose its first take**: 51/51 words correct, most expressive (LRA 4.4 vs 2.3), clear pauses, 28 s. File 2 (26.6 s) was rushed and flat. AI voices get a light chain (no gate/denoise). Exported `out/jifire_app-promo_ai-voice.mp4` (38.7 s). Owner-voice timing kept in `promo_warp_owner.json`; AI-voice timing is `promo_warp.json` / `promo_vo_ai.json`. Mix check: pad the voice track to full length before mixing, or the music tail is cut.
+- 2026-11-07 — Installed the owner's 4 Ji Fire skills (video editor, ads designer, Hello bot engineer, Shopify manager). Shop facts added to `brand/voice.md` as **verify before public use**.
