@@ -21,7 +21,7 @@ left blank. Never fill it with an invented number.
   - **التقسيط** والعروض
   - **صيانة الآيفون**: تبديل الشاشات، الحساسات (Face ID، True Tone، الكاميرا…)، إصلاح البورد، عمليات **Swap**، والسوفت وير
 - **Website:** https://jifirephone.com
-- **App:** https://app.jifrephone.workers.dev _(written as given by the owner. Note "jifrephone" vs "jifirephone" in the website. Confirm the spelling before printing it on screen)_
+- **App (Google Play + App Store):** https://app.jifrephone.workers.dev _(confirmed by the owner. A different link from the website, spelling correct)_
 
 ## What I sound like
 
@@ -73,4 +73,4 @@ Real offers already said on camera (refs/ref1.mov, Asiacell RED SIM lines). Thes
 
 - **My keyword CTA:** **السعر** (comment «السعر»)
 - **What the keyword sends them:** _(to confirm: price list / offer details by DM, sent only after the owner approves)_
-- **Where my link goes:** https://jifirephone.com _(app: https://app.jifrephone.workers.dev, spelling to confirm)_
+- **Where my link goes:** website https://jifirephone.com · app (Android + iPhone) https://app.jifrephone.workers.dev

@@ -86,11 +86,13 @@
    (the full line takes 4.9 s to say and scores 69 OK; its first sentence alone scores 96 STRONG).
 6. Scripts live in `scripts_reels/<name>/` (`script.txt`, `hooks.txt`, `script.md` with the scene table and test results).
 7. **Never publish, post, comment or DM customers automatically.** Every post and every message waits for the owner's approval.
-8. Brand links: site https://jifirephone.com. App https://app.jifrephone.workers.dev
-   (spelled as given; "jifrephone" ≠ "jifirephone", so confirm before putting it on screen).
+8. Brand links (confirmed by the owner 2026-11-06, both spellings are correct and are different links):
+   - **Website:** https://jifirephone.com
+   - **App (Google Play + App Store):** https://app.jifrephone.workers.dev. Use it on screen for «حمّل التطبيق» / app CTAs.
 9. Content areas: new and used phones, accessories, instalments, offers, iPhone repair (screens, sensors, board, Swap, software).
 
 ## Corrections log
 - 2026-11-06 — Step 2 approved. Captions white + gold, no rainbow shimmer (default kept; user can ask for it).
 - 2026-11-06 — Re-edit of refs/ref1.mov approved and exported (`out/jifire_sim-offer_final.mp4`). The 5 doubtful words (سعر/دينار, مليون وثمانين دولار, وين تلقونها, شركة التقنية الهواتف, زاد→زائد) were exported as transcribed and are still unconfirmed by the user.
 - 2026-11-06 — ig-reel tools patched for Iraqi Arabic, voice.md created, first scripted reel (iPhone repair, 40 s) in `scripts_reels/iphone-repair/`.
+- 2026-11-06 — Correction: `app.jifrephone.workers.dev` is the **app link (Google Play + App Store)** and `jifirephone.com` is the **website**. Both spellings are right; don't flag them again.
