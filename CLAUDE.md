@@ -51,5 +51,15 @@
 - Models live in `models/` (gitignored): Whisper `large-v3` via `download_root='models/whisper'`, MediaPipe `models/face_landmarker.task`.
 - Keep `av<16` (newer PyAV breaks faster-whisper). MediaPipe needs system `libegl1 libgles2`. Always call `landmarker.close()`.
 
+## Installed skills
+- `motion-reel` (`.claude/skills/motion-reel/`, installed 2026-11-06 from the user's zip): pure motion-graphics promos from code
+  (HTML canvas + Playwright + ffmpeg + synthesized SFX). Use it for product promos/animated ads **without** talking-head footage.
+  Talking-head reels keep using this project's pipeline (Whisper → plan → Remotion).
+- Adapting it to this cloud machine: it is **Linux, not Windows** (ignore the PowerShell/certutil note in its rules.md).
+  **Do not run `npx playwright install`**: Chromium is preinstalled (use `/opt/pw-browsers/chromium` if needed).
+  `beats.py` needs `librosa`, which isn't installed yet. Install it only when a music track is supplied.
+- Its brand rules don't replace ours: colours, fonts, captions and the end card still come from `design-system.md`.
+  Its "Arabic: direction = 'rtl'" rule applies, with the Cairo font.
+
 ## Corrections log
 - 2026-11-06 — Step 2 approved. Captions white + gold, no rainbow shimmer (default kept; user can ask for it).
