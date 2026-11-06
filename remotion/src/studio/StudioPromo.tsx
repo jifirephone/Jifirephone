@@ -2,9 +2,9 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Icon, ICON} from '../AppPromo';
-import {Backdrop, Brackets, Chip, clamp, Curve, Headline, Line, Logo, NodeGraph, palette, Panel, Place, T, Vignette, World} from './Kit';
+import {useStoryFrame, STORY_TOTAL, Backdrop, Brackets, Chip, clamp, Curve, Headline, Line, Logo, NodeGraph, palette, Panel, Place, T, Vignette, World} from './Kit';
 
-export const STUDIO_PROMO_FRAMES = 1140; // 38 s
+export const STUDIO_PROMO_FRAMES = STORY_TOTAL; // follows the voiceover (promo_warp.json)
 
 const LINES: Line[] = [
   {from: 6, to: 110, text: 'تريد جهاز بالأقساط؟', accent: ['بالأقساط؟']},
@@ -21,7 +21,7 @@ const LINES: Line[] = [
 ];
 
 const Phone: React.FC<{at: number; scale?: number}> = ({at, scale = 1}) => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame: f - at, fps, config: {damping: 16, stiffness: 80}});
   return (
@@ -39,7 +39,7 @@ const Phone: React.FC<{at: number; scale?: number}> = ({at, scale = 1}) => {
 };
 
 const StoreChips: React.FC<{at: number}> = ({at}) => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const {fps} = useVideoConfig();
   return (
     <div style={{display: 'flex', gap: 22, direction: 'ltr', justifyContent: 'center'}}>
@@ -58,7 +58,7 @@ const StoreChips: React.FC<{at: number}> = ({at}) => {
 // ---- scenes (positions match promo_camera.json) ----
 
 const SHook: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const {fps} = useVideoConfig();
   const chip = spring({frame: f - 60, fps, config: {damping: 13, stiffness: 150}});
   return (
@@ -73,7 +73,7 @@ const SHook: React.FC = () => {
 };
 
 const SOffers: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const rows = [
     {at: 132, icon: ICON.download, t: 'بدون مقدمة', s: 'تاخذ جهازك وتقسّط'},
     {at: 202, icon: ICON.shield, t: 'ضمان سنة', s: 'ضمان حقيقي'},
@@ -102,7 +102,7 @@ const SOffers: React.FC = () => {
 };
 
 const SDiscount: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const n = Math.round(interpolate(f, [410, 446], [0, 25], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'}));
   return (
     <Place x={1400} y={2300}>
@@ -134,7 +134,7 @@ const SApp: React.FC = () => (
 );
 
 const SCats: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const node = (t: string, icon: string[], k: number) => (
     <div style={{width: 340, height: 250, borderRadius: 36, background: `linear-gradient(160deg, ${palette.panel}, #0E0D10)`,
       border: `2px solid ${palette.gold}77`, boxShadow: '0 30px 70px rgba(0,0,0,0.6)', display: 'flex', flexDirection: 'column',
@@ -159,7 +159,7 @@ const SCats: React.FC = () => {
 };
 
 const SWarranty: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const line = clamp((f - 890) / 20);
   return (
     <Place x={-1400} y={0}>
@@ -176,7 +176,7 @@ const SWarranty: React.FC = () => {
 };
 
 const SCta: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const {fps} = useVideoConfig();
   const p = spring({frame: f - 990, fps, config: {damping: 12, stiffness: 140}});
   return (
@@ -195,7 +195,7 @@ const SCta: React.FC = () => {
 };
 
 const EndCard: React.FC = () => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const {fps} = useVideoConfig();
   const a = clamp((f - 1056) / 14);
   const s = spring({frame: f - 1062, fps, config: {damping: 16, stiffness: 100}});

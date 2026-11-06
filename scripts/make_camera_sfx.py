@@ -1,6 +1,7 @@
 """Movement sound from the camera path: the faster the camera travels, the louder and brighter the air.
 
-Usage: .venv/bin/python scripts/make_camera_sfx.py remotion/src/studio/promo_camera.json OUT.wav SECONDS
+Usage: .venv/bin/python scripts/make_camera_sfx.py remotion/src/studio/promo_camera.json OUT.wav SECONDS [WARP.json]
+With WARP (scripts/vo_timeline.py output) the camera and accents follow the voice-led timing.
 
 Reads the same keyframes StudioPromo renders with (easeInOutCubic between keys), measures camera
 speed per frame (pan + zoom + rotation), and shapes filtered noise with it, so every move gets a whoosh
@@ -40,7 +41,13 @@ def main():
     out, secs = sys.argv[2], float(sys.argv[3])
     keys = spec["keys"]
     n_frames = int(secs * FPS)
-    pos = [cam(keys, f) for f in range(n_frames + 1)]
+    story = lambda r: r
+    unstory = lambda d: d
+    if len(sys.argv) > 4:
+        wp = np.array(json.load(open(sys.argv[4]))["warp"], dtype=float)
+        story = lambda r: float(np.interp(r, wp[:, 0], wp[:, 1]))
+        unstory = lambda d: float(np.interp(d, wp[:, 1], wp[:, 0]))
+    pos = [cam(keys, story(f)) for f in range(n_frames + 1)]
     speed = np.zeros(n_frames)
     for f in range(n_frames):
         a, b = pos[f], pos[f + 1]
@@ -124,7 +131,9 @@ def main():
 
     for c in spec.get("accents", []):
         v = sfx.voice(c["type"]) * c.get("gain", 0.9)
-        s = int(c["f"] / FPS * SR)
+        s = int(unstory(c["f"]) / FPS * SR)
+        if s >= n:
+            continue
         e = min(n, s + len(v))
         left[s:e] += v[: e - s]
         right[s:e] += v[: e - s]

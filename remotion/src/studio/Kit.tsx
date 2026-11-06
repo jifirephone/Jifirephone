@@ -9,8 +9,17 @@ import React from 'react';
 import {AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {color, font} from '../brand';
 import cam from './promo_camera.json';
+import warpTable from './promo_warp.json';
 
 export const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+
+// Voice-led timing: the recorded voiceover is the master clock. promo_warp.json (scripts/vo_timeline.py)
+// maps each real frame to the designed frame, so holds stretch to the sentence and moves keep their speed.
+const W = (warpTable as {warp: number[][]}).warp;
+export const STORY_TOTAL = (warpTable as {total_frames: number}).total_frames;
+export const toStory = (real: number) => interpolate(real, W.map((w) => w[0]), W.map((w) => w[1]),
+  {extrapolateLeft: 'clamp', extrapolateRight: 'extend'});
+export const useStoryFrame = () => toStory(useCurrentFrame());
 const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
 export const palette = {
@@ -39,8 +48,8 @@ export const cameraAt = (f: number, keys: Key[] = cam.keys as Key[]): Key => {
 
 // The world: every scene lives at its own (x, y); the camera flies between them.
 export const World: React.FC<{children: React.ReactNode}> = ({children}) => {
-  const f = useCurrentFrame();
-  const c = cameraAt(f);
+  const f = useCurrentFrame();          // real time: the hand-held drift never freezes
+  const c = cameraAt(useStoryFrame());
   // hand-held drift on top of the keyed path, so a "still" shot still breathes
   const dx = Math.sin(f / 83) * 14, dy = Math.cos(f / 97) * 11;
   const drz = Math.sin(f / 131) * 0.5, dry = Math.sin(f / 109) * 1.6, drx = Math.cos(f / 117) * 1.2;
@@ -79,7 +88,7 @@ export const Vignette: React.FC = () => (
 // Fixed headline at the top of the screen. Words blur in one by one and blur out before the next line.
 export type Line = {from: number; to: number; text: string; accent?: string[]};
 export const Headline: React.FC<{lines: Line[]; y?: number; size?: number}> = ({lines, y = 280, size = 92}) => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const {fps} = useVideoConfig();
   const l = lines.find((x) => f >= x.from && f < x.to);
   if (!l) return null;
@@ -105,7 +114,7 @@ export const Headline: React.FC<{lines: Line[]; y?: number; size?: number}> = ({
 // Floating panel: arrives in 3D (tilt + depth + blur), then breathes.
 export const Panel: React.FC<{at: number; x: number; y: number; w: number; h: number; children?: React.ReactNode;
   active?: boolean; from?: 'left' | 'right' | 'below'; radius?: number}> = ({at, x, y, w, h, children, active = true, from = 'below', radius = 36}) => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const {fps} = useVideoConfig();
   const s = spring({frame: f - at, fps, config: {damping: 18, stiffness: 90}});
   const rot = from === 'left' ? -28 : from === 'right' ? 28 : 0;
@@ -128,7 +137,7 @@ export const T: React.FC<{size: number; c?: string; w?: number; children: React.
 
 // Viewfinder corners that close in on a subject: a focus transition.
 export const Brackets: React.FC<{at: number; cx: number; cy: number; w: number; h: number; dur?: number}> = ({at, cx, cy, w, h, dur = 22}) => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const p = ease(clamp((f - at) / dur));
   const vis = clamp((f - at) / 4) * clamp((at + dur + 26 - f) / 10);
   if (vis <= 0) return null;
@@ -145,7 +154,7 @@ export const Brackets: React.FC<{at: number; cx: number; cy: number; w: number; 
 // Hub-and-spoke diagram: lines draw from the hub to each node, nodes pop at the line ends.
 export const NodeGraph: React.FC<{at: number; hub: {x: number; y: number}; nodes: {x: number; y: number; el: React.ReactNode}[];
   hubEl: React.ReactNode}> = ({at, hub, nodes, hubEl}) => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const {fps} = useVideoConfig();
   return (
     <>
@@ -167,7 +176,7 @@ export const NodeGraph: React.FC<{at: number; hub: {x: number; y: number}; nodes
 
 // A curve that draws itself, with a dot riding its head (used for the discount: price going down).
 export const Curve: React.FC<{at: number; w: number; h: number; dur?: number}> = ({at, w, h, dur = 40}) => {
-  const f = useCurrentFrame();
+  const f = useStoryFrame();
   const p = ease(clamp((f - at) / dur));
   const d = `M 40 ${h * 0.22} C ${w * 0.38} ${h * 0.2}, ${w * 0.5} ${h * 0.82}, ${w - 40} ${h * 0.8}`;
   // point along the same cubic for the dot
