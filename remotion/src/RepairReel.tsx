@@ -17,6 +17,9 @@ export type RepairProps = {
   words: Word[];
   hook: Hook | null;
   musicFadeSec: number;
+  sfx?: string; // transition SFX track under public/ (scripts/sfx_transitions.py)
+  sfxVolume?: number;
+  musicVolume?: number; // source music level (lower it so transition SFX read)
 };
 
 const FPS = 30;
@@ -130,7 +133,8 @@ export const RepairReel: React.FC<RepairProps> = (p) => {
   return (
     <AbsoluteFill style={{background: '#000'}}>
       <Audio src={staticFile(p.video)}
-        volume={(fr) => interpolate(fr, [0, 6, total - fadeF, total], [0, 1, 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} />
+        volume={(fr) => interpolate(fr, [0, 6, total - fadeF, total], [0, p.musicVolume ?? 1, p.musicVolume ?? 1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'})} />
+      {p.sfx ? <Audio src={staticFile(p.sfx)} volume={p.sfxVolume ?? 0.9} /> : null}
       {p.shots.map((s, i) => (
         <Sequence key={i} from={L[i].start} durationInFrames={L[i].len}>
           <ShotView p={p} s={s} len={L[i].len} first={i === 0} reveal={i === p.revealShot} />

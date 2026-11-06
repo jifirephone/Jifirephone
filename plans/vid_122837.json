@@ -165,5 +165,8 @@
    "phrase": 3,
    "keyword": false
   }
- ]
+ ],
+ "sfx": "clip/vid_122837_sfx.wav",
+ "sfxVolume": 1.0,
+ "musicVolume": 0.6
 }
