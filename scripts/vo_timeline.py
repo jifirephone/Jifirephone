@@ -33,7 +33,9 @@ def main():
             warp.append((round(hold_start * FPS), sc["design"][0]))
         lead = sc.get("lead", 0.12)
         vo_at = hold_start + lead
-        cuts.append({"clip_start": round(c0, 3), "clip_end": round(c1 + 0.08, 3), "real_start": round(vo_at, 3),
+        nxt = words[w1 + 1]["start"] if w1 + 1 < len(words) else c1 + 0.3
+        c_end = min(c1 + 0.08, max(c1, nxt - 0.02))   # never bleed into the next sentence's first word
+        cuts.append({"clip_start": round(c0, 3), "clip_end": round(c_end, 3), "real_start": round(vo_at, 3),
                      "text": " ".join(words[k]["text"] for k in range(w0, w1 + 1))})
         hold_end = max(vo_at + (c1 - c0) + sc.get("tail", 0.2), hold_start + sc.get("min_hold", 1.2))
         if "keep_end" in sc:      # the last section keeps its own designed tail

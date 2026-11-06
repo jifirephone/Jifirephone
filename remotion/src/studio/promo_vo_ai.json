@@ -1,0 +1,125 @@
+{
+ "_note": "Which recorded words belong to which scene hold (design frames from promo_camera.json / StudioPromo LINES). anchors: [word index, design frame] = this element appears when this word is said. Variant for the ElevenLabs voice (A take 1): no clip_start overrides.",
+ "sections": [
+  {
+   "design": [
+    0,
+    100
+   ],
+   "words": [
+    0,
+    4
+   ],
+   "lead": 0.45,
+   "anchors": [
+    [
+     3,
+     60
+    ]
+   ]
+  },
+  {
+   "design": [
+    132,
+    308
+   ],
+   "words": [
+    5,
+    11
+   ],
+   "anchors": [
+    [
+     7,
+     202
+    ]
+   ]
+  },
+  {
+   "design": [
+    346,
+    468
+   ],
+   "words": [
+    12,
+    18
+   ],
+   "anchors": [
+    [
+     14,
+     402
+    ]
+   ]
+  },
+  {
+   "design": [
+    502,
+    648
+   ],
+   "words": [
+    19,
+    26
+   ],
+   "anchors": [
+    [
+     22,
+     564
+    ]
+   ]
+  },
+  {
+   "design": [
+    682,
+    828
+   ],
+   "words": [
+    27,
+    34
+   ],
+   "anchors": [
+    [
+     30,
+     712
+    ]
+   ]
+  },
+  {
+   "design": [
+    862,
+    924
+   ],
+   "words": [
+    35,
+    40
+   ],
+   "anchors": []
+  },
+  {
+   "design": [
+    962,
+    1040
+   ],
+   "words": [
+    41,
+    47
+   ],
+   "anchors": [
+    [
+     43,
+     990
+    ]
+   ]
+  },
+  {
+   "design": [
+    1062,
+    1140
+   ],
+   "words": [
+    48,
+    50
+   ],
+   "lead": 0.15,
+   "keep_end": true
+  }
+ ]
+}
