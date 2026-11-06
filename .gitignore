@@ -8,3 +8,4 @@ out/*
 !out/.gitkeep
 __pycache__/
 remotion/public/clip/
+refs/ref2_fb.mp4

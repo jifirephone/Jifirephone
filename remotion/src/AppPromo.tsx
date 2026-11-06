@@ -78,7 +78,7 @@ const Center: React.FC<{y: number; children: React.ReactNode; w?: number}> = ({y
 );
 
 // Line-drawn icon: strokes draw themselves in, then fill fades up.
-const Icon: React.FC<{f: number; delay?: number; size: number; d: string[]; fill?: boolean}> = ({f, delay = 0, size, d, fill}) => {
+export const Icon: React.FC<{f: number; delay?: number; size: number; d: string[]; fill?: boolean}> = ({f, delay = 0, size, d, fill}) => {
   const p = clamp((f - delay) / 18);
   return (
     <svg width={size} height={size} viewBox="0 0 100 100" style={{overflow: 'visible'}}>
@@ -91,7 +91,7 @@ const Icon: React.FC<{f: number; delay?: number; size: number; d: string[]; fill
   );
 };
 
-const ICON = {
+export const ICON = {
   house: ['M15 50 L50 18 L85 50', 'M25 42 V85 H75 V42', 'M43 85 V62 H57 V85'],
   shield: ['M50 8 L85 22 V48 C85 70 70 85 50 94 C30 85 15 70 15 48 V22 Z', 'M33 50 L46 63 L68 38'],
   box: ['M20 35 L50 20 L80 35 L80 70 L50 85 L20 70 Z', 'M20 35 L50 50 L80 35', 'M50 50 V85'],
