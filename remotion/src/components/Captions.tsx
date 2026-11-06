@@ -2,7 +2,7 @@ import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {caption, color, font} from '../brand';
 
-export type Word = {text: string; start: number; end: number; keyword?: boolean};
+export type Word = {text: string; start: number; end: number; keyword?: boolean; phrase?: number};
 
 // Word-by-word Arabic captions. Words appear as they are spoken; the word being
 // spoken (and any keyword) is gold, everything else white. Latin words keep LTR.
@@ -12,8 +12,11 @@ export const Captions: React.FC<{words: Word[]}> = ({words}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const t = frame / fps;
-  const shown = words.filter((w) => w.start <= t);
-  if (shown.length === 0) return null;
+  const spoken = words.filter((w) => w.start <= t);
+  if (spoken.length === 0) return null;
+  // Only the phrase being spoken is on screen; a new phrase clears the block.
+  const current = spoken[spoken.length - 1].phrase;
+  const shown = current === undefined ? spoken : spoken.filter((w) => w.phrase === current);
 
   const lines: Word[][] = [];
   shown.forEach((w) => {

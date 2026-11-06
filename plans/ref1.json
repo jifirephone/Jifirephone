@@ -1,0 +1,506 @@
+{
+ "keep": [
+  [
+   0.0,
+   1.08
+  ],
+  [
+   1.7,
+   22.95
+  ]
+ ],
+ "duration": 22.33,
+ "words": [
+  {
+   "text": "اربع",
+   "start": 0.0,
+   "end": 0.0,
+   "src": 0.0,
+   "phrase": 0,
+   "keyword": true
+  },
+  {
+   "text": "خطوط",
+   "start": 0.0,
+   "end": 0.38,
+   "src": 0.0,
+   "phrase": 0,
+   "keyword": false
+  },
+  {
+   "text": "بعشرة",
+   "start": 0.38,
+   "end": 0.68,
+   "src": 0.38,
+   "phrase": 0,
+   "keyword": true
+  },
+  {
+   "text": "الاف",
+   "start": 0.68,
+   "end": 0.96,
+   "src": 0.68,
+   "phrase": 0,
+   "keyword": true
+  },
+  {
+   "text": "زائد",
+   "start": 1.2,
+   "end": 1.92,
+   "src": 1.82,
+   "phrase": 1,
+   "keyword": false
+  },
+  {
+   "text": "خمسة",
+   "start": 1.92,
+   "end": 2.24,
+   "src": 2.54,
+   "phrase": 1,
+   "keyword": true
+  },
+  {
+   "text": "واربعين",
+   "start": 2.24,
+   "end": 2.7,
+   "src": 2.86,
+   "phrase": 1,
+   "keyword": true
+  },
+  {
+   "text": "دولار",
+   "start": 2.7,
+   "end": 2.98,
+   "src": 3.32,
+   "phrase": 1,
+   "keyword": true
+  },
+  {
+   "text": "زائد",
+   "start": 3.0,
+   "end": 3.24,
+   "src": 3.62,
+   "phrase": 2,
+   "keyword": false
+  },
+  {
+   "text": "خمس",
+   "start": 3.24,
+   "end": 3.58,
+   "src": 3.86,
+   "phrase": 2,
+   "keyword": true
+  },
+  {
+   "text": "برامج",
+   "start": 3.58,
+   "end": 4.04,
+   "src": 4.2,
+   "phrase": 2,
+   "keyword": false
+  },
+  {
+   "text": "مفتوحة",
+   "start": 4.04,
+   "end": 4.46,
+   "src": 4.66,
+   "phrase": 2,
+   "keyword": false
+  },
+  {
+   "text": "شهريا",
+   "start": 4.46,
+   "end": 5.0,
+   "src": 5.08,
+   "phrase": 2,
+   "keyword": false
+  },
+  {
+   "text": "سعر",
+   "start": 5.0,
+   "end": 5.52,
+   "src": 5.62,
+   "phrase": 3,
+   "keyword": false
+  },
+  {
+   "text": "الخط",
+   "start": 5.52,
+   "end": 5.86,
+   "src": 6.14,
+   "phrase": 3,
+   "keyword": false
+  },
+  {
+   "text": "الواحد",
+   "start": 5.86,
+   "end": 6.2,
+   "src": 6.48,
+   "phrase": 3,
+   "keyword": false
+  },
+  {
+   "text": "تلتالاف",
+   "start": 6.2,
+   "end": 6.72,
+   "src": 6.82,
+   "phrase": 3,
+   "keyword": true
+  },
+  {
+   "text": "دينار",
+   "start": 6.72,
+   "end": 7.2,
+   "src": 7.34,
+   "phrase": 3,
+   "keyword": true
+  },
+  {
+   "text": "اربع",
+   "start": 7.2,
+   "end": 7.8,
+   "src": 7.82,
+   "phrase": 4,
+   "keyword": true
+  },
+  {
+   "text": "خطوط",
+   "start": 7.8,
+   "end": 8.14,
+   "src": 8.42,
+   "phrase": 4,
+   "keyword": false
+  },
+  {
+   "text": "بعشرة",
+   "start": 8.14,
+   "end": 8.42,
+   "src": 8.76,
+   "phrase": 4,
+   "keyword": true
+  },
+  {
+   "text": "الاف",
+   "start": 8.42,
+   "end": 8.72,
+   "src": 9.04,
+   "phrase": 4,
+   "keyword": true
+  },
+  {
+   "text": "العرض",
+   "start": 8.86,
+   "end": 9.32,
+   "src": 9.48,
+   "phrase": 5,
+   "keyword": false
+  },
+  {
+   "text": "الثاني",
+   "start": 9.32,
+   "end": 9.62,
+   "src": 9.94,
+   "phrase": 5,
+   "keyword": false
+  },
+  {
+   "text": "للخط",
+   "start": 9.62,
+   "end": 9.9,
+   "src": 10.24,
+   "phrase": 5,
+   "keyword": false
+  },
+  {
+   "text": "السنوي",
+   "start": 9.9,
+   "end": 10.36,
+   "src": 10.52,
+   "phrase": 5,
+   "keyword": false
+  },
+  {
+   "text": "خط",
+   "start": 10.42,
+   "end": 10.96,
+   "src": 11.04,
+   "phrase": 6,
+   "keyword": false
+  },
+  {
+   "text": "زائد",
+   "start": 10.96,
+   "end": 11.4,
+   "src": 11.58,
+   "phrase": 6,
+   "keyword": false
+  },
+  {
+   "text": "مليون",
+   "start": 11.4,
+   "end": 11.82,
+   "src": 12.02,
+   "phrase": 6,
+   "keyword": true
+  },
+  {
+   "text": "وثمانين",
+   "start": 11.82,
+   "end": 12.44,
+   "src": 12.44,
+   "phrase": 6,
+   "keyword": true
+  },
+  {
+   "text": "دولار",
+   "start": 12.44,
+   "end": 12.86,
+   "src": 13.06,
+   "phrase": 6,
+   "keyword": true
+  },
+  {
+   "text": "زائد",
+   "start": 12.92,
+   "end": 13.46,
+   "src": 13.54,
+   "phrase": 7,
+   "keyword": false
+  },
+  {
+   "text": "سبع",
+   "start": 13.46,
+   "end": 13.76,
+   "src": 14.08,
+   "phrase": 7,
+   "keyword": true
+  },
+  {
+   "text": "برامج",
+   "start": 13.76,
+   "end": 14.24,
+   "src": 14.38,
+   "phrase": 7,
+   "keyword": false
+  },
+  {
+   "text": "مفتوحة",
+   "start": 14.24,
+   "end": 14.7,
+   "src": 14.86,
+   "phrase": 7,
+   "keyword": false
+  },
+  {
+   "text": "لمدة",
+   "start": 14.7,
+   "end": 15.02,
+   "src": 15.32,
+   "phrase": 7,
+   "keyword": false
+  },
+  {
+   "text": "سنة",
+   "start": 15.02,
+   "end": 15.34,
+   "src": 15.64,
+   "phrase": 7,
+   "keyword": false
+  },
+  {
+   "text": "كاملة",
+   "start": 15.34,
+   "end": 15.78,
+   "src": 15.96,
+   "phrase": 7,
+   "keyword": false
+  },
+  {
+   "text": "بسعر",
+   "start": 15.82,
+   "end": 16.38,
+   "src": 16.44,
+   "phrase": 8,
+   "keyword": false
+  },
+  {
+   "text": "مية",
+   "start": 16.38,
+   "end": 16.64,
+   "src": 17.0,
+   "phrase": 8,
+   "keyword": true
+  },
+  {
+   "text": "وستين",
+   "start": 16.64,
+   "end": 17.22,
+   "src": 17.26,
+   "phrase": 8,
+   "keyword": true
+  },
+  {
+   "text": "الف",
+   "start": 17.22,
+   "end": 17.48,
+   "src": 17.84,
+   "phrase": 8,
+   "keyword": true
+  },
+  {
+   "text": "فقط",
+   "start": 17.48,
+   "end": 17.92,
+   "src": 18.1,
+   "phrase": 8,
+   "keyword": true
+  },
+  {
+   "text": "وين",
+   "start": 18.0,
+   "end": 18.36,
+   "src": 18.62,
+   "phrase": 9,
+   "keyword": false
+  },
+  {
+   "text": "تلقونها",
+   "start": 18.36,
+   "end": 18.72,
+   "src": 18.98,
+   "phrase": 9,
+   "keyword": false
+  },
+  {
+   "text": "العرض",
+   "start": 18.72,
+   "end": 19.14,
+   "src": 19.34,
+   "phrase": 9,
+   "keyword": false
+  },
+  {
+   "text": "داخل",
+   "start": 19.14,
+   "end": 19.6,
+   "src": 19.76,
+   "phrase": 10,
+   "keyword": false
+  },
+  {
+   "text": "شركة",
+   "start": 19.6,
+   "end": 19.98,
+   "src": 20.22,
+   "phrase": 10,
+   "keyword": false
+  },
+  {
+   "text": "التقنية",
+   "start": 19.98,
+   "end": 20.32,
+   "src": 20.6,
+   "phrase": 10,
+   "keyword": false
+  },
+  {
+   "text": "الهواتف",
+   "start": 20.32,
+   "end": 20.86,
+   "src": 20.94,
+   "phrase": 10,
+   "keyword": false
+  },
+  {
+   "text": "جي",
+   "start": 20.9,
+   "end": 21.48,
+   "src": 21.52,
+   "phrase": 11,
+   "keyword": false
+  },
+  {
+   "text": "فاير",
+   "start": 21.48,
+   "end": 21.78,
+   "src": 22.1,
+   "phrase": 11,
+   "keyword": false
+  },
+  {
+   "text": "للموبايل",
+   "start": 21.78,
+   "end": 22.32,
+   "src": 22.4,
+   "phrase": 11,
+   "keyword": false
+  }
+ ],
+ "graphics": [
+  {
+   "start": 1.92,
+   "end": 2.96,
+   "label": "زائد",
+   "value": "$45"
+  },
+  {
+   "start": 3.0,
+   "end": 4.96,
+   "label": "برامج مفتوحة",
+   "value": "5",
+   "sub": "شهرياً"
+  },
+  {
+   "start": 5.0,
+   "end": 7.16,
+   "label": "سعر الخط الواحد",
+   "value": "3,000 دينار"
+  },
+  {
+   "start": 7.2,
+   "end": 8.82,
+   "label": "4 خطوط",
+   "value": "10,000"
+  },
+  {
+   "start": 8.86,
+   "end": 10.38,
+   "label": "العرض الثاني",
+   "value": "الخط السنوي"
+  },
+  {
+   "start": 10.42,
+   "end": 12.88,
+   "label": "زائد",
+   "value": "مليون وثمانين $"
+  },
+  {
+   "start": 12.92,
+   "end": 15.78,
+   "label": "برامج مفتوحة",
+   "value": "7",
+   "sub": "لمدة سنة كاملة"
+  },
+  {
+   "start": 15.82,
+   "end": 17.96,
+   "label": "بسعر",
+   "value": "160,000",
+   "sub": "فقط",
+   "kind": "price"
+  },
+  {
+   "start": 18.0,
+   "end": 22.33,
+   "label": "وين تلقون العرض؟",
+   "value": "جي فاير للموبايل"
+  }
+ ],
+ "hook": {
+  "start": 0,
+  "end": 2.8,
+  "line1": "تدور موبايل بأفضل سعر وأقوى ضمان؟",
+  "line2": "شوف عروض جي فاير للموبايل!"
+ },
+ "video": "clip/base.mp4"
+}

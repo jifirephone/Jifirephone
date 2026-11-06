@@ -7,3 +7,4 @@ inbox/*
 out/*
 !out/.gitkeep
 __pycache__/
+remotion/public/clip/
