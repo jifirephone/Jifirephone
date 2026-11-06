@@ -20,23 +20,57 @@ const useSpring = (f: number, delay = 0, cfg = {damping: 14, stiffness: 180}) =>
 
 // Words rise out of a mask one after another (Arabic is animated per word, never per letter,
 // because the letters are joined).
+// Seven ways for a line to arrive, so consecutive scenes never move their text the same way.
+// Arabic is animated per word (or per line for "wipe"), never per letter, because the letters join.
+type Anim = 'rise' | 'blur' | 'scale' | 'slideR' | 'slideL' | 'drop' | 'wipe';
+
 const Words: React.FC<{text: string; f: number; delay?: number; size: number; c?: string; gold?: string[];
-  stagger?: number; weight?: number; nowrap?: boolean}> = ({text, f, delay = 0, size, c = color.white, gold = [], stagger = 4, weight = 900, nowrap}) => (
-  <div style={{display: 'flex', flexWrap: nowrap ? 'nowrap' : 'wrap', whiteSpace: 'nowrap', justifyContent: 'center', direction: 'rtl', columnGap: size * 0.28,
-    fontFamily: font.family, fontWeight: weight, fontSize: size, lineHeight: 1.25}}>
-    {text.split(' ').map((w, i) => {
-      const s = useSpring(f, delay + i * stagger, {damping: 13, stiffness: 200});
-      const latin = !/[؀-ۿ]/.test(w);
-      return (
-        <span key={i} style={{display: 'inline-block', overflow: 'hidden', paddingBottom: size * 0.12}}>
-          <span dir={latin ? 'ltr' : 'rtl'} style={{display: 'inline-block', color: gold.includes(w) ? color.gold : c,
-            transform: `translateY(${(1 - s) * 110}%)`, opacity: clamp(s * 1.5),
-            textShadow: gold.includes(w) ? `0 0 40px ${color.gold}66` : '0 8px 24px rgba(0,0,0,0.6)'}}>{w}</span>
-        </span>
-      );
-    })}
-  </div>
-);
+  stagger?: number; weight?: number; nowrap?: boolean; anim?: Anim}> = ({text, f, delay = 0, size, c = color.white,
+  gold = [], stagger = 4, weight = 900, nowrap, anim = 'rise'}) => {
+  const wrap: React.CSSProperties = {display: 'flex', flexWrap: nowrap ? 'nowrap' : 'wrap', whiteSpace: 'nowrap',
+    justifyContent: 'center', direction: 'rtl', columnGap: size * 0.28, fontFamily: font.family, fontWeight: weight,
+    fontSize: size, lineHeight: 1.25};
+  const shadow = (w: string) => gold.includes(w) ? `0 0 40px ${color.gold}66` : '0 8px 24px rgba(0,0,0,0.6)';
+  const words = text.split(' ');
+  if (anim === 'wipe') {
+    // the line is revealed right-to-left, the direction it is read, behind a soft edge
+    const p = interpolate(f - delay, [0, 22], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp',
+      easing: (x) => 1 - Math.pow(1 - x, 3)});
+    const edge = p * 130 - 15;
+    return (
+      <div style={{...wrap, WebkitMaskImage: `linear-gradient(to left, black ${edge}%, transparent ${edge + 15}%)`,
+        maskImage: `linear-gradient(to left, black ${edge}%, transparent ${edge + 15}%)`}}>
+        {words.map((w, i) => (
+          <span key={i} dir={/[\u0600-\u06FF]/.test(w) ? 'rtl' : 'ltr'} style={{display: 'inline-block',
+            color: gold.includes(w) ? color.gold : c, textShadow: shadow(w), paddingBottom: size * 0.12}}>{w}</span>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div style={wrap}>
+      {words.map((w, i) => {
+        const soft = anim === 'blur' || anim === 'drop';
+        const s = useSpring(f, delay + i * stagger, soft ? {damping: 20, stiffness: 90} : {damping: 13, stiffness: 200});
+        const latin = !/[\u0600-\u06FF]/.test(w);
+        const t: Record<Exclude<Anim, 'wipe'>, React.CSSProperties> = {
+          rise: {transform: `translateY(${(1 - s) * 110}%)`, opacity: clamp(s * 1.5)},
+          blur: {filter: `blur(${(1 - s) * 18}px)`, transform: `translateY(${(1 - s) * 24}px)`, opacity: clamp(s * 1.3)},
+          scale: {transform: `scale(${1.5 - 0.5 * s})`, opacity: clamp(s * 1.6)},
+          slideR: {transform: `translateX(${(1 - s) * 220}px)`, opacity: clamp(s * 1.4)},
+          slideL: {transform: `translateX(${(1 - s) * -220}px)`, opacity: clamp(s * 1.4)},
+          drop: {transform: `translateY(${(1 - s) * -90}px)`, opacity: clamp(s * 1.3)},
+        };
+        return (
+          <span key={i} style={{display: 'inline-block', overflow: anim === 'rise' ? 'hidden' : 'visible', paddingBottom: size * 0.12}}>
+            <span dir={latin ? 'ltr' : 'rtl'} style={{display: 'inline-block', color: gold.includes(w) ? color.gold : c,
+              textShadow: shadow(w), ...t[anim as Exclude<Anim, 'wipe'>]}}>{w}</span>
+          </span>
+        );
+      })}
+    </div>
+  );
+};
 
 const Center: React.FC<{y: number; children: React.ReactNode; w?: number}> = ({y, children, w = 952}) => (
   <div style={{position: 'absolute', top: y, left: (1080 - w) / 2, width: w, display: 'flex', flexDirection: 'column',
@@ -155,19 +189,19 @@ const S1: React.FC<{f: number}> = ({f}) => (
     {f >= 60 && (
       <Center y={1050}>
         <Icon f={f} delay={60} size={200} d={ICON.house} fill />
-        <Words f={f} delay={66} text="وانت ببيتك؟" size={120} />
+        <Words f={f} delay={66} text="وانت ببيتك؟" size={120} anim="blur" />
       </Center>
     )}
   </>
 );
 
 const S2: React.FC<{f: number}> = ({f}) => {
-  const s = useSpring(f, 4, {damping: 9, stiffness: 260});
-  const shake = f > 8 && f < 16 ? Math.sin(f * 3) * 10 : 0;
+  const s = useSpring(f, 6, {damping: 14, stiffness: 160});
+  const shake = 0;
   return (
     <Center y={640}>
-      <Words f={f} text="مقدمة؟" size={120} c="rgba(255,255,255,0.55)" />
-      <div style={{marginTop: 30, transform: `scale(${3 - 2 * s}) rotate(-8deg) translateX(${shake}px)`, opacity: clamp(s * 3),
+      <Words f={f} text="مقدمة؟" size={120} c="rgba(255,255,255,0.55)" anim="blur" />
+      <div style={{marginTop: 30, transform: `scale(${1.8 - 0.8 * s}) rotate(${-8 * s}deg) translateX(${shake}px)`, opacity: clamp(s * 3),
         border: `10px solid ${color.gold}`, borderRadius: 28, padding: '10px 60px', fontFamily: font.family,
         fontWeight: 900, fontSize: 200, color: color.gold, boxShadow: `0 0 60px ${color.gold}55`}}>بدون</div>
     </Center>
@@ -178,7 +212,7 @@ const S3: React.FC<{f: number}> = ({f}) => (
   <Center y={470}>
     <Icon f={f} size={380} d={ICON.shield} fill />
     <div style={{marginTop: 30}}>
-      <Words f={f} delay={10} text="ضمان سنة" size={190} gold={['سنة']} />
+      <Words f={f} delay={10} text="ضمان سنة" size={190} gold={['سنة']} anim="wipe" />
     </div>
   </Center>
 );
@@ -193,7 +227,7 @@ const S4: React.FC<{f: number}> = ({f}) => {
         <Icon f={f} size={260} d={ICON.box} fill />
       </div>
       <Center y={1010}>
-        <Words f={f} delay={12} text="يوصلك لباب البيت" size={130} gold={['البيت']} />
+        <Words f={f} delay={12} text="يوصلك لباب البيت" size={130} gold={['البيت']} anim="slideR" stagger={5} />
       </Center>
     </>
   );
@@ -206,7 +240,7 @@ const S5: React.FC<{f: number}> = ({f}) => (
         opacity: 0.5, width: 300 + (i % 2) * 180, left: interpolate((f * 28 + i * 230) % 1600, [0, 1600], [1100, -500])}} />
     ))}
     <Center y={720}>
-      <Words f={f} text="توصيل" size={180} />
+      <Words f={f} text="توصيل" size={180} anim="scale" />
       <div style={{marginTop: 20}}><Pill f={f} delay={8} gold size={150}>مجاني</Pill></div>
     </Center>
   </>
@@ -217,7 +251,7 @@ const S6: React.FC<{f: number}> = ({f}) => {
   const pop = useSpring(f, 34, {damping: 8, stiffness: 300});
   return (
     <Center y={560}>
-      <Words f={f} text="وخصم" size={150} />
+      <Words f={f} text="وخصم" size={150} anim="drop" />
       <div style={{direction: 'rtl', display: 'flex', alignItems: 'baseline', gap: 30, fontFamily: font.family, fontWeight: 900}}>
         <span style={{fontSize: 400, color: color.gold, lineHeight: 1.05, transform: `scale(${1 + 0.12 * Math.sin(pop * Math.PI)})`,
           textShadow: `0 0 80px ${color.gold}88`, display: 'inline-block', direction: 'ltr'}}>{n}</span>
@@ -230,7 +264,7 @@ const S6: React.FC<{f: number}> = ({f}) => {
 const S7: React.FC<{f: number}> = ({f}) => (
   <>
     <Center y={300}>
-      <Words f={f} text="لكيتلك الحل" size={140} gold={['الحل']} />
+      <Words f={f} text="لكيتلك الحل" size={140} gold={['الحل']} anim="blur" stagger={7} />
     </Center>
     <div style={{position: 'absolute', top: 560, left: 340}}><PhoneMock f={f} delay={10} /></div>
   </>
@@ -242,8 +276,8 @@ const S8: React.FC<{f: number}> = ({f}) => (
       <PhoneMock f={f + 40} delay={0} />
     </div>
     <Center y={800}>
-      <Words f={f} text="حمّل تطبيق" size={130} />
-      <Words f={f} delay={8} text="جي فاير للموبايل" size={140} gold={['جي', 'فاير', 'للموبايل']} />
+      <Words f={f} text="حمّل تطبيق" size={130} anim="wipe" />
+      <Words f={f} delay={12} text="جي فاير للموبايل" size={140} gold={['جي', 'فاير', 'للموبايل']} anim="scale" />
       <div style={{marginTop: 50}}><StoreButtons f={f} delay={30} /></div>
     </Center>
   </>
@@ -256,7 +290,7 @@ const S9: React.FC<{f: number}> = ({f}) => {
   ];
   return (
     <>
-      <Center y={330}><Words f={f} text="اشتري اللي يناسبك" size={96} /></Center>
+      <Center y={330}><Words f={f} text="اشتري اللي يناسبك" size={96} anim="slideL" /></Center>
       <div style={{position: 'absolute', top: 520, left: 84, width: 912, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 36, direction: 'rtl'}}>
         {cats.map((c, k) => {
           const s = useSpring(f, 12 + k * BEAT / 2, {damping: 12, stiffness: 200});
@@ -278,8 +312,8 @@ const S10: React.FC<{f: number}> = ({f}) => {
   const line = clamp((f - 24) / 14);
   return (
     <Center y={620}>
-      <Words f={f} text="ضمان سنة" size={150} nowrap />
-      <Words f={f} delay={14} text="ضمان حقيقي" size={150} gold={['حقيقي']} nowrap />
+      <Words f={f} text="ضمان سنة" size={150} nowrap anim="drop" />
+      <Words f={f} delay={14} text="ضمان حقيقي" size={150} gold={['حقيقي']} nowrap anim="wipe" />
       <div style={{height: 14, width: 620 * line, background: color.gold, borderRadius: 7, marginTop: 10, boxShadow: `0 0 30px ${color.gold}`}} />
     </Center>
   );
@@ -289,7 +323,7 @@ const S11: React.FC<{f: number}> = ({f}) => (
   <Center y={520}>
     <Words f={f} text="يلا شمنتظر؟" size={140} />
     <div style={{height: 40}} />
-    <Words f={f} delay={20} text="حمّل هسه واستفيد" size={120} gold={['هسه']} />
+    <Words f={f} delay={20} text="حمّل هسه واستفيد" size={120} gold={['هسه']} anim="scale" />
     <div style={{marginTop: 70}}><Pill f={f} delay={40} gold size={44}>
       <span style={{fontSize: 52}}>⬇</span> <span dir="ltr">app.jifrephone.workers.dev</span>
     </Pill></div>
@@ -301,7 +335,7 @@ const S12: React.FC<{f: number}> = ({f}) => {
   return (
     <Center y={380}>
       <Img src={staticFile('logo.png')} style={{width: 560, transform: `scale(${0.7 + 0.3 * s})`, opacity: clamp(s * 2)}} />
-      <div style={{marginTop: 50}}><Words f={f} delay={10} text="التقنية باعلى ذروتها" size={70} weight={800} /></div>
+      <div style={{marginTop: 50}}><Words f={f} delay={10} text="التقنية باعلى ذروتها" size={70} weight={800} anim="blur" /></div>
       <div style={{marginTop: 60}}><StoreButtons f={f} delay={20} scale={0.9} /></div>
     </Center>
   );
@@ -314,19 +348,92 @@ export const SCENES: Scene[] = [
   {from: 720, to: 780, el: S10}, {from: 780, to: 870, el: S11}, {from: 870, to: 960, el: S12},
 ];
 
+// Eleven soft transitions, one per cut and never the same twice in a row. Both scenes are on screen
+// during the change, so nothing pops; each has its own matching sound (scripts_reels/app-promo/sfx_cues.json).
+type Trans = 'dissolve' | 'iris' | 'push' | 'leak' | 'zoom' | 'softwipe' | 'blurrise' | 'pushUp' | 'goldline' | 'irisLow' | 'fadeBlack';
+export const TRANSITIONS: {at: number; type: Trans; dur: number}[] = [
+  {at: 120, type: 'dissolve', dur: 16}, {at: 180, type: 'iris', dur: 18}, {at: 240, type: 'push', dur: 18},
+  {at: 300, type: 'leak', dur: 20}, {at: 360, type: 'zoom', dur: 16}, {at: 420, type: 'softwipe', dur: 20},
+  {at: 480, type: 'blurrise', dur: 18}, {at: 600, type: 'pushUp', dur: 18}, {at: 720, type: 'goldline', dur: 20},
+  {at: 780, type: 'irisLow', dur: 18}, {at: 870, type: 'fadeBlack', dur: 22},
+];
+
+const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2); // easeInOutCubic
+
+const styles = (type: Trans, p: number): {out: React.CSSProperties; in: React.CSSProperties; overlay?: React.ReactNode} => {
+  const q = ease(p);
+  // staggered crossfade: the old text is mostly gone before the new text arrives, so two lines never stack
+  const o = clamp(1 - q * 1.7);
+  const i = clamp(q * 1.7 - 0.7);
+  switch (type) {
+    case 'dissolve':
+      return {out: {opacity: o, filter: `blur(${q * 10}px)`}, in: {opacity: i, filter: `blur(${(1 - q) * 10}px)`}};
+    case 'iris':
+      return {out: {opacity: 1 - q * 0.6}, in: {clipPath: `circle(${q * 125}% at 50% 42%)`}};
+    case 'irisLow':
+      return {out: {opacity: 1 - q * 0.6}, in: {clipPath: `circle(${q * 140}% at 50% 100%)`}};
+    case 'push':
+      return {out: {transform: `translateX(${q * 1080}px)`, opacity: 1 - q * 0.5}, in: {transform: `translateX(${(q - 1) * 1080}px)`}};
+    case 'pushUp':
+      return {out: {transform: `translateY(${-q * 700}px)`, opacity: 1 - q}, in: {transform: `translateY(${(1 - q) * 1920}px)`}};
+    case 'zoom':
+      return {out: {transform: `scale(${1 + q * 0.6})`, opacity: o}, in: {transform: `scale(${0.82 + 0.18 * q})`, opacity: i}};
+    case 'blurrise':
+      return {out: {opacity: o, transform: `translateY(${-q * 120}px)`},
+        in: {opacity: i, filter: `blur(${(1 - q) * 16}px)`, transform: `translateY(${(1 - q) * 120}px)`}};
+    case 'softwipe': {
+      const e = q * 140 - 20;
+      const m = `linear-gradient(to left, black ${e}%, transparent ${e + 20}%)`;
+      return {out: {opacity: 1 - q * 0.8}, in: {WebkitMaskImage: m, maskImage: m}};
+    }
+    case 'leak':
+      return {out: {opacity: o}, in: {opacity: i},
+        overlay: <AbsoluteFill style={{opacity: Math.sin(Math.PI * p) * 0.55, mixBlendMode: 'screen',
+          background: `radial-gradient(circle 900px at ${200 + q * 700}px 700px, ${color.gold}, rgba(243,180,6,0.25) 45%, transparent 70%)`}} />};
+    case 'goldline': {
+      const x = interpolate(q, [0, 1], [-200, 1280]);
+      return {out: {clipPath: `polygon(${x}px 0, 1080px 0, 1080px 1920px, ${x - 500}px 1920px)`},
+        in: {clipPath: `polygon(0 0, ${x}px 0, ${x - 500}px 1920px, 0 1920px)`},
+        overlay: <AbsoluteFill><div style={{position: 'absolute', top: -200, left: x - 250, width: 6, height: 2400,
+          transform: 'rotate(14.6deg)', transformOrigin: 'top', background: color.gold, boxShadow: `0 0 40px ${color.gold}`,
+          opacity: Math.sin(Math.PI * p)}} /></AbsoluteFill>};
+    }
+    case 'fadeBlack':
+      return {out: {opacity: clamp(1 - q * 2)}, in: {opacity: clamp(q * 2 - 1)}};
+  }
+};
+
 export const AppPromo: React.FC = () => {
   const f = useCurrentFrame();
-  const cur = SCENES.find((s) => f >= s.from && f < s.to) ?? SCENES[SCENES.length - 1];
-  const local = f - cur.from;
-  const zoom = 1 + 0.035 * clamp(local / (cur.to - cur.from)); // slow camera push inside each scene
+  const idx = Math.max(0, SCENES.findIndex((s) => f >= s.from && f < s.to));
+  const cur = SCENES[idx];
+  const zoomOf = (sc: Scene, local: number) => 1 + 0.035 * clamp(local / (sc.to - sc.from)); // slow camera push
+  const tr = TRANSITIONS.find((t) => t.at === cur.from && f < t.at + t.dur);
   const El = cur.el;
+  const local = f - cur.from;
+  if (!tr || idx === 0) {
+    return (
+      <AbsoluteFill style={{overflow: 'hidden'}}>
+        <Background f={f} />
+        <AbsoluteFill style={{transform: `scale(${zoomOf(cur, local)})`}}><El f={local} /></AbsoluteFill>
+      </AbsoluteFill>
+    );
+  }
+  const prev = SCENES[idx - 1];
+  const Prev = prev.el;
+  const prevLocal = f - prev.from;
+  const st = styles(tr.type, (f - tr.at) / tr.dur);
   return (
     <AbsoluteFill style={{overflow: 'hidden'}}>
       <Background f={f} />
-      <AbsoluteFill style={{transform: `scale(${zoom})`}}>
-        <El f={local} />
+      <AbsoluteFill style={st.out}>
+        <AbsoluteFill style={{transform: `scale(${zoomOf(prev, prevLocal)})`}}><Prev f={prevLocal} /></AbsoluteFill>
       </AbsoluteFill>
-      {SCENES.slice(1).map((s) => <GoldWipe key={s.from} f={f} at={s.from} />)}
+      <AbsoluteFill style={st.in}>
+        {tr.type === 'irisLow' || tr.type === 'iris' || tr.type === 'softwipe' || tr.type === 'goldline' ? <Background f={f} /> : null}
+        <AbsoluteFill style={{transform: `scale(${zoomOf(cur, local)})`}}><El f={local} /></AbsoluteFill>
+      </AbsoluteFill>
+      {st.overlay}
     </AbsoluteFill>
   );
 };
