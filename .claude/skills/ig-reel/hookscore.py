@@ -291,8 +291,8 @@ def ar_check_address(text):
     toks = ar.tokens(text)
     if any(ar.is_address(t) for t in toks):
         return 100.0, "يحچي ويه المشاهد مباشرة"
-    if toks and (ar.in_lex(toks[0], ar.IMPERATIVES)):
-        return 90.0, f"يبدي بأمر («{toks[0]}»)"
+    if any(ar.in_lex(t, ar.IMPERATIVES) for t in toks[:6]):
+        return 90.0, "بيه أمر للمشاهد"
     if any(ar.norm(t) in ("انا", "احنا", "عدنا", "عندي", "عندنا") for t in toks):
         return 70.0, "بصيغة المتكلم، بدون مخاطبة المشاهد"
     return 35.0, "ماكو مخاطبة، الجملة بالهوا"
