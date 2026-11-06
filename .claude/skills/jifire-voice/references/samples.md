@@ -29,5 +29,11 @@ What it shows: fact-first, verb-less offer lines; numbers said in words; «زا�
 - 2026-11-06: hook «تدور موبايل بأفضل سعر وأقوى ضمان؟ شوف عروض جي فاير للموبايل!» (given by the owner)
 - 2026-11-06: iPhone repair script, `scripts_reels/iphone-repair/script.txt` (approved to send, not yet filmed)
 
+- 2026-11-07: app-promo voiceover, the owner's own wording (dictated; brand fixed from speech-to-text «جيفايل» → «جي فاير»):
+  «تريد جهاز بالأقساط وانت ببيتك؟ بدون مقدمة، وضمان سنة، ويوصلك لباب البيت. والتوصيل مجاني، وفوكاها خصم خمسة وعشرين الف.
+  لكيتلك الحل: حمّل تطبيق جي فاير للموبايل. واشتري اللي يناسبك: هواتف جديدة، ومستعمل، وحاسبات، واكسسوارات.
+  وضمان سنة، ضمان حقيقي. يلا شمنتظر؟ حمّل هسه واستفيد من العرض. جي فاير للموبايل.»
+  Shows: «فوكاها» (on top of that), «واستفيد من العرض» as the close, the brand repeated as the last line.
+
 ## Rejected / corrected
 _(empty: add "✗ what was written → ✓ what the owner wanted" here)_

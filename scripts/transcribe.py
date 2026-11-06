@@ -22,7 +22,7 @@ PROMPT = (
 # Fixed mis-hearings, applied to every word/segment (add new ones when the user corrects a transcript).
 FIXES = {
     "جاي فايل": "جي فاير", "جي فايل": "جي فاير", "جاي فاير": "جي فاير",
-    "جاي": "جي", "فايل": "فاير",
+    "جاي": "جي", "فايل": "فاير", "جيفايل": "جي فاير", "جيفاير": "جي فاير",
 }
 
 
