@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: reply-angry-comment
+expected_outcome: |
+  A calm, short Iraqi reply that does not insult, does not invent facts, invites the person to DM or visit, and is not posted automatically.

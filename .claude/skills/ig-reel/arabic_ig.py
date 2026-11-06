@@ -237,6 +237,7 @@ IRAQI_MARKERS = _lex(
     "يمنا", "يمكم", "تلگه", "تلكه", "حيل", "هم", "بعد", "احنا", "انطيك", "ننطيك", "نطيك", "يگلك",
     "يقلك", "اگلك", "اقلك", "دير", "بالك", "شكو", "هاي", "هذني", "منا", "مال", "مالتك", "مالك",
     "هالشي", "هالعرض", "هالموبايل", "تحچي", "نحچي", "جيب", "جيبه", "ابد", "ميخالف", "عاد",
+    "وين", "زاد", "تلقون", "تلقونه", "تلقونها", "شكو", "ليش", "اشكد", "هواي", "نطيكم", "ننطيكم",
 )
 MSA_MARKERS = _lex(
     "سوف", "لماذا", "ماذا", "هذه", "الذي", "التي", "الذين", "ليس", "ليست", "لدينا", "لديك",
@@ -256,7 +257,8 @@ def dialect_report(text):
                     out.add(s[: -len(suf)])
         return out
 
-    iraqi = [t for t in toks if base(t) & IRAQI_MARKERS or "چ" in t or "گ" in t]
+    iraqi = [t for t in toks if base(t) & IRAQI_MARKERS or "چ" in t or "گ" in t
+             or "طعش" in norm(t) or norm(t).endswith("تالاف")]   # Iraqi fused numbers: خمسطعش، تلتالاف
     msa = [t for t in toks if norm(t) in MSA_MARKERS]
     total = len(iraqi) + len(msa)
     score = 50.0 if total == 0 else 100.0 * len(iraqi) / total

@@ -1,0 +1,30 @@
+{
+ "expectations": [
+  {
+   "text": "The caption contains no price, instalment amount or warranty period that the prompt did not give (placeholders like {{السعر}} are fine).",
+   "passed": true,
+   "evidence": "Only {{شروط الأقساط}} placeholder; no figures."
+  },
+  {
+   "text": "The caption ends with a single call to action asking viewers to comment السعر.",
+   "passed": true,
+   "evidence": "«اكتب «السعر» بالتعليقات ونگلك التفاصيل.» is the only ask; hashtags follow."
+  },
+  {
+   "text": "voicecheck.py --kind caption reports PASS for the caption.",
+   "passed": true,
+   "evidence": "OVERALL 95.1 PASS"
+  },
+  {
+   "text": "iPhone 15 Pro is written in English letters.",
+   "passed": true,
+   "evidence": "Line 1: iPhone 15 Pro"
+  }
+ ],
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ }
+}

@@ -1,0 +1,10 @@
+{
+ "eval_name": "caption-installments-no-price",
+ "prompt": "اكتبلي كابشن انستا لعرض iPhone 15 Pro بالأقساط بجي فاير، السعر ما عندي هسه",
+ "assertions": [
+  "The caption contains no price, instalment amount or warranty period that the prompt did not give (placeholders like {{السعر}} are fine).",
+  "The caption ends with a single call to action asking viewers to comment السعر.",
+  "voicecheck.py --kind caption reports PASS for the caption.",
+  "iPhone 15 Pro is written in English letters."
+ ]
+}

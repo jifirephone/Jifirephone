@@ -1,0 +1,8 @@
+{
+ "eval_name": "rewrite-ai-caption",
+ "prompt": "هذا النص يبين مكتوب بالذكاء الاصطناعي، رجعه بأسلوبنا: «في عالم التقنية المتسارع…»",
+ "assertions": [
+  "The rewrite contains none of: في عالم، نقدم لكم، أسعار تنافسية، لا تفوت، استمتع، تجربة، نحن هنا.",
+  "voicecheck.py reports FAIL for the original and PASS for the rewrite, and both results are shown."
+ ]
+}

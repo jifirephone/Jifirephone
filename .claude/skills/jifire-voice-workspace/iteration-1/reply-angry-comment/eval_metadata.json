@@ -1,0 +1,9 @@
+{
+ "eval_name": "reply-angry-comment",
+ "prompt": "واحد كاتب تعليق على ريلنا: «اسعاركم غالية وانتو نصابين». اكتبلي رد",
+ "assertions": [
+  "The reply is in Iraqi dialect and voicecheck.py --kind reply reports PASS.",
+  "The reply makes no factual claim (price, warranty, certification) that the prompt did not give.",
+  "The response states the reply is a draft and is not posted without the owner's approval."
+ ]
+}

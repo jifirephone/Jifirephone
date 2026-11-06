@@ -1,0 +1,20 @@
+{
+ "expectations": [
+  {
+   "text": "The rewrite contains none of: في عالم، نقدم لكم، أسعار تنافسية، لا تفوت، استمتع، تجربة، نحن هنا.",
+   "passed": true,
+   "evidence": "after.txt has none; AI_PHRASES 100"
+  },
+  {
+   "text": "voicecheck.py reports FAIL for the original and PASS for the rewrite, and both results are shown.",
+   "passed": true,
+   "evidence": "before 27.5 FAIL (10 phrases), after 100 PASS"
+  }
+ ],
+ "summary": {
+  "passed": 2,
+  "failed": 0,
+  "total": 2,
+  "pass_rate": 1.0
+ }
+}

@@ -120,5 +120,22 @@ class Dialect(unittest.TestCase):
         self.assertLess(ar.dialect_report("نحن نقدم لكم أفضل العروض الآن، يمكنكم زيارة متجرنا")["score"], 50)
 
 
+class VoiceSkill(unittest.TestCase):
+    VC = os.path.join(ROOT, ".claude", "skills", "jifire-voice", "scripts")
+
+    def test_bundled_arabic_module_in_sync(self):
+        with open(os.path.join(NEW, "arabic_ig.py"), encoding="utf-8") as a, \
+                open(os.path.join(self.VC, "arabic_ig.py"), encoding="utf-8") as b:
+            self.assertEqual(a.read(), b.read(), "copy ig-reel/arabic_ig.py into jifire-voice/scripts/")
+
+    def test_voicecheck_ai_vs_owner(self):
+        vc = load("voicecheck", os.path.join(self.VC, "voicecheck.py"))
+        ai = "في عالم التقنية المتسارع، نقدم لكم أفضل الهواتف الذكية بأسعار تنافسية! لا تفوت الفرصة."
+        self.assertEqual(vc.check(ai, "caption")["verdict"], "FAIL")
+        self.assertEqual(vc.check(read("ref1_script.txt"), "script")["verdict"], "PASS")
+        fixed = vc.autofix(ai)
+        self.assertEqual(vc.find_phrases(fixed), [], fixed)
+
+
 if __name__ == "__main__":
     unittest.main()

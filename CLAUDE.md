@@ -75,6 +75,13 @@
   `~/.claude/instagram/voice.md` is missing, run `mkdir -p ~/.claude/instagram && cp brand/voice.md ~/.claude/instagram/voice.md`.
   Edit `brand/voice.md`, never only the copy.
 
+- **`jifire-voice`** (`.claude/skills/jifire-voice/`, created 2026-11-06): the owner's voice for **every** Arabic text
+  (scripts, captions, replies, DMs, stories). Rules: `references/voice-guide.md`. Real lines: `references/samples.md`.
+  Checker: `scripts/voicecheck.py --kind script|caption|reply|dm|story` (Arabic AI-phrase lexicon `ai_tells_ar.json`,
+  structure tells, Iraqi vs فصحى, rhythm, fingerprint). **Every customer-facing text must PASS before it is shown.**
+  Every line the owner approves or rewrites goes into `samples.md` (Approved / Rejected). `scripts/arabic_ig.py` is a
+  copy of `ig-reel/arabic_ig.py`; tests fail if they differ, so copy it after every change.
+
 ## Script rules (every reel script, permanent)
 1. Write in natural **Iraqi dialect**. Device names and tech terms stay in English on screen (iPhone, Face ID, Swap).
 2. Check each script with the three tools before showing it:
@@ -98,3 +105,4 @@
 - 2026-11-06 — ig-reel tools patched for Iraqi Arabic, voice.md created, first scripted reel (iPhone repair, 40 s) in `scripts_reels/iphone-repair/`.
 - 2026-11-06 — Correction: `app.jifrephone.workers.dev` is the **app link (Google Play + App Store)** and `jifirephone.com` is the **website**. Both spellings are right; don't flag them again.
 - 2026-11-06 — Owner delegated two calls ("اعمل من يمك"): (1) no invented price/warranty; script lines rewritten to need none, and the «السعر» comment brings the price; (2) safe zone raised to 230/1440/right 230, captions 90 px.
+- 2026-11-06 — Created the `jifire-voice` skill. Three test cases pass. The AI caption scores 27.5 FAIL, the owner's real reel 95 PASS.
