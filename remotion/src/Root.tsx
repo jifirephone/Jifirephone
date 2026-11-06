@@ -2,6 +2,7 @@ import React from 'react';
 import {Composition} from 'remotion';
 import {Reel, ReelProps, reelFrames} from './Reel';
 import {StyleSample} from './StyleSample';
+import {AppPromo, APP_PROMO_FRAMES} from './AppPromo';
 import {loadBrandFonts} from './fonts';
 
 loadBrandFonts();
@@ -14,6 +15,8 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="Reel" component={Reel} width={1080} height={1920} fps={30}
       durationInFrames={reelFrames(defaults)} defaultProps={defaults}
       calculateMetadata={({props}) => ({durationInFrames: reelFrames(props)})} />
+    <Composition id="AppPromo" component={AppPromo} width={1080} height={1920} fps={30}
+      durationInFrames={APP_PROMO_FRAMES} />
     <Composition id="StyleSample" component={StyleSample} width={1080} height={1920} fps={30}
       durationInFrames={195} />
   </>

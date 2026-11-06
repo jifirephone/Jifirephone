@@ -1,6 +1,6 @@
 """Synthesize a royalty-free, low-key cinematic music bed (A minor, 96 BPM).
 
-Usage: .venv/bin/python scripts/make_music.py OUT.wav SECONDS
+Usage: .venv/bin/python scripts/make_music.py OUT.wav SECONDS [BPM]
 Soft detuned pads (Am-F-C-G), sub bass, gentle kick and ticks. Mixed low; ducked under voice later.
 """
 import sys
@@ -10,7 +10,6 @@ import numpy as np
 
 SR = 48000
 BPM = 96
-BEAT = 60 / BPM
 CHORDS = [  # (root midi, chord tones)
     (57, [57, 60, 64, 69]),  # Am
     (53, [53, 57, 60, 65]),  # F
@@ -34,7 +33,11 @@ def lowpass(x, cutoff):
 
 
 def main():
+    global BPM
     out, secs = sys.argv[1], float(sys.argv[2])
+    if len(sys.argv) > 3:
+        BPM = float(sys.argv[3])
+    BEAT = 60 / BPM
     n = int(secs * SR)
     t = np.arange(n) / SR
     bar = 4 * BEAT
