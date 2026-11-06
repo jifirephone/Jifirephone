@@ -63,10 +63,34 @@
 
 - `ig-*` (13 skills from github.com/Jakeschincariol/instagram-agent-skill @ d03c56b, MIT, installed 2026-11-06):
   scripts, hooks, captions, carousels, stories, DMs, comments, plans, audits, humanizer. They never post or send anything.
-  **Limitation:** `hookscore.py` and `beats.py` only count Latin letters, so Arabic lines score 0 words
-  (our hook scored 8.4 WEAK only because of that). Don't trust their scores or timings on Arabic text until patched.
-  They read `~/.claude/instagram/voice.md` (not created yet).
+  **Patched for Arabic (2026-11-06)** in `.claude/skills/ig-reel/`: `arabic_ig.py` (new), `hookscore.py`, `beats.py`, `dialect.py` (new).
+  Arabic, English, mixed lines and ٠-٩ digits are counted. Numbers are timed as they are said («1,450,000» = 4 words).
+  Rate is **140 wpm**, measured on the creator, plus 0.2 s per sentence and 0.1 s per comma. Iraqi number, money, offer,
+  tension and address words are recognized. Device names spelled in Arabic count too (ايفونك). An OFFER check measures the marketing value of a hook.
+  English results are identical to upstream. Before/after: `python3 tests/compare_ig_tools.py`. Tests:
+  `python3 -m unittest discover -s tests` (must pass before committing any change to these tools).
+  Upstream originals are kept in `tests/upstream_ig_reel/`. If the pack is updated from GitHub, re-apply the patch and re-run the tests.
+- **Voice profile:** `brand/voice.md` is the source of truth. At the start of every session, if
+  `~/.claude/instagram/voice.md` is missing, run `mkdir -p ~/.claude/instagram && cp brand/voice.md ~/.claude/instagram/voice.md`.
+  Edit `brand/voice.md`, never only the copy.
+
+## Script rules (every reel script, permanent)
+1. Write in natural **Iraqi dialect**. Device names and tech terms stay in English on screen (iPhone, Face ID, Swap).
+2. Check each script with the three tools before showing it:
+   `hookscore.py` (3 hooks from different formulas; the chosen one **STRONG ≥ 70** and **≤ 3 s spoken**),
+   `beats.py --target <seconds of speech>` (no beat > 4 s; no 3 abstract beats in a row; the last line echoes the hook),
+   and `dialect.py` (**Iraqi ≥ 80 %**, zero فصحى).
+3. **Length** = speech + 3.5 s end card. For a 40 s reel, aim for about 36 s of speech.
+4. **Never invent** prices, warranty periods, repair times or results. Use `{{السعر}}`, `{{مدة الضمان}}`, `{{وقت التصليح}}` and flag them.
+5. Spoken hook is one short sentence (≤ 3 s). The longer brand hook «…شوف عروض جي فاير للموبايل!» goes **on screen**
+   (the full line takes 4.9 s to say and scores 69 OK; its first sentence alone scores 96 STRONG).
+6. Scripts live in `scripts_reels/<name>/` (`script.txt`, `hooks.txt`, `script.md` with the scene table and test results).
+7. **Never publish, post, comment or DM customers automatically.** Every post and every message waits for the owner's approval.
+8. Brand links: site https://jifirephone.com. App https://app.jifrephone.workers.dev
+   (spelled as given; "jifrephone" ≠ "jifirephone", so confirm before putting it on screen).
+9. Content areas: new and used phones, accessories, instalments, offers, iPhone repair (screens, sensors, board, Swap, software).
 
 ## Corrections log
 - 2026-11-06 — Step 2 approved. Captions white + gold, no rainbow shimmer (default kept; user can ask for it).
 - 2026-11-06 — Re-edit of refs/ref1.mov approved and exported (`out/jifire_sim-offer_final.mp4`). The 5 doubtful words (سعر/دينار, مليون وثمانين دولار, وين تلقونها, شركة التقنية الهواتف, زاد→زائد) were exported as transcribed and are still unconfirmed by the user.
+- 2026-11-06 — ig-reel tools patched for Iraqi Arabic, voice.md created, first scripted reel (iPhone repair, 40 s) in `scripts_reels/iphone-repair/`.

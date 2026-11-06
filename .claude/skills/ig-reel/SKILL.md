@@ -22,6 +22,12 @@ python3 hookscore.py --hook "one line"      # score a single one
 python3 beats.py script.txt --target 30     # timed beat sheet before you shoot
 ```
 
+## Arabic / Iraqi dialect (Ji Fire patch)
+
+All three tools detect Arabic automatically. Numbers are timed as spoken, and the rate is 140 wpm (measured on the
+creator). Hooks get an extra OFFER check. Also run `python3 dialect.py script.txt` (Iraqi ≥ 80%, no فصحى).
+Project rules: `CLAUDE.md` → "Script rules". Tests: `python3 -m unittest discover -s tests` from the project root.
+
 ## Before you write
 
 1. Read `~/.claude/instagram/voice.md` if it exists. That is the user's voice

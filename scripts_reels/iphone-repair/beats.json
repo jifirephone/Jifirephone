@@ -1,0 +1,123 @@
+{
+  "wpm": 140,
+  "target": 36.5,
+  "language": "ar",
+  "total_seconds": 35.39,
+  "total_words": 73,
+  "beats": [
+    {
+      "n": 1,
+      "start": 0.0,
+      "dur": 2.64,
+      "words": 5,
+      "text": "ايفونك طافي؟ لا ترميه، يتصلح.",
+      "concrete": 1,
+      "label": "HOOK",
+      "flags": []
+    },
+    {
+      "n": 2,
+      "start": 2.64,
+      "dur": 3.3,
+      "words": 7,
+      "text": "هواية يبيعونه خردة، وهو بس يحتاج تصليح.",
+      "concrete": 0,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 3,
+      "start": 5.94,
+      "dur": 3.73,
+      "words": 8,
+      "text": "بجي فاير للموبايل، عدنا قسم صيانة آيفون كامل.",
+      "concrete": 2,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 4,
+      "start": 9.67,
+      "dur": 3.5,
+      "words": 7,
+      "text": "الشاشة مكسورة؟ نبدلها، وترجع خوش مثل الجديدة.",
+      "concrete": 0,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 5,
+      "start": 13.17,
+      "dur": 3.5,
+      "words": 7,
+      "text": "Face ID عاطل، أو حساس الكاميرا؟ نصلحه.",
+      "concrete": 1,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 6,
+      "start": 16.67,
+      "dur": 3.93,
+      "words": 8,
+      "text": "البورد عاطل؟ نصلحه، مو لازم تشتري جهاز جديد.",
+      "concrete": 0,
+      "label": "MID",
+      "flags": []
+    },
+    {
+      "n": 7,
+      "start": 20.6,
+      "dur": 2.97,
+      "words": 6,
+      "text": "تريد آيفون أحدث؟ هم نسويلك Swap.",
+      "concrete": 2,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 8,
+      "start": 23.57,
+      "dur": 2.54,
+      "words": 5,
+      "text": "السوفت وير معلّق؟ هسه نخلصه.",
+      "concrete": 1,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 9,
+      "start": 26.11,
+      "dur": 2.77,
+      "words": 6,
+      "text": "وكل تصليح وياه ضمان {{مدة الضمان}}.",
+      "concrete": 2,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 10,
+      "start": 28.89,
+      "dur": 2.77,
+      "words": 6,
+      "text": "والسعر يبدي من {{السعر}} دينار بس.",
+      "concrete": 3,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 11,
+      "start": 31.66,
+      "dur": 3.73,
+      "words": 8,
+      "text": "اكتب السعر بالتعليقات، ونگلك شكد يكلف تصليح ايفونك.",
+      "concrete": 2,
+      "label": "CTA",
+      "flags": []
+    }
+  ],
+  "notes": [
+    "Loops: the last beat repeats \"ايفونك\" from the hook. Second watches are free reach.",
+    "Length is on target (35.4s against 36.5s)."
+  ]
+}

@@ -23,11 +23,15 @@ Usage
 
 import argparse
 import json
+import os
 import re
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import arabic_ig as ar  # noqa: E402  Arabic / Iraqi support (Ji Fire for Mobile)
+
 WORD_RE = re.compile(r"[A-Za-z0-9$%'’-]+")
-SENT_RE = re.compile(r"[^.!?]+[.!?]*")
+SENT_RE = re.compile(r"[^.!?؟]+[.!?؟]*")
 CONCRETE_RE = re.compile(r"\$\s?\d|\b\d[\d,.]*\b|(?<!^)\b[A-Z][a-z]{2,}\b", re.MULTILINE)
 STOPWORDS = {
     "the", "a", "an", "and", "or", "but", "if", "of", "to", "in", "on", "for",
@@ -57,13 +61,33 @@ def tc(seconds):
     return f"{int(m)}:{s:04.1f}"
 
 
-def split_beats(raw, wps):
+def spoken_seconds(text, wps, arabic):
+    """Seconds to say a line. Arabic: numbers are said in full and the reader
+    breathes at sentence ends (rate and pauses measured on refs/ref1.mov)."""
+    if not arabic:
+        return len(words(text)) / wps
+    toks = ar.tokens(text)
+    secs = sum(ar.spoken_len(t) for t in toks) / wps
+    secs += len(re.findall(r"[.!?؟](?=\s|$)", text)) * ar.SENTENCE_PAUSE
+    secs += len(re.findall(r"[,،؛]", text)) * ar.COMMA_PAUSE
+    return secs
+
+
+def concrete_count(text, arabic):
+    if not arabic:
+        return len(CONCRETE_RE.findall(text))
+    n = sum(1 for t in ar.tokens(text) if ar.is_number(t) or ar.in_lex(t, ar.MONEY_WORDS)
+            or ar.is_product(t))
+    return n + len(ar.multiword_products(text)) + (1 if ar.BRAND_RE.search(text) else 0)
+
+
+def split_beats(raw, wps, arabic=False):
     """One line is one beat, unless a line is too long to be one."""
     beats = []
     for line in [l.strip() for l in raw.splitlines()]:
         if not line:
             continue
-        if len(words(line)) / wps <= MAX_BEAT * 1.5:
+        if spoken_seconds(line, wps, arabic) <= MAX_BEAT * 1.5:
             beats.append(line)
             continue
         # Long paragraph: break it at sentence ends so the timings mean
@@ -72,7 +96,7 @@ def split_beats(raw, wps):
         buf = ""
         for part in parts:
             candidate = (buf + " " + part).strip()
-            if buf and len(words(candidate)) / wps > MAX_BEAT:
+            if buf and spoken_seconds(candidate, wps, arabic) > MAX_BEAT:
                 beats.append(buf)
                 buf = part
             else:
@@ -82,23 +106,26 @@ def split_beats(raw, wps):
     return beats
 
 
-def analyse(raw, wpm=165, target=None):
+def analyse(raw, wpm=None, target=None):
+    arabic = ar.is_arabic(raw)
+    if wpm is None:
+        wpm = ar.AR_WPM if arabic else 165
     wps = wpm / 60.0
-    beats = split_beats(raw, wps)
+    beats = split_beats(raw, wps, arabic)
     if not beats:
         return None
 
     rows, clock = [], 0.0
     for i, text in enumerate(beats):
-        n = len(words(text))
-        dur = n / wps
+        n = len(ar.tokens(text)) if arabic else len(words(text))
+        dur = spoken_seconds(text, wps, arabic)
         rows.append({
             "n": i + 1,
             "start": round(clock, 2),
             "dur": round(dur, 2),
             "words": n,
             "text": text,
-            "concrete": len(CONCRETE_RE.findall(text)),
+            "concrete": concrete_count(text, arabic),
             "label": "",
             "flags": [],
         })
@@ -119,7 +146,7 @@ def analyse(raw, wpm=165, target=None):
     if rows[0]["dur"] > HOOK_WINDOW:
         rows[0]["flags"].append(f"hook runs {rows[0]['dur']:.1f}s, past the {HOOK_WINDOW:.0f}s mark")
         notes.append(f"Beat 1 takes {rows[0]['dur']:.1f}s to say. Cut it to "
-                     f"{int(HOOK_WINDOW * wps)} words or fewer, or the hook lands after "
+                     f"{int(HOOK_WINDOW * wps)} spoken words or fewer, or the hook lands after "
                      "the decision has been made.")
     if rows[0]["concrete"] == 0:
         notes.append("Beat 1 has no number and no name in it. Hooks without something "
@@ -146,8 +173,13 @@ def analyse(raw, wpm=165, target=None):
             run, start = 0, None
 
     # Does the last line hand you back to the first one?
-    first = {w.lower() for w in words(rows[0]["text"]) if w.lower() not in STOPWORDS}
-    last = {w.lower() for w in words(rows[-1]["text"]) if w.lower() not in STOPWORDS}
+    if arabic:
+        key = lambda t: {ar.stems(w)[-1] if len(ar.stems(w)[-1]) > 2 else ar.norm(w)
+                         for w in ar.tokens(t) if ar.norm(w) not in ar.STOPWORDS and len(ar.norm(w)) > 2}
+        first, last = key(rows[0]["text"]), key(rows[-1]["text"])
+    else:
+        first = {w.lower() for w in words(rows[0]["text"]) if w.lower() not in STOPWORDS}
+        last = {w.lower() for w in words(rows[-1]["text"]) if w.lower() not in STOPWORDS}
     loop = sorted(pretty(w) for w in first & last)
     if loop:
         notes.append(f"Loops: the last beat repeats \"{', '.join(loop[:3])}\" from the hook. "
@@ -167,7 +199,7 @@ def analyse(raw, wpm=165, target=None):
                          "or shoot it short. Short is usually right.")
 
     return {
-        "wpm": wpm, "target": target,
+        "wpm": wpm, "target": target, "language": "ar" if arabic else "en",
         "total_seconds": round(total, 2),
         "total_words": sum(r["words"] for r in rows),
         "beats": rows,
@@ -194,7 +226,8 @@ def render(a, out=sys.stdout):
 def main():
     ap = argparse.ArgumentParser(description="Time a Reel script into a beat sheet.")
     ap.add_argument("input", nargs="?", default="-", help="script file, or - for stdin")
-    ap.add_argument("--wpm", type=float, default=165, help="speaking rate (default 165)")
+    ap.add_argument("--wpm", type=float, default=None,
+                    help="speaking rate (default 165 English, 140 Arabic - measured on the creator)")
     ap.add_argument("--target", type=float, help="target length in seconds")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()

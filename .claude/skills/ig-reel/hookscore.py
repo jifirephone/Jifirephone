@@ -33,8 +33,12 @@ Usage
 import argparse
 import json
 import re
+import os
 import statistics
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import arabic_ig as ar  # noqa: E402  Arabic / Iraqi support (Ji Fire for Mobile)
 
 WORD_RE = re.compile(r"[A-Za-z0-9$%'’-]+")
 NUMBER_RE = re.compile(
@@ -213,7 +217,125 @@ def check_address(text):
 CHECKS = ["LENGTH", "SPECIFICITY", "STAKES", "FRONTLOAD", "ADDRESS"]
 
 
+# ---------------------------------------------------------------------------
+# Arabic / Iraqi-dialect path. Used when the line is mainly Arabic; English
+# hooks never reach it, so their scores are exactly what upstream produced.
+# ---------------------------------------------------------------------------
+
+def ar_check_length(text):
+    """Arabic words carry clitics, so fewer words fill the same 2-3 seconds.
+    Timing uses the creator's measured rate and says numbers out loud."""
+    toks = ar.tokens(text)
+    n = len(toks)
+    spoken = sum(ar.spoken_len(t) for t in toks)
+    secs = spoken / (ar.AR_WPM / 60) + ar.SENTENCE_PAUSE * max(0, len(re.findall(r"[.!?؟]", text)) - 1)
+    chars = len(text.strip())
+    if secs <= 3.0 and n >= 3:
+        score = 100.0
+    elif n < 3:
+        score = clamp(100 - (3 - n) * 25)
+    else:
+        score = clamp(100 - (secs - 3.0) * 30)       # every extra second costs 30
+    if chars > 60:
+        score -= 12
+    return clamp(score), (f"{n} كلمة، تنحچي ~{secs:.1f}ث على {ar.AR_WPM} كلمة/دقيقة "
+                          f"({spoken} كلمة منطوقة مع الأرقام). المطلوب ≤ 3ث")
+
+
+def ar_check_specificity(text):
+    toks = ar.tokens(text)
+    found = [t for t in toks if ar.is_number(t) or ar.in_lex(t, ar.MONEY_WORDS)
+             or ar.is_product(t)]
+    found += ar.multiword_products(text)
+    if ar.BRAND_RE.search(text):
+        found.append("جي فاير")
+    hits = len(found)
+    score = 15.0 if hits == 0 else clamp(45 + hits * 30)
+    return score, (f"{hits} معلومة ملموسة" + (f": {'، '.join(found[:4])}" if found else
+                   " - لا رقم ولا سعر ولا اسم جهاز"))
+
+
+def ar_check_stakes(text):
+    toks = ar.tokens(text)
+    markers = list(dict.fromkeys(t for t in toks if ar.in_lex(t, ar.STAKES)))
+    if re.search(r"\$\s?\d|\d\s*(?:دينار|دولار|الف|ألف)", ar.to_latin_digits(text)):
+        markers.append("سعر")
+    if "؟" in text or "?" in text:
+        markers.append("سؤال")
+    n = len(markers)
+    score = {0: 20.0, 1: 70.0}.get(n, 100.0)
+    return clamp(score), (f"{n} عنصر توتر" + (f": {'، '.join(markers[:4])}" if markers else
+                          " - ماكو شي على المحك"))
+
+
+def ar_check_frontload(text):
+    toks = ar.tokens(text)
+    if not toks:
+        return 0.0, "فارغ"
+    opener = " ".join(ar.norm(t) for t in toks[:2])
+    hit = next((w for w in ar.WEAK_OPENERS if opener.startswith(w)), None)
+    penalty = 30 if hit else 0
+    pos = next((i for i, t in enumerate(toks) if ar.has_payload(t) or ar.is_address(t)), None)
+    if pos is None:
+        base, where = 30.0, "ماكو كلمة قوية بكل الجملة"
+    elif pos <= 2:
+        base, where = 100.0, f"الكلمة القوية رقم {pos + 1}"
+    elif pos <= 4:
+        base, where = 70.0, f"الكلمة القوية رقم {pos + 1}، قدّمها"
+    else:
+        base, where = 40.0, f"الكلمة القوية رقم {pos + 1}، متأخرة"
+    return clamp(base - penalty), where + (f"؛ بداية ضعيفة «{hit}»" if hit else "")
+
+
+def ar_check_address(text):
+    toks = ar.tokens(text)
+    if any(ar.is_address(t) for t in toks):
+        return 100.0, "يحچي ويه المشاهد مباشرة"
+    if toks and (ar.in_lex(toks[0], ar.IMPERATIVES)):
+        return 90.0, f"يبدي بأمر («{toks[0]}»)"
+    if any(ar.norm(t) in ("انا", "احنا", "عدنا", "عندي", "عندنا") for t in toks):
+        return 70.0, "بصيغة المتكلم، بدون مخاطبة المشاهد"
+    return 35.0, "ماكو مخاطبة، الجملة بالهوا"
+
+
+def ar_check_offer(text):
+    """Marketing value of the opening: price, warranty, instalments, a named
+    device or service, and the brand. A hook can be strong without an offer,
+    so this check counts toward the average but never caps the score."""
+    toks = ar.tokens(text)
+    offers = list(dict.fromkeys(t for t in toks if ar.in_lex(t, ar.OFFER_WORDS)))
+    products = [t for t in toks if ar.is_product(t)]
+    brand = bool(ar.BRAND_RE.search(text))
+    pts = min(2, len(offers)) * 30 + (20 if products else 0) + (20 if brand else 0)
+    detail = "، ".join(offers[:3] + products[:2] + (["البراند"] if brand else []))
+    return clamp(pts), ("قيمة تسويقية: " + detail) if detail else "ماكو عرض ولا فايدة واضحة"
+
+
+AR_CHECKS = CHECKS + ["OFFER"]
+
+
+def run_ar(text):
+    results = {
+        "LENGTH": ar_check_length(text),
+        "SPECIFICITY": ar_check_specificity(text),
+        "STAKES": ar_check_stakes(text),
+        "FRONTLOAD": ar_check_frontload(text),
+        "ADDRESS": ar_check_address(text),
+        "OFFER": ar_check_offer(text),
+    }
+    flags = [msg for pattern, msg in DEALBREAKERS + ar.DEALBREAKERS if pattern.search(text)]
+    core = [results[c][0] for c in CHECKS]
+    overall = statistics.mean(core + [results["OFFER"][0]]) * 0.6 + min(core) * 0.4 - len(flags) * 15
+    overall = clamp(overall)
+    verdict = "STRONG" if overall >= 70 and min(core) >= 55 and not flags else (
+        "OK" if overall >= 50 else "WEAK")
+    return results, overall, verdict, flags
+
+
+
 def run(text):
+    if ar.is_arabic(text):
+        return run_ar(text)
     results = {
         "LENGTH": check_length(text),
         "SPECIFICITY": check_specificity(text),
@@ -241,7 +363,7 @@ def render_one(text, results, overall, verdict, flags, out=sys.stdout):
     print("\nHOOK SCORE", file=out)
     print("=" * 62, file=out)
     print(f"  \"{text.strip()}\"\n", file=out)
-    for name in CHECKS:
+    for name in [c for c in AR_CHECKS if c in results]:
         score, detail = results[name]
         print(f"  {name:<13} {bar(score)} {score:5.1f}", file=out)
         print(f"  {'':<13} {detail}", file=out)
