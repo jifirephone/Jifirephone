@@ -1,0 +1,9 @@
+.venv/
+remotion/node_modules/
+work/
+models/
+inbox/*
+!inbox/.gitkeep
+out/*
+!out/.gitkeep
+__pycache__/

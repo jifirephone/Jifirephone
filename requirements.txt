@@ -1,0 +1,4 @@
+faster-whisper==1.2.1
+mediapipe==1.2.2
+numpy==2.5.4
+opencv-python-headless==5.0.0.93
