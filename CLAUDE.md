@@ -41,6 +41,8 @@
 - Work in order and **stop for the user's approval after each step**.
 - Tools: Python venv `.venv/` (faster-whisper, MediaPipe, OpenCV), ffmpeg, Remotion in `remotion/`.
 - Remotion renders with `--browser-executable=/opt/pw-browsers/chromium`.
+- Models live in `models/` (gitignored): Whisper `large-v3` via `download_root='models/whisper'`, MediaPipe `models/face_landmarker.task`.
+- Keep `av<16` (newer PyAV breaks faster-whisper). MediaPipe needs system `libegl1 libgles2`. Always call `landmarker.close()`.
 
 ## Corrections log
 _(empty — add dated entries here whenever the user corrects something)_
