@@ -43,6 +43,7 @@
 
 ## Export
 - H.264 (libx264), **1080x1920**, yuv420p, **bt709** primaries/transfer/matrix tagged, AAC audio, `+faststart`.
+- Keep the file light for phone download: `-crf 22 -preset slow -profile:v high -level 4.1 -maxrate 5M -bufsize 10M`, AAC 160k (≈ 8–10 MB for 15 s). Short ASCII file names.
 - Always show the user still frames for approval **before** the final export.
 
 ## Workflow
@@ -101,3 +102,4 @@
 - 2026-11-06 — B-roll repair reel (VID_20261106_122837, no speech) approved and exported (`out/jifire_repair-before-after_final.mp4`, 15.8 s). New `RepairReel` composition: soft crossfade+push-in transitions, one gold sweep at «بعد», قبل/بعد tags, on-screen text written by Claude (no model name, no price). Old burned-in watermark delogo'd + top shade; source end card replaced.
 - 2026-11-06 — **Correction (owner):** drop «اكتب السعر بالتعليقات» everywhere: end cards and default CTAs. Don't add it back unless the owner asks. Repair reel re-cut with the owner's lines: «شاصي مكسر وتعبان · نبدله الى جديد · ونحوله الى 18 Pro Max هم! · يعني سعر اقل كشخة اكثر» (18 Pro Max is the owner's claim).
 - 2026-11-06 — Owner approved the re-cut and asked for transition sounds. Added `scripts/sfx_transitions.py` (synth whoosh per crossfade, gold shimmer on «بعد», low boom into the end card); source music lowered to 0.6 so SFX read. Re-exported `out/jifire_repair-before-after_final.mp4` (−14 LUFS). Use transition SFX by default on b-roll reels.
+- 2026-11-06 — Owner couldn't download the 23 MB export on the phone. Re-encoded light (8.5 MB, 4.3 Mbps) as `out/jifire_repair_final.mp4`; light-export settings added to **Export**.
