@@ -27,9 +27,9 @@ Status: **based on 1 reference reel.** Re-measure when more references arrive.
 - Product names and tech terms are written in English and set as **one LTR run** (`iPhone 16 Pro`, never reversed).
 
 ## 4. Captions
-- **Position:** lower-right block, right-aligned, RTL, as in the reference. Bottom of block at y = 1520 (400 px above the bottom). Right margin 150 px to stay clear of the Instagram/TikTok button rail.
-- **Size:** 96 px, line-height 1.18. The reference's ~100 px lines at 1552 tall scale to about 96 px at 1920.
-- **Lines:** at most 3 words per line and 2 lines on screen. Older lines scroll off.
+- **Position:** lower-right block, right-aligned, RTL, as in the reference. Bottom of block at y ≈ 1428. Right margin 230 px to stay clear of the Instagram/TikTok button rail.
+- **Size:** 90 px, line-height 1.18 (was 96 px; reduced 2026-11-06 to fit the wider right margin).
+- **Lines:** at most 3 words **and 14 characters** per line, 2 lines on screen. Only the phrase being spoken is shown.
 - **Reveal:** word by word as spoken. Each word fades in and rises 28 px with a spring, settling in about 5 frames.
 - **Colour:** white by default. The **word being spoken is gold**, and keywords (price, brand, offer) stay gold.
 - **Legibility:** 3 px black stroke, plus a hard 5 px drop shadow and a soft 22 px shadow.
@@ -37,7 +37,7 @@ Status: **based on 1 reference reel.** Re-measure when more references arrive.
 
 ## 5. Logo bug
 - Logo (`brand/logo.png`, extracted from the end card, transparent background) in the **top-right** for the whole reel.
-- Width 210 px (≈15 % of frame width, as in the reference), top 170, right 64.
+- Width 210 px (≈15 % of frame width, as in the reference), top 230, right 64.
 
 ## 6. Structure and pacing (from reference)
 - **0–2 s:** product close-up in hand (hook visual), then hard cut to talking head.
@@ -54,4 +54,6 @@ Status: **based on 1 reference reel.** Re-measure when more references arrive.
 - Music about 20 dB under the voice and ducked while speaking. Voice always clear.
 
 ## 9. Safe zone (1080x1920)
-Top 220 · bottom 400 · left 64 · right 150. Nothing important outside it.
+**Top 230 · bottom 480 (text ends at y = 1440) · left 64 · right 230.** Nothing important outside it.
+Changed 2026-11-06 from 220/400/64/150 to match the Instagram UI (header, caption strip, action rail); the owner delegated the call.
+Graphic cards sit mid-left at y = 880 (price card 840), above the captions.

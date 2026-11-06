@@ -31,7 +31,8 @@
 - White text, **gold** highlight on the active word or keyword, black shadow.
 - RTL, modern motion graphics, clean and professional.
 - Brand colours: **black, gold `#F3B406`, white**, silver `#DCDCDC`. Font **Cairo** (900 captions).
-- Captions sit lower-right, right-aligned, 96 px, max 3 words/line and 2 lines. The spoken word is gold.
+- Captions sit lower-right, right-aligned, 90 px, max 3 words / 14 chars per line and 2 lines. The spoken word is gold.
+- **Safe zone: text only between y=230 and y=1440, 64 px from the left, 230 px from the right** (Instagram UI).
 - Consecutive English words/numbers are one LTR run ("iPhone 16 Pro", never reversed).
 - Logo bug (`brand/logo.png`) top-right the whole reel. End card: black, logo, «التقنية باعلى ذروتها», then «اكتب السعر بالتعليقات».
 - **Full rules and measurements: `design-system.md`. Read it before every edit.**
@@ -96,3 +97,4 @@
 - 2026-11-06 — Re-edit of refs/ref1.mov approved and exported (`out/jifire_sim-offer_final.mp4`). The 5 doubtful words (سعر/دينار, مليون وثمانين دولار, وين تلقونها, شركة التقنية الهواتف, زاد→زائد) were exported as transcribed and are still unconfirmed by the user.
 - 2026-11-06 — ig-reel tools patched for Iraqi Arabic, voice.md created, first scripted reel (iPhone repair, 40 s) in `scripts_reels/iphone-repair/`.
 - 2026-11-06 — Correction: `app.jifrephone.workers.dev` is the **app link (Google Play + App Store)** and `jifirephone.com` is the **website**. Both spellings are right; don't flag them again.
+- 2026-11-06 — Owner delegated two calls ("اعمل من يمك"): (1) no invented price/warranty; script lines rewritten to need none, and the «السعر» comment brings the price; (2) safe zone raised to 230/1440/right 230, captions 90 px.

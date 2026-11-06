@@ -1,7 +1,7 @@
 # ريل صيانة الآيفون — جي فاير للموبايل (40 ثانية)
 
 **Status:** script ready for review. **Not filmed, not published.** Nothing gets posted or sent to customers without the owner's approval.
-**Fill before filming:** `{{مدة الضمان}}` and `{{السعر}}`. I didn't invent a warranty period or a price.
+**No blanks:** the script doesn't name a price or warranty period (none was given, and none is invented). Viewers get the price by commenting «السعر».
 
 ## 1. الهوك (3 خيارات، مقيّمة بـ hookscore.py بعد الإصلاح)
 
@@ -24,8 +24,8 @@ Face ID عاطل، أو حساس الكاميرا؟ نصلحه.
 البورد عاطل؟ نصلحه، مو لازم تشتري جهاز جديد.
 تريد آيفون أحدث؟ هم نسويلك Swap.
 السوفت وير معلّق؟ هسه نخلصه.
-وكل تصليح وياه ضمان {{مدة الضمان}}.
-والسعر يبدي من {{السعر}} دينار بس.
+وكل تصليح بجي فاير وياه ضمان.
+والسعر؟ يختلف حسب الموديل والعطل.
 اكتب السعر بالتعليقات، ونگلك شكد يكلف تصليح ايفونك.
 ```
 
@@ -41,11 +41,13 @@ Face ID عاطل، أو حساس الكاميرا؟ نصلحه.
 | 0:16.7 | 3.9ث | Insert: البورد تحت المجهر | البورد عاطل؟ نصلحه… | تصليح البورد |
 | 0:20.6 | 3.0ث | Talking head، جهازين بإيدك | تريد آيفون أحدث؟ … Swap | iPhone Swap |
 | 0:23.6 | 2.5ث | Insert: شاشة تحديث iOS | السوفت وير معلّق؟ … | سوفت وير وتحديثات |
-| 0:26.1 | 2.8ث | Talking head، كرت ذهبي | وكل تصليح وياه ضمان… | ضمان {{مدة الضمان}} |
-| 0:28.9 | 2.8ث | Talking head، كرت السعر الكبير | والسعر يبدي من… | من {{السعر}} دينار |
-| 0:31.7 | 3.7ث | **CTA**: Talking head | اكتب السعر بالتعليقات… | اكتب «السعر» |
-| 0:35.4 | 3.5ث | **كارت النهاية** (أسود + لوكو) | (موسيقى) | التقنية باعلى ذروتها · اكتب السعر بالتعليقات |
+| 0:26.1 | 2.8ث | Talking head، كرت ذهبي | وكل تصليح بجي فاير وياه ضمان. | كل تصليح بضمان |
+| 0:28.9 | 2.5ث | Talking head، كرت السعر الكبير | والسعر؟ يختلف حسب الموديل والعطل. | السعر حسب الموديل |
+| 0:31.4 | 3.7ث | **CTA**: Talking head | اكتب السعر بالتعليقات… | اكتب «السعر» |
+| 0:35.2 | 3.5ث | **كارت النهاية** (أسود + لوكو) | (موسيقى) | التقنية باعلى ذروتها · اكتب السعر بالتعليقات |
 | **≈ 0:39–0:40** | | | | |
+
+On-screen text stays inside the safe zone: y=230 to y=1440, 64 px from the left, 230 px from the right.
 
 On a real recording, actual timing typically differs by about ±10% (on refs/ref1.mov the estimate was +9%).
 
@@ -54,14 +56,14 @@ On a real recording, actual timing typically differs by about ±10% (on refs/ref
 | الفحص | النتيجة |
 |---|---|
 | قوة الهوك | **79.5 STRONG**. LENGTH 100 · STAKES 100 · FRONTLOAD 100 · ADDRESS 100 · SPECIFICITY 75 · OFFER 20 |
-| عدد الكلمات | **73 كلمة** عربية/مختلطة (Face ID و Swap محسوبة) |
-| مدة الكلام المتوقعة | **35.4ث** + 3.5ث كارت = **≈ 39–40ث** |
+| عدد الكلمات | **72 كلمة** عربية/مختلطة (Face ID و Swap محسوبة) |
+| مدة الكلام المتوقعة | **35.2ث** + 3.5ث كارت = **≈ 39–40ث** |
 | أطول جملة | 3.9ث (أقل من حد 4ث) |
 | معلومات ملموسة | ماكو 3 جمل متتالية بدون رقم أو اسم جهاز |
 | Loop | آخر جملة تعيد «ايفونك» من الهوك |
-| اللهجة | **عراقي 100%**، كثافة 12.3% (هواية، عدنا، خوش، مو، تريد، هم، هسه، نگلك، شكد)، صفر فصحى |
+| اللهجة | **عراقي 100%**، كثافة 12.5% (هواية، عدنا، خوش، مو، تريد، هم، هسه، نگلك، شكد)، صفر فصحى |
 
 ## 5. قبل التصوير
-- Fill `{{مدة الضمان}}` and `{{السعر}}` with real figures.
+- Optional: if you want a real warranty period or starting price said on camera, give it to me and I'll add it to the script and re-test.
 - Confirm each service is actually offered: screens, Face ID / camera, board, Swap, software (all listed by the owner).
 - The CTA promises a price reply in the comments. **Every reply is sent manually after approval.**

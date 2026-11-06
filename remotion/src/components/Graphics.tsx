@@ -26,7 +26,7 @@ export const GraphicCard: React.FC<{g: Graphic}> = ({g}) => {
   const price = g.kind === 'price';
   return (
     <div style={{
-      position: 'absolute', left: safe.left, top: price ? 960 : 1010, direction: 'rtl',
+      position: 'absolute', left: safe.left, top: price ? 840 : 880, direction: 'rtl',
       fontFamily: font.family, opacity,
       transform: `translateX(${(1 - inP) * -60}px) scale(${0.92 + 0.08 * inP})`, transformOrigin: 'left center',
     }}>
@@ -64,10 +64,10 @@ export const HookTitle: React.FC<{hook: Hook}> = ({hook}) => {
         background: 'linear-gradient(180deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0) 100%)'}} />
       <div style={{position: 'absolute', top: safe.top, left: safe.left, right: safe.left, direction: 'rtl',
         textAlign: 'center', fontFamily: font.family, fontWeight: font.caption}}>
-        <div style={{color: color.white, fontSize: 56, lineHeight: 1.25, whiteSpace: 'nowrap', textShadow: '0 5px 0 rgba(0,0,0,0.85), 0 10px 22px rgba(0,0,0,0.7)'}}>
+        <div style={{color: color.white, fontSize: 50, lineHeight: 1.25, whiteSpace: 'nowrap', textShadow: '0 5px 0 rgba(0,0,0,0.85), 0 10px 22px rgba(0,0,0,0.7)'}}>
           {hook.line1}
         </div>
-        <div style={{color: color.gold, fontSize: 68, lineHeight: 1.3, whiteSpace: 'nowrap', marginTop: 6, opacity: Math.min(1, l2),
+        <div style={{color: color.gold, fontSize: 60, lineHeight: 1.3, whiteSpace: 'nowrap', marginTop: 6, opacity: Math.min(1, l2),
           transform: `scale(${0.85 + 0.15 * Math.min(1, l2)})`,
           textShadow: '0 5px 0 rgba(0,0,0,0.85), 0 0 30px rgba(243,180,6,0.35)'}}>
           {hook.line2}

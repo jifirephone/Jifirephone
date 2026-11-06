@@ -21,7 +21,8 @@ export const Captions: React.FC<{words: Word[]}> = ({words}) => {
   const lines: Word[][] = [];
   shown.forEach((w) => {
     const last = lines[lines.length - 1];
-    if (!last || last.length >= caption.maxWordsPerLine) lines.push([w]);
+    const chars = last ? last.reduce((n, x) => n + x.text.length + 1, 0) + w.text.length : 0;
+    if (!last || last.length >= caption.maxWordsPerLine || chars > caption.maxCharsPerLine) lines.push([w]);
     else last.push(w);
   });
   const visible = lines.slice(-caption.maxLines);
