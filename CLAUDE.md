@@ -14,7 +14,10 @@
 - Raw clips go into `inbox/`. Finished reels go into `out/`. Scratch files go into `work/` (gitignored).
 
 ## Edit rules (step 3)
-1. Transcribe with faster-whisper (`large-v3`, `language="ar"`, `word_timestamps=True`).
+1. Transcribe with `scripts/transcribe.py` (faster-whisper `large-v3`, Arabic, word timestamps).
+   - Its prompt spells numbers as words. Never put digits in it, or Whisper writes "10,000" instead of «بعشرة الاف».
+   - Brand mis-hearings are fixed by `FIXES` («جاي فايل» → «جي فاير»). Hallucinations over music («اشتركوا في القناة») are dropped.
+   - **Always show the user the transcript and let them correct it before rendering captions.**
 2. Cut silences, stutters, retakes and every glance at the script/tablet (MediaPipe face/gaze check).
 3. **Never cut a word the creator says in the final take.** Cuts happen only between words, and each cut keeps a small padding around them.
 4. If a line is retaken, keep the **last** complete take.
@@ -49,4 +52,4 @@
 - Keep `av<16` (newer PyAV breaks faster-whisper). MediaPipe needs system `libegl1 libgles2`. Always call `landmarker.close()`.
 
 ## Corrections log
-_(empty — add dated entries here whenever the user corrects something)_
+- 2026-11-06 — Step 2 approved. Captions white + gold, no rainbow shimmer (default kept; user can ask for it).
