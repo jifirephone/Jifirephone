@@ -1,0 +1,117 @@
+[
+{
+"t": 0.133,
+"type": "bloom",
+"gain": 0.85
+},
+{
+"t": 2.333,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 3.7,
+"type": "swish",
+"gain": 0.9
+},
+{
+"t": 7.3,
+"type": "riser",
+"gain": 0.9
+},
+{
+"t": 9.4,
+"type": "tick",
+"gain": 0.85
+},
+{
+"t": 10.067,
+"type": "chime_low",
+"gain": 0.85
+},
+{
+"t": 11.983,
+"type": "swish_low",
+"gain": 0.9
+},
+{
+"t": 13.133,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 15.417,
+"type": "bloom",
+"gain": 0.9
+},
+{
+"t": 15.867,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 16.267,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 19.167,
+"type": "chime",
+"gain": 0.9
+},
+{
+"t": 22.3,
+"type": "shimmer",
+"gain": 0.9
+},
+{
+"t": 22.7,
+"type": "tick",
+"gain": 0.9
+},
+{
+"t": 23.7,
+"type": "tick",
+"gain": 0.9
+},
+{
+"t": 24.167,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 24.7,
+"type": "tick",
+"gain": 0.9
+},
+{
+"t": 25.7,
+"type": "tick",
+"gain": 0.9
+},
+{
+"t": 26.367,
+"type": "swish",
+"gain": 0.9
+},
+{
+"t": 27.333,
+"type": "tick",
+"gain": 0.85
+},
+{
+"t": 27.6,
+"type": "tick",
+"gain": 0.85
+},
+{
+"t": 30.7,
+"type": "pad_swell",
+"gain": 0.9
+},
+{
+"t": 32.067,
+"type": "chime_low",
+"gain": 0.85
+}
+]
