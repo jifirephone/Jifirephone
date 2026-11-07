@@ -36,9 +36,10 @@ const runs = (text: string) => {
   for (const raw of text.split(' ')) {
     // trailing Arabic punctuation (؟ ، !) belongs to the sentence, not to the English name before it
     const m = raw.match(/^(.*?)([\u061F\u060C!]+)$/);
-    const w = m && m[1] ? m[1] : raw;
+    const split = !!(m && m[1] && !/[\u0621-\u064A]/.test(m[1])); // only split English words: «يومين!» stays whole
+    const w = split ? m![1] : raw;
     add(w, !/[\u0621-\u064A]/.test(w));
-    if (m && m[1]) add(m[2], false);
+    if (split) add(m![2], false);
   }
   return out;
 };
@@ -92,18 +93,20 @@ const Hero: React.FC<{f: number; src: string; w: number; x?: number; y: number; 
   const s = spring({frame: f - at, fps, config: {damping: 16, stiffness: 70}});
   const enter = from === 'depth' ? `translateZ(${(1 - s) * -900}px) scale(${0.6 + 0.4 * s})`
     : `translateX(${(1 - s) * (from === 'left' ? -900 : 900)}px) rotateY(${(1 - s) * (from === 'left' ? -50 : 50)}deg)`;
-  const sweep = ((f - at) % 75) / 75;
+  // cheap look: glow and shadow are plain gradients behind the image (no per-frame filters on the photo);
+  // blur only while the product is still arriving
+  const arriving = s < 0.98;
   return (
     <div style={{position: 'absolute', left: x, top: y, width: w, perspective: 1600}}>
+      <div style={{position: 'absolute', left: '-15%', right: '-15%', top: '5%', bottom: '-5%', borderRadius: '50%', opacity: clamp(s),
+        background: `radial-gradient(ellipse at center, ${gold}30, rgba(243,180,6,0.08) 45%, transparent 70%)`}} />
       <div style={{transform: `${enter} rotateY(${Math.sin((f - at) / 34) * spin}deg) rotateX(${Math.cos((f - at) / 47) * 3}deg) translateY(${Math.sin((f - at) / 26) * 10}px)`,
-        opacity: clamp(s * 1.6), filter: `blur(${(1 - s) * 10}px) drop-shadow(0 50px 70px rgba(0,0,0,0.75)) drop-shadow(0 0 40px ${gold}33)`, position: 'relative'}}>
+        opacity: clamp(s * 1.6), filter: arriving ? `blur(${(1 - s) * 10}px)` : 'none', position: 'relative'}}>
         <Img src={staticFile(src)} style={{width: w, display: 'block'}} />
-        <div style={{position: 'absolute', inset: 0, WebkitMaskImage: `url(${staticFile(src)})`, WebkitMaskSize: '100% 100%', maskImage: `url(${staticFile(src)})`, maskSize: '100% 100%',
-          background: `linear-gradient(110deg, transparent ${sweep * 140 - 30}%, rgba(255,255,255,0.35) ${sweep * 140 - 15}%, transparent ${sweep * 140}%)`}} />
       </div>
       {/* floor reflection */}
-      <div style={{position: 'absolute', left: '10%', right: '10%', bottom: -40, height: 60, borderRadius: '50%',
-        background: `radial-gradient(ellipse at center, ${gold}55, transparent 70%)`, filter: 'blur(12px)', opacity: clamp(s)}} />
+      <div style={{position: 'absolute', left: '5%', right: '5%', bottom: -50, height: 90, borderRadius: '50%',
+        background: `radial-gradient(ellipse at center, rgba(0,0,0,0.7), ${gold}22 55%, transparent 72%)`, opacity: clamp(s)}} />
     </div>
   );
 };

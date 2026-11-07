@@ -22,3 +22,10 @@ Footage: the owner's own app screen recordings (`work/offer/app1.mp4`, `app2.mp4
 
 Composition: `remotion/src/offer/OfferPromo.tsx`. Music: `make_music.py 34.34 120`. SFX: `make_sfx.py sfx_cues.json`.
 Mix −14.6 LUFS. Export: `out/jifire_offer_iphone17-18_s26.mp4`.
+
+## v2 (Shopify data, layered motion graphics), `out/jifire_offer_v2_shopify.mp4` (37 s)
+Owner correction: no raw screen recordings. Built from the store's own data and product images (Shopify connector,
+`shopify_verified.json`): cut-out product heroes in 3D, prices counting to the physical-SIM prices, a rebuilt discount
+ticket (j2026 typed, 25,000 counting, copy tap, terms: once per customer, orders over 200k), delivery path, warranty cards,
+countdown to 10/11 00:00, app CTA, logo. 10 different transitions with their own sounds (`sfx_cues_v2.json`).
+Composition `remotion/src/offer/ShopPromo.tsx`. Render ≈ 4 min (product images kept ≤ 820 px, no per-frame filters on photos).
