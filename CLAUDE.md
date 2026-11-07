@@ -90,7 +90,10 @@
   the skills add rules on top. Their strict rules apply everywhere: never invent product data or offers; **past offers
   (e.g. the 25,000 IQD discount, J2026, USED codes) are historical until the owner reconfirms them**; no eSIM mention;
   one design per product; never claim an upload/publish/integration worked without read-back verification.
-  **No Shopify / MSG91 / Firebase / Meta connection exists yet**: give copy-ready plans, never claim live edits.
+  **Shopify is connected (2026-11-07) through the claude.ai Shopify connector** (store «جي فاير للموبايل», IQD). Use it **read-only**
+  unless the owner explicitly asks for a change, show the change first, and read back after. If its tools say "sign in again",
+  the owner reconnects in claude.ai Settings → Connectors. Product images are on `cdn.shopify.com` (not yet an allowed host).
+  No MSG91 / Firebase / Meta connection exists yet: give copy-ready plans, never claim live edits.
 
 ## Script rules (every reel script, permanent)
 1. Write in natural **Iraqi dialect**. Device names and tech terms stay in English on screen (iPhone, Face ID, Swap).

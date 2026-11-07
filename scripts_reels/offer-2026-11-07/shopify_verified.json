@@ -1,0 +1,20 @@
+{
+ "_source": "Shopify Admin API via the Shopify connector, read 2026-11-07. Store: جي فاير للموبايل (jifirephone.com), IQD.",
+ "discount": {"code": "j2026", "status": "ACTIVE", "amount_iqd": 25000, "applies_to": "all items",
+              "minimum_subtotal_iqd": 200000, "once_per_customer": true,
+              "starts": "2026-10-22T20:55:19Z", "ends": "2026-11-09T21:00:00Z (= 10/11 00:00 Baghdad)"},
+ "products": {
+  "iPhone 17 Pro Max": {"id": "gid://shopify/Product/9934044725543", "handle": "17-pro-max",
+    "physical_sim_in_stock": [{"variant": "شريحة فعلية / 256GB / برتقالي", "price": 2100000, "qty": 5}],
+    "note": "1,975,000 is the eSIM variant: do not advertise (no-eSIM rule)"},
+  "iPhone 18 Pro Max": {"id": "gid://shopify/Product/10394688586023", "handle": "18-pro-max",
+    "physical_sim_in_stock": [{"variant": "شريحة فعلية hk / 256GB / فضي", "price": 2625000, "qty": 2},
+                              {"variant": "شريحة فعلية hk / 256GB / أسود", "price": 2625000, "qty": 2},
+                              {"variant": "شريحة فعلية hk / 256GB / ماروني", "price": 2650000, "qty": 6}]},
+  "Galaxy S26 Ultra": {"id": "gid://shopify/Product/10143189106983", "handle": "samsung-galaxy-s26-ultra",
+    "in_stock": [{"variant": "256GB / 12GB RAM / أبيض", "price": 1485000, "qty": 26},
+                 {"variant": "256GB / 12GB RAM / بنفسجي", "price": 1485000, "qty": 3},
+                 {"variant": "256GB / 12GB RAM / أسود", "price": 1485000, "qty": 2},
+                 {"variant": "512GB / 12GB RAM / أبيض", "price": 1875000, "qty": 2}]}
+ }
+}
