@@ -7,7 +7,7 @@ import {AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, use
 import {Icon, ICON} from '../AppPromo';
 import {color, font} from '../brand';
 
-export const SHOP_FRAMES = 1110; // 37 s
+export const SHOP_FRAMES = 1205; // 40.2 s, scenes timed to the voiceover
 const gold = color.gold;
 const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
@@ -147,7 +147,7 @@ const SP17: SceneEl = ({f}) => (
   <>
     <Head f={f} text="iPhone 17 Pro Max" gold={['17']} size={100} anim="scale" />
     <Hero f={f} src="shop/p17.png" w={700} y={430} at={0} spin={14} />
-    <Row y={1150}><Price f={f} at={22} value={2100000} sub="256GB • شريحة فعلية" /></Row>
+    <Row y={1150}><Price f={f} at={22} value={1950000} label="يبدي من" sub="256GB • شريحة فعلية" /></Row>
   </>
 );
 
@@ -322,16 +322,16 @@ const SEnd: SceneEl = ({f}) => {
 // ---------- timeline ----------
 type Trans = 'zoomIn' | 'push' | 'iris' | 'whip' | 'blur' | 'slideUp' | 'dolly' | 'flip' | 'black';
 const SCENES: {from: number; to: number; el: SceneEl; tin?: Trans; dur?: number}[] = [
-  {from: 0, to: 120, el: SHook},
-  {from: 120, to: 240, el: SP17, tin: 'zoomIn', dur: 18},
-  {from: 240, to: 360, el: SP18, tin: 'push', dur: 18},
-  {from: 360, to: 480, el: SS26, tin: 'iris', dur: 18},
-  {from: 480, to: 600, el: SCode, tin: 'whip', dur: 14},
-  {from: 600, to: 700, el: SDelivery, tin: 'blur', dur: 16},
-  {from: 700, to: 800, el: SWarranty, tin: 'slideUp', dur: 18},
-  {from: 800, to: 920, el: SUrgent, tin: 'dolly', dur: 18},
-  {from: 920, to: 1020, el: SApp, tin: 'flip', dur: 20},
-  {from: 1020, to: 1110, el: SEnd, tin: 'black', dur: 20},
+  {from: 0, to: 130, el: SHook},
+  {from: 130, to: 250, el: SP17, tin: 'zoomIn', dur: 18},
+  {from: 250, to: 385, el: SP18, tin: 'push', dur: 18},
+  {from: 385, to: 540, el: SS26, tin: 'iris', dur: 18},
+  {from: 540, to: 685, el: SCode, tin: 'whip', dur: 14},
+  {from: 685, to: 795, el: SDelivery, tin: 'blur', dur: 16},
+  {from: 795, to: 895, el: SWarranty, tin: 'slideUp', dur: 18},
+  {from: 895, to: 1015, el: SUrgent, tin: 'dolly', dur: 18},
+  {from: 1015, to: 1115, el: SApp, tin: 'flip', dur: 20},
+  {from: 1115, to: 1205, el: SEnd, tin: 'black', dur: 20},
 ];
 export const SHOP_TRANSITIONS = SCENES.filter((s) => s.tin).map((s) => ({at: s.from, type: s.tin as Trans, dur: s.dur ?? 16}));
 

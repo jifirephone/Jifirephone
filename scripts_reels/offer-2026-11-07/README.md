@@ -29,3 +29,8 @@ Owner correction: no raw screen recordings. Built from the store's own data and 
 ticket (j2026 typed, 25,000 counting, copy tap, terms: once per customer, orders over 200k), delivery path, warranty cards,
 countdown to 10/11 00:00, app CTA, logo. 10 different transitions with their own sounds (`sfx_cues_v2.json`).
 Composition `remotion/src/offer/ShopPromo.tsx`. Render ≈ 4 min (product images kept ≤ 820 px, no per-frame filters on photos).
+
+## v3 (ElevenLabs voiceover), preview `work/shop/preview_v3_vo.mp4` (40.2 s)
+iPhone 17 Pro Max → «يبدي من 1,950,000» (owner). Scenes re-timed so each VO sentence starts 0.33 s into its scene;
+SFX `sfx_cues_v3.json`; music `make_music.py 40.167 120`; voice light AI chain, music+SFX sidechain-ducked, mix −14.7 LUFS.
+VO line 2 trimmed to «ايفون 17 Pro Max» (recorded price 2,100,000 is outdated); waiting for a regenerated line.

@@ -75,5 +75,13 @@
     }
    ]
   }
+ },
+ "owner_overrides": {
+  "iphone_17_pro_max": {
+   "ad_price": "يبدي من 1,950,000",
+   "given": "2026-11-08",
+   "store_reading": "2,100,000 physical SIM (1,975,000 eSIM, not advertised)",
+   "store_changed": false
+  }
  }
 }
