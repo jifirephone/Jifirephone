@@ -1,0 +1,115 @@
+{
+  "wpm": 140,
+  "target": null,
+  "language": "ar",
+  "total_seconds": 30.66,
+  "total_words": 65,
+  "beats": [
+    {
+      "n": 1,
+      "start": 0.0,
+      "dur": 3.73,
+      "words": 8,
+      "text": "تريد آيفون 17 أو 18، أو S26 ألترا؟",
+      "concrete": 5,
+      "label": "HOOK",
+      "flags": [
+        "hook runs 3.7s, past the 3s mark"
+      ]
+    },
+    {
+      "n": 2,
+      "start": 3.73,
+      "dur": 3.3,
+      "words": 7,
+      "text": "آيفون 17 برو ماكس، بمليونين وميت ألف.",
+      "concrete": 5,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 3,
+      "start": 7.03,
+      "dur": 3.73,
+      "words": 8,
+      "text": "و18 برو ماكس، من مليونين وخمسمية وخمسة وسبعين.",
+      "concrete": 5,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 4,
+      "start": 10.76,
+      "dur": 3.73,
+      "words": 8,
+      "text": "وگالكسي S26 ألترا، بمليون وأربعمية وخمسة وثمانين ألف.",
+      "concrete": 8,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 5,
+      "start": 14.49,
+      "dur": 3.3,
+      "words": 7,
+      "text": "وويّا كود J2026، خصم خمسة وعشرين ألف!",
+      "concrete": 4,
+      "label": "MID",
+      "flags": []
+    },
+    {
+      "n": 6,
+      "start": 17.79,
+      "dur": 2.87,
+      "words": 6,
+      "text": "والتوصيل مجاني لباب البيت، لكل المحافظات.",
+      "concrete": 1,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 7,
+      "start": 20.66,
+      "dur": 2.44,
+      "words": 5,
+      "text": "ويّا ضمان، ووصل ضمان بإيدك.",
+      "concrete": 2,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 8,
+      "start": 23.1,
+      "dur": 3.73,
+      "words": 8,
+      "text": "العرض بس يومين، الحگ قبل لا تصعد الأسعار!",
+      "concrete": 2,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 9,
+      "start": 26.83,
+      "dur": 2.34,
+      "words": 5,
+      "text": "نزّل تطبيق جي فاير هسه!",
+      "concrete": 1,
+      "label": "",
+      "flags": []
+    },
+    {
+      "n": 10,
+      "start": 29.17,
+      "dur": 1.49,
+      "words": 3,
+      "text": "جي فاير للموبايل.",
+      "concrete": 1,
+      "label": "CTA",
+      "flags": []
+    }
+  ],
+  "notes": [
+    "Beat 1 takes 3.7s to say. Cut it to 7 spoken words or fewer, or the hook lands after the decision has been made.",
+    "No loop. The last beat shares no word with the hook, so the video ends flat. Echoing one word from beat 1 is the cheapest replay you get."
+  ]
+}
