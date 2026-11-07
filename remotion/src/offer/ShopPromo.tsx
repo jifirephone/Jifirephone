@@ -7,7 +7,7 @@ import {AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, use
 import {Icon, ICON} from '../AppPromo';
 import {color, font} from '../brand';
 
-export const SHOP_FRAMES = 1205; // 40.2 s, scenes timed to the voiceover
+export const SHOP_FRAMES = 1266; // 42.2 s, scenes timed to the voiceover (v4 take)
 const gold = color.gold;
 const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
@@ -322,16 +322,16 @@ const SEnd: SceneEl = ({f}) => {
 // ---------- timeline ----------
 type Trans = 'zoomIn' | 'push' | 'iris' | 'whip' | 'blur' | 'slideUp' | 'dolly' | 'flip' | 'black';
 const SCENES: {from: number; to: number; el: SceneEl; tin?: Trans; dur?: number}[] = [
-  {from: 0, to: 130, el: SHook},
-  {from: 130, to: 250, el: SP17, tin: 'zoomIn', dur: 18},
-  {from: 250, to: 385, el: SP18, tin: 'push', dur: 18},
-  {from: 385, to: 540, el: SS26, tin: 'iris', dur: 18},
-  {from: 540, to: 685, el: SCode, tin: 'whip', dur: 14},
-  {from: 685, to: 795, el: SDelivery, tin: 'blur', dur: 16},
-  {from: 795, to: 895, el: SWarranty, tin: 'slideUp', dur: 18},
-  {from: 895, to: 1015, el: SUrgent, tin: 'dolly', dur: 18},
-  {from: 1015, to: 1115, el: SApp, tin: 'flip', dur: 20},
-  {from: 1115, to: 1205, el: SEnd, tin: 'black', dur: 20},
+  {from: 0, to: 141, el: SHook},
+  {from: 141, to: 289, el: SP17, tin: 'zoomIn', dur: 18},
+  {from: 289, to: 451, el: SP18, tin: 'push', dur: 18},
+  {from: 451, to: 607, el: SS26, tin: 'iris', dur: 18},
+  {from: 607, to: 732, el: SCode, tin: 'whip', dur: 14},
+  {from: 732, to: 840, el: SDelivery, tin: 'blur', dur: 16},
+  {from: 840, to: 940, el: SWarranty, tin: 'slideUp', dur: 18},
+  {from: 940, to: 1060, el: SUrgent, tin: 'dolly', dur: 18},
+  {from: 1060, to: 1160, el: SApp, tin: 'flip', dur: 20},
+  {from: 1160, to: 1266, el: SEnd, tin: 'black', dur: 20},
 ];
 export const SHOP_TRANSITIONS = SCENES.filter((s) => s.tin).map((s) => ({at: s.from, type: s.tin as Trans, dur: s.dur ?? 16}));
 
