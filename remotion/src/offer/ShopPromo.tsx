@@ -158,7 +158,7 @@ const SP18: SceneEl = ({f}) => {
       <Head f={f} text="iPhone 18 Pro Max" gold={['18']} size={100} anim="drop" />
       <div style={{opacity: 1 - swap}}><Hero f={f} src="shop/p18.png" w={620} y={430} at={0} from="right" spin={12} /></div>
       <div style={{opacity: swap}}><Hero f={f} src="shop/p18back.png" w={620} y={430} at={50} spin={12} /></div>
-      <Row y={1150}><Price f={f} at={22} value={2625000} label="يبدي من" sub="256GB • شريحة فعلية" /></Row>
+      <Row y={1150}><Price f={f} at={22} value={2575000} label="يبدي من" sub="256GB • شريحة فعلية" /></Row>
     </>
   );
 };
