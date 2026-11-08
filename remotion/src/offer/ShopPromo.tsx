@@ -7,7 +7,7 @@ import {AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, use
 import {Icon, ICON} from '../AppPromo';
 import {color, font} from '../brand';
 
-export const SHOP_FRAMES = 1266; // 42.2 s, scenes timed to the voiceover (v4 take)
+export const SHOP_FRAMES = 1291; // 43.0 s, scenes timed to the voiceover (v5 take, cuts in real silences)
 const gold = color.gold;
 const clamp = (x: number, a = 0, b = 1) => Math.min(b, Math.max(a, x));
 const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
@@ -322,16 +322,16 @@ const SEnd: SceneEl = ({f}) => {
 // ---------- timeline ----------
 type Trans = 'zoomIn' | 'push' | 'iris' | 'whip' | 'blur' | 'slideUp' | 'dolly' | 'flip' | 'black';
 const SCENES: {from: number; to: number; el: SceneEl; tin?: Trans; dur?: number}[] = [
-  {from: 0, to: 141, el: SHook},
-  {from: 141, to: 289, el: SP17, tin: 'zoomIn', dur: 18},
-  {from: 289, to: 451, el: SP18, tin: 'push', dur: 18},
-  {from: 451, to: 607, el: SS26, tin: 'iris', dur: 18},
-  {from: 607, to: 732, el: SCode, tin: 'whip', dur: 14},
-  {from: 732, to: 840, el: SDelivery, tin: 'blur', dur: 16},
-  {from: 840, to: 940, el: SWarranty, tin: 'slideUp', dur: 18},
-  {from: 940, to: 1060, el: SUrgent, tin: 'dolly', dur: 18},
-  {from: 1060, to: 1160, el: SApp, tin: 'flip', dur: 20},
-  {from: 1160, to: 1266, el: SEnd, tin: 'black', dur: 20},
+  {from: 0, to: 153, el: SHook},
+  {from: 153, to: 299, el: SP17, tin: 'zoomIn', dur: 18},
+  {from: 299, to: 457, el: SP18, tin: 'push', dur: 18},
+  {from: 457, to: 619, el: SS26, tin: 'iris', dur: 18},
+  {from: 619, to: 754, el: SCode, tin: 'whip', dur: 14},
+  {from: 754, to: 862, el: SDelivery, tin: 'blur', dur: 16},
+  {from: 862, to: 962, el: SWarranty, tin: 'slideUp', dur: 18},
+  {from: 962, to: 1082, el: SUrgent, tin: 'dolly', dur: 18},
+  {from: 1082, to: 1182, el: SApp, tin: 'flip', dur: 20},
+  {from: 1182, to: 1291, el: SEnd, tin: 'black', dur: 20},
 ];
 export const SHOP_TRANSITIONS = SCENES.filter((s) => s.tin).map((s) => ({at: s.from, type: s.tin as Trans, dur: s.dur ?? 16}));
 

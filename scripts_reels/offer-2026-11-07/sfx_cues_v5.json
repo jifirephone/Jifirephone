@@ -1,0 +1,167 @@
+[
+{
+"t": 0.067,
+"type": "bloom",
+"gain": 0.85
+},
+{
+"t": 2.4,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 3.3,
+"type": "riser",
+"gain": 0.9
+},
+{
+"t": 5.833,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 9.617,
+"type": "swish_low",
+"gain": 0.9
+},
+{
+"t": 10.7,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 11.834,
+"type": "shimmer",
+"gain": 0.85
+},
+{
+"t": 15.233,
+"type": "chime",
+"gain": 0.9
+},
+{
+"t": 15.966,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 20.333,
+"type": "swish",
+"gain": 0.9
+},
+{
+"t": 21.5,
+"type": "tick",
+"gain": 0.8
+},
+{
+"t": 21.633,
+"type": "tick",
+"gain": 0.8
+},
+{
+"t": 21.766,
+"type": "tick",
+"gain": 0.8
+},
+{
+"t": 21.9,
+"type": "tick",
+"gain": 0.8
+},
+{
+"t": 22.033,
+"type": "tick",
+"gain": 0.8
+},
+{
+"t": 22.966,
+"type": "chime_low",
+"gain": 0.85
+},
+{
+"t": 23.366,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 24.883,
+"type": "bloom",
+"gain": 0.9
+},
+{
+"t": 27.133,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 28.533,
+"type": "shimmer",
+"gain": 0.9
+},
+{
+"t": 28.933,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 29.267,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 32.067,
+"type": "chime_low",
+"gain": 0.9
+},
+{
+"t": 32.267,
+"type": "tick",
+"gain": 0.9
+},
+{
+"t": 33.267,
+"type": "tick",
+"gain": 0.9
+},
+{
+"t": 33.6,
+"type": "soft_pop",
+"gain": 0.85
+},
+{
+"t": 34.267,
+"type": "tick",
+"gain": 0.9
+},
+{
+"t": 35.267,
+"type": "tick",
+"gain": 0.9
+},
+{
+"t": 35.717,
+"type": "swish_low",
+"gain": 0.9
+},
+{
+"t": 36.8,
+"type": "tick",
+"gain": 0.85
+},
+{
+"t": 37.067,
+"type": "tick",
+"gain": 0.85
+},
+{
+"t": 39.1,
+"type": "pad_swell",
+"gain": 0.9
+},
+{
+"t": 39.6,
+"type": "chime",
+"gain": 0.85
+}
+]
