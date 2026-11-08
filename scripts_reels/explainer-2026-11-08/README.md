@@ -26,3 +26,8 @@ Script checks: hook «موبايل بالقسط، ويوصلك لباب البي
 | ويوصلك لباب البيت. | delivery scooter rides across, stops at a house door, box handed over |
 | جي فاير للموبايل، النجف، ميلاد، شارع الحولي. | storefront wide + address card with pin |
 | تريد موبايل بالقسط؟ اكتب السعر بالتعليقات. | end card (logo, tagline, «اكتب السعر بالتعليقات») |
+
+## v1 preview (owner's ElevenLabs take, 39.3 s) — `out/preview_explainer.mp4` (42.6 s, −14.5 LUFS)
+Owner changed lines in the take: Ali buys «iPhone 18 Pro Max نقد»; ending «تفضل زورنا أو اطلب من خلال تطبيقنا، ومباشر ثاني يوم يوصلك لباب بيتك»
+(next-day delivery is the owner's own claim). Composition `remotion/src/explainer/Explainer.tsx`, 14 scenes cut in the VO's real pauses,
+captions from `captions.json` (Whisper words, spelling fixed), SFX `sfx_cues.json` (each transition type has its own sound), music 100 BPM.

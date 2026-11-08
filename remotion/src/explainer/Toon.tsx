@@ -7,8 +7,8 @@ export type Mood = 'smile' | 'worried' | 'happy' | 'talk' | 'wow';
 
 // Haidar: young man, short black hair, light stubble, black hoodie with a gold stripe.
 export const Person: React.FC<{mood?: Mood; blink?: boolean; mouth?: number; shirt?: string; hair?: string; skin?: string;
-  phone?: boolean; wave?: number; scale?: number}> = ({mood = 'smile', blink, mouth = 0, shirt = '#141216', hair = '#1b1412',
-  skin = '#E6B48C', phone, wave = 0, scale = 1}) => {
+  phone?: boolean; wave?: number; scale?: number; glasses?: boolean; crackedPhone?: boolean}> = ({mood = 'smile', blink, mouth = 0, shirt = '#141216', hair = '#1b1412',
+  skin = '#E6B48C', phone, wave = 0, scale = 1, glasses, crackedPhone}) => {
   const ink = '#2a1c14';
   const eyeH = blink ? 1.5 : mood === 'wow' ? 15 : 12;
   const brow = mood === 'worried' ? 'M128 118 Q148 108 166 116 M234 116 Q252 108 272 118' : mood === 'wow' ? 'M128 104 Q148 92 166 102 M234 102 Q252 92 272 104'
@@ -29,7 +29,8 @@ export const Person: React.FC<{mood?: Mood; blink?: boolean; mouth?: number; shi
       <path d="M100 380 Q60 470 120 540" fill="none" stroke={shirt} strokeWidth={46} strokeLinecap="round" />
       <circle cx={128} cy={544} r={26} fill={skin} stroke={ink} strokeWidth={5} />
       {phone ? <g transform="translate(118 470) rotate(-12)"><rect x={0} y={0} width={56} height={104} rx={12} fill="#0d0d10" stroke="#cfcfd4" strokeWidth={4} />
-        <rect x={6} y={10} width={44} height={82} rx={6} fill="#F3B406" opacity={0.85} /></g> : null}
+        <rect x={6} y={10} width={44} height={82} rx={6} fill={crackedPhone ? '#3a4150' : '#F3B406'} opacity={0.9} />
+        {crackedPhone ? <path d="M10 20 L30 45 L18 60 L40 85 M30 45 L48 38" stroke="#fff" strokeWidth={3} fill="none" /> : null}</g> : null}
       {/* neck + head */}
       <rect x={176} y={280} width={48} height={50} fill={skin} stroke={ink} strokeWidth={5} />
       <ellipse cx={200} cy={170} rx={122} ry={130} fill={skin} stroke={ink} strokeWidth={6} />
@@ -44,6 +45,7 @@ export const Person: React.FC<{mood?: Mood; blink?: boolean; mouth?: number; shi
       <ellipse cx={250} cy={150} rx={13} ry={eyeH} fill={ink} />
       {!blink ? <><circle cx={154} cy={145} r={4} fill="#fff" /><circle cx={254} cy={145} r={4} fill="#fff" /></> : null}
       <path d={brow} fill="none" stroke={hair} strokeWidth={9} strokeLinecap="round" />
+      {glasses ? <g fill="none" stroke="#1a1a1a" strokeWidth={7}><circle cx={150} cy={150} r={30} /><circle cx={250} cy={150} r={30} /><path d="M180 150 L220 150" /></g> : null}
       {/* nose */}
       <path d="M200 160 Q192 190 204 192" fill="none" stroke={ink} strokeWidth={5} strokeLinecap="round" />
       {/* mouth */}
