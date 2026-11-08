@@ -7,10 +7,7 @@
     0.0,
     2.3
    ],
-   "clip": "01",
-   "in": 0.0,
-   "out": 2.3,
-   "cropx": 250
+   "still": "conv/hero.png"
   },
   {
    "id": "B",
@@ -18,10 +15,7 @@
     2.3,
     4.95
    ],
-   "clip": "31",
-   "in": 0.9,
-   "out": 2.9,
-   "cropx": 480
+   "still": "conv/hero.png"
   },
   {
    "id": "C1",
@@ -32,7 +26,8 @@
    "clip": "01",
    "in": 3.0,
    "out": 6.6,
-   "cropx": 380
+   "cropx": 380,
+   "cropx_wide": 224
   },
   {
    "id": "C2",
@@ -65,7 +60,8 @@
    "clip": "24",
    "in": 2.0,
    "out": 6.0,
-   "cropx": 560
+   "cropx": 560,
+   "cropx_wide": 364
   },
   {
    "id": "D3",
@@ -76,7 +72,8 @@
    "clip": "27",
    "in": 2.0,
    "out": 6.0,
-   "cropx": 420
+   "cropx": 420,
+   "cropx_wide": 464
   },
   {
    "id": "E",
@@ -120,7 +117,8 @@
    "clip": "33",
    "in": 4.0,
    "out": 6.6,
-   "cropx": 300
+   "cropx": 300,
+   "cropx_wide": 314
   },
   {
    "id": "I",
