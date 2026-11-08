@@ -11,3 +11,8 @@ music, optional ElevenLabs VO, end card «اكتب السعر بالتعليقا
 Hooks (hookscore): «آيفونك عاف الشغل؟ شوف شلون نرجعه» 79.5 STRONG; «لا تنطي آيفونك لأي واحد قبل لا تشوف هذا» 76.6 STRONG;
 «هيچ ينفتح آيفونك بمحلنا، خطوة بخطوة» 49.5 WEAK.
 Open questions: which repair (screen / battery / housing Swap / board), model, and whether to name price/warranty (never invented).
+
+## Second upload (clips 17-64)
+Clips 35-64 are re-uploads of 01-32 (same frames). Unique footage = 01-34 (32 x 10 s + 33 10 s + 34 4.6 s = 334.6 s).
+17-31: parts moved into a new silver/white housing (looks like a housing Swap); 32-34: phone boots (Apple logo, lock screen).
+Duplicates are ignored in the edit.
