@@ -24,7 +24,7 @@
 5. Hook in the first 3 seconds: **«تدور موبايل بأفضل سعر وأقوى ضمان؟ شوف عروض جي فاير للموبايل!»**
 6. One graphic per phrase, timed to the creator's words.
 7. Background music sits under the voice (ducked, voice always clear).
-8. End card: **comment «السعر»** call to action, with the brand name.
+8. End card: black, logo and tagline only. **No «اكتب السعر بالتعليقات» / comment-keyword CTA anywhere** (owner, 2026-11-08). If a CTA is needed, use the owner's own: visit the shop or order from the app.
 
 ## Caption style
 - Premium, bold Arabic animated captions, synced word by word.
@@ -34,7 +34,7 @@
 - Captions sit lower-right, right-aligned, 90 px, max 3 words / 14 chars per line and 2 lines. The spoken word is gold.
 - **Safe zone: text only between y=230 and y=1440, 64 px from the left, 230 px from the right** (Instagram UI).
 - Consecutive English words/numbers are one LTR run ("iPhone 16 Pro", never reversed).
-- Logo bug (`brand/logo.png`) top-right the whole reel. End card: black, logo, «التقنية باعلى ذروتها», then «اكتب السعر بالتعليقات».
+- Logo bug (`brand/logo.png`) top-right the whole reel. End card: black, logo, «التقنية باعلى ذروتها» (no comment CTA).
 - **Full rules and measurements: `design-system.md`. Read it before every edit.**
 
 ## Colour / look
@@ -136,3 +136,4 @@
 - 2026-11-08 — **Correction (repair reel):** "the camera is too close" and "the first shot shows the technician's hand". **Rule:** for landscape source footage, don't fill 9:16 with a tight crop; use the panel layout (`make_segments.py --layout panel`: wider 4:5 view, 1080×1350 at y=470 over a blurred copy, headlines above the panel), and open on the **device, not hands** (a clean still with a slow camera glide is fine). Trailing ؟/! after English words attach to the left of the LTR run (`punct` in ConvReel `runs()`). Owner asked to split the footage into **two 35 s reels**: reel 1 = story (existing VO), reel 2 = details (`voiceover2.md`, waiting for the ElevenLabs take).
 - 2026-11-08 — Repair reel 2 (details) built from the owner's ElevenLabs take (all words right): `remotion/src/conv/ConvReel2.tsx`, `segments2.json`, `sfx_cues2.json`, preview `out/preview_13to17_reel2.mp4` (35.5 s, −14.4 LUFS). Bidi note: «؟» is an Arabic-letter (AL) character, so a number after it flips sides; the punctuation span must be `unicode-bidi: isolate` + inline-block.
 - 2026-11-08 — Explainer cartoon («كارتون قريب للواقع») after the owner's TikTok reference (technique only, our own cast): real storefront cartoonised with OpenCV (`brand/storefront.jpg` → bilateral + k-means + thin ink, lit signs kept), original SVG characters «حيدر» and «علي» (`remotion/src/explainer/Toon.tsx`), boards, icons, app phone, delivery scooter, word captions. Owner's take added «ثاني يوم يوصلك» (owner claim). Preview `out/preview_explainer.mp4`.
+- 2026-11-08 — **Correction (permanent):** «اكتب السعر بالتعليقات» removed — "I never use it". **Rule:** no comment-keyword CTA anywhere (end card, voiceover, captions, scripts). End card = black, logo, «التقنية باعلى ذروتها». If a CTA is needed, use the owner's own: visit the shop (النجف، ميلاد، شارع الحولي) or order from the app. Updated `Brand.tsx` EndCard, `brand.ts`, `design-system.md`, `brand/voice.md`, `jifire-voice` voice-guide. Repair reel 2's spoken «اكتب السعر بالتعليقات» was cut (voice ends after «يصير 17؟», cut in the pause). Earlier exports in `out/` still carry the old end card.

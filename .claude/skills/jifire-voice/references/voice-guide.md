@@ -37,7 +37,7 @@ it is not Ji Fire yet.
    strongest "AI wrote this" signal in Arabic marketing.
 6. **Uneven rhythm.** Mix a three-word line with a ten-word one. Models write every sentence
    the same length; people don't. (An offer list is the exception, and that's fine.)
-7. **One ask.** End with one thing: comment «السعر», come to the shop, or download the app.
+7. **One ask.** End with one thing: come to the shop, or order from the app. Never «اكتب السعر بالتعليقات» (the owner never uses it).
    Not three.
 8. **Few emoji, no emoji bullets.** Scripts: none. Captions, stories, DMs: up to three, never at
    the start of each line.
@@ -54,7 +54,7 @@ it is not Ji Fire yet.
 
 ### Caption (first line survives the "... more" cut)
 - ✗ «✨ اكتشف عالم العروض المذهلة مع جي فاير! 🔥 لا تفوت الفرصة واستمتع بتجربة تسوق فريدة 💯»
-- ✓ «iPhone 15 Pro بالأقساط. اكتب «السعر» ونگلك التفاصيل.»
+- ✓ «iPhone 15 Pro بالأقساط. اطلبه من التطبيق، أو تعال للمحل.»
 
 ### Reply to a comment («بيش؟»)
 - ✗ «مرحباً بك عزيزي العميل، يسعدنا تواصلك معنا! تم إرسال التفاصيل في الخاص.»

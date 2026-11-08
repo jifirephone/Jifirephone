@@ -43,7 +43,7 @@ Status: **based on 1 reference reel.** Re-measure when more references arrive.
 - **0–2 s:** product close-up in hand (hook visual), then hard cut to talking head.
 - Talking head is mostly one continuous shot. Captions carry the rhythm.
 - **One stylised transition mid-reel:** torn-paper reveal with a black-and-white halftone frame (reference at 10.2–10.6 s). Use at most once per reel, at a topic change.
-- **End card (last ~3.5 s):** black background, centred logo pops in, then the white tagline **«التقنية باعلى ذروتها»** (Cairo 800, 64 px), then the CTA **اكتب [السعر] بالتعليقات** with «السعر» in a gold pill. The reference ends with a glitch/burn-out of the logo.
+- **End card (last ~3.5 s):** black background, centred logo pops in, then the white tagline **«التقنية باعلى ذروتها»** (Cairo 800, 64 px). No comment-keyword CTA (removed by the owner 2026-11-08). The reference ends with a glitch/burn-out of the logo.
 
 ## 7. Graphics (one per phrase)
 - Gold-accented cards on dark glass: product name (English), price in IQD/USD (gold), "ضمان" / "أقساط" badges.
