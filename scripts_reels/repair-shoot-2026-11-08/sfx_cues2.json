@@ -1,0 +1,107 @@
+[
+{
+"t": 0.05,
+"type": "bloom",
+"gain": 0.7
+},
+{
+"t": 3.2,
+"type": "swish_low",
+"gain": 0.6
+},
+{
+"t": 5.1,
+"type": "swish",
+"gain": 0.6
+},
+{
+"t": 5.75,
+"type": "riser",
+"gain": 0.8
+},
+{
+"t": 9.15,
+"type": "bloom",
+"gain": 0.8
+},
+{
+"t": 10.7,
+"type": "swish",
+"gain": 0.8
+},
+{
+"t": 12.4,
+"type": "shimmer",
+"gain": 0.8
+},
+{
+"t": 13.45,
+"type": "soft_pop",
+"gain": 0.8
+},
+{
+"t": 14.35,
+"type": "swish_low",
+"gain": 0.8
+},
+{
+"t": 15.6,
+"type": "chime_low",
+"gain": 0.8
+},
+{
+"t": 17.75,
+"type": "chime",
+"gain": 0.8
+},
+{
+"t": 18.45,
+"type": "tick",
+"gain": 0.75
+},
+{
+"t": 19.15,
+"type": "tick",
+"gain": 0.75
+},
+{
+"t": 19.55,
+"type": "bloom",
+"gain": 0.8
+},
+{
+"t": 20.0,
+"type": "tick",
+"gain": 0.75
+},
+{
+"t": 20.7,
+"type": "shimmer",
+"gain": 0.8
+},
+{
+"t": 22.6,
+"type": "swish",
+"gain": 0.8
+},
+{
+"t": 25.05,
+"type": "swish_low",
+"gain": 0.8
+},
+{
+"t": 26.8,
+"type": "soft_pop",
+"gain": 0.8
+},
+{
+"t": 29.2,
+"type": "chime_low",
+"gain": 0.8
+},
+{
+"t": 31.2,
+"type": "pad_swell",
+"gain": 0.8
+}
+]

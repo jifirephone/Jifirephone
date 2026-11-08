@@ -7,6 +7,7 @@ import {StudioPromo, STUDIO_PROMO_FRAMES} from './studio/StudioPromo';
 import {OfferPromo, OFFER_FRAMES} from './offer/OfferPromo';
 import {ShopPromo, SHOP_FRAMES} from './offer/ShopPromo';
 import {ConvReel, CONV_FRAMES} from './conv/ConvReel';
+import {ConvReel2, CONV2_FRAMES} from './conv/ConvReel2';
 import {loadBrandFonts} from './fonts';
 
 loadBrandFonts();
@@ -29,6 +30,8 @@ export const RemotionRoot: React.FC = () => (
       durationInFrames={SHOP_FRAMES} />
     <Composition id="ConvReel" component={ConvReel} width={1080} height={1920} fps={30}
       durationInFrames={CONV_FRAMES} />
+    <Composition id="ConvReel2" component={ConvReel2} width={1080} height={1920} fps={30}
+      durationInFrames={CONV2_FRAMES} />
     <Composition id="StyleSample" component={StyleSample} width={1080} height={1920} fps={30}
       durationInFrames={195} />
   </>

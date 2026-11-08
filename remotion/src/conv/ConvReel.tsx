@@ -130,7 +130,7 @@ const Head: React.FC<{f: number; text: string; gold?: string[]; size?: number; y
         return (
           <span key={i} dir={run.latin ? 'ltr' : 'rtl'} style={{display: 'inline-block', opacity: v, unicodeBidi: 'isolate',
             filter: anim === 'blur' && v < 0.99 ? `blur(${(1 - v) * 14}px)` : 'none', transform: tr}}>
-            {run.punct ? <span style={{color: '#fff', textShadow: '0 6px 20px rgba(0,0,0,0.85)'}}>{run.punct}</span> : null}
+            {run.punct ? <span style={{display: 'inline-block', unicodeBidi: 'isolate', color: '#fff', textShadow: '0 6px 20px rgba(0,0,0,0.85)'}}>{run.punct}</span> : null}
             {run.words.map((w, j) => (
               <span key={j} style={{color: g.includes(w) ? gold : '#fff', marginInlineStart: j ? size * 0.24 : 0,
                 textShadow: g.includes(w) ? `0 0 30px ${gold}77, 0 6px 18px rgba(0,0,0,0.85)` : '0 6px 20px rgba(0,0,0,0.85)'}}>{w}</span>
