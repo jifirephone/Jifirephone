@@ -1,0 +1,57 @@
+{% doc %}
+Compact, clearly visible product add-ons for the cart. Choose relevant in-stock products from published Shopify collections, excluding products already in the cart.
+{% enddoc %}
+{%- if cart != empty -%}
+  {%- assign jf_cart_product_ids = cart.items | map: 'product_id' -%}
+  {%- assign jf_accessory_collection = collections['chargers-cables'] -%}
+  {%- assign jf_backup_collection = collections['الشواحن-والكيبلات-chargers-cables'] -%}
+  <section class="jf-cart-extras" dir="rtl" aria-labelledby="jf-cart-extras-title">
+    <div class="jf-cart-extras-head">
+      <div class="jf-cart-extras-heading">
+        <span class="jf-cart-extras-kicker">✨ قد يعجبك أيضاً</span>
+        <h2 id="jf-cart-extras-title">كمّل طلبك بإضافة مفيدة</h2>
+        <p>منتجات مختارة بعناية، وإضافتها اختيارية.</p>
+      </div>
+      <a href="{{ jf_accessory_collection.url | default: '/collections/chargers-cables' }}">تصفح الإكسسوارات</a>
+    </div>
+    <div class="jf-cart-extras-grid">
+      {%- assign jf_extra_count = 0 -%}
+      {%- assign jf_extra_handles = 'anker-30w-anker-usb-c-charger|a-usb-c-charging-cable-100w|anker-b2679k11-100w-charger|momax-mag-link-da57d-66w-cable|anker-a2149k22-20w-charger|anker-a2698k21-30w-charger|nine-pd001-wireless-power-bank|mcdodo-ca2271-usb-c-cable' | split: '|' -%}
+      {%- for jf_handle in jf_extra_handles -%}
+        {%- assign jf_extra = all_products[jf_handle] -%}
+        {%- if jf_extra != blank and jf_extra.available -%}
+          {%- unless jf_cart_product_ids contains jf_extra.id -%}
+            {%- render 'jifire-cart-extra-card', item: jf_extra -%}
+            {%- assign jf_extra_count = jf_extra_count | plus: 1 -%}
+          {%- endunless -%}
+        {%- endif -%}
+        {%- if jf_extra_count >= 4 -%}{%- break -%}{%- endif -%}
+      {%- endfor -%}
+      {%- if jf_extra_count < 4 -%}
+        {%- for jf_extra in jf_accessory_collection.products limit: 20 -%}
+          {%- if jf_extra.available -%}
+            {%- unless jf_cart_product_ids contains jf_extra.id -%}
+              {%- unless jf_extra_handles contains jf_extra.handle -%}
+                {%- render 'jifire-cart-extra-card', item: jf_extra -%}
+                {%- assign jf_extra_count = jf_extra_count | plus: 1 -%}
+              {%- endunless -%}
+            {%- endunless -%}
+          {%- endif -%}
+          {%- if jf_extra_count >= 4 -%}{%- break -%}{%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+      {%- if jf_extra_count == 0 -%}
+        {%- for jf_extra in jf_backup_collection.products limit: 20 -%}
+          {%- if jf_extra.available -%}
+            {%- unless jf_cart_product_ids contains jf_extra.id -%}
+              {%- render 'jifire-cart-extra-card', item: jf_extra -%}
+              {%- assign jf_extra_count = jf_extra_count | plus: 1 -%}
+            {%- endunless -%}
+          {%- endif -%}
+          {%- if jf_extra_count >= 4 -%}{%- break -%}{%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+    <button class="jf-extras-toggle" type="button" aria-expanded="false" hidden>عرض المزيد من الاقتراحات <span aria-hidden="true">⌄</span></button>
+  </section>
+{%- endif -%}

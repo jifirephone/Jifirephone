@@ -1,0 +1,19 @@
+{%- assign jf_type = item.product.type | downcase -%}{%- assign jf_title = item.product.title | downcase -%}{%- assign jf_tags = item.product.tags | join: ',' | downcase -%}
+{%- if jf_type contains 'phone' or jf_type contains 'mobile' or jf_type contains 'tablet' or jf_type contains 'هاتف' or jf_type contains 'تاب' or jf_type contains 'موبايل' or jf_title contains 'iphone' or jf_title contains 'ipad' or jf_title contains 'آيفون' or jf_title contains 'ايباد' or jf_title contains 'سامسونج' or jf_tags contains 'smartphone' -%}<details class="jf-inline-protection" dir="rtl"><summary><span class="jf-protect-cta">🛡️ أضف كفر أو لاصق لجهازك <span class="jf-protect-pill">اختياري</span><span class="jf-protect-arrow">⌄</span></span></summary>  {%- assign jf_price = 7000 -%}
+{%- if jf_title contains '17 pro max' or jf_title contains '17 برو ماكس' or jf_title contains '18 pro max' or jf_title contains '18 برو ماكس' -%}
+{%- assign jf_price = 15000 -%}
+{%- elsif jf_title contains 's26 ultra' or jf_title contains 's26 الترا' or jf_title contains '26 الترا' -%}
+{%- assign jf_price = 10000 -%}
+{%- elsif jf_title contains '13 pro max' or jf_title contains '13 برو ماكس' -%}
+{%- assign jf_price = 7000 -%}
+{%- elsif item.final_price < 50000000 -%}
+{%- assign jf_price = 5000 -%}
+{%- endif -%}
+<div class="jf-protection-device" data-price="{{ jf_price }}" data-device-key="{{ item.key | escape }}" data-device-title="{{ item.product.title | escape }}" data-device-qty="{{ item.quantity }}" style="padding:9px 10px;margin:7px 0;border-radius:10px;background:#fff;border:1px solid #e0e8f6">
+    <strong style="display:block;margin-bottom:5px;font-size:13px;line-height:1.5">{{ item.product.title | escape }}</strong>
+    <label style="display:flex;align-items:center;gap:7px;margin:5px 0;cursor:pointer;font-size:12px;line-height:1.5"><input type="checkbox" data-addon="case" style="width:16px;height:16px;min-width:16px;accent-color:#1764d7"> <span style="flex:1">كفر حماية مناسب للجهاز</span><b style="font-size:12px;white-space:nowrap">{{ jf_price | times: 100 | money_without_currency }} د.ع</b></label>
+    <label style="display:flex;align-items:center;gap:7px;margin:5px 0;cursor:pointer;font-size:12px;line-height:1.5"><input type="checkbox" data-addon="glass" style="width:16px;height:16px;min-width:16px;accent-color:#1764d7"> <span style="flex:1">لاصق شاشة مع التركيب</span><b style="font-size:12px;white-space:nowrap">{{ jf_price | times: 100 | money_without_currency }} د.ع</b></label>
+    <div class="jf-case-note-wrap" hidden style="margin-top:7px"><label for="jf-case-note-{{ item.index }}" style="display:block;font-size:11px;color:#64748b;margin:7px 0 3px">ملاحظة تكتبها للمتجر بخصوص الكفر (اختياري)</label>
+    <input id="jf-case-note-{{ item.index }}" class="jf-case-note" type="text" maxlength="100" placeholder="أريد كفر شبابي لون غامق، كفر بناتي، ..." data-device-key="{{ item.key | escape }}" style="display:block;width:100%;min-height:34px;padding:6px 9px;font-size:12px;border:1px solid #dce5f0;border-radius:8px;background:#f8fbff;color:#142c55;box-sizing:border-box"></div>
+  </div>
+</details>{%- endif -%}

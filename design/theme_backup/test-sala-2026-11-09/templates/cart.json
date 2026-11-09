@@ -1,0 +1,90 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "disabled": true,
+      "settings": {
+        "spacing": 0,
+        "color_scheme": "",
+        "line_separator": "",
+        "visibility": ""
+      }
+    },
+    "cart": {
+      "type": "main-cart",
+      "settings": {
+        "color_scheme": "",
+        "cart_summary_color_scheme": ""
+      }
+    },
+    "featured-collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "all",
+        "products_to_show": 4,
+        "desktop_layout": "carousel",
+        "mobile_layout": "carousel",
+        "columns_desktop": "4",
+        "columns_mobile": "2",
+        "content_max_width": "m",
+        "desktop_heading_alignment": "left",
+        "mobile_heading_alignment": "left",
+        "title": "المجموعة المميزة",
+        "italic_convert": "",
+        "heading_size": "h2",
+        "text": "",
+        "text_size": "t3",
+        "show_view_all_link": false,
+        "view_all_text": "View more",
+        "view_all_text_size": "t3",
+        "view_all_card_visibility": "off",
+        "view_all_card_text": "There's plenty more",
+        "color_scheme": "scheme-1",
+        "view_all_color_scheme": "",
+        "line_separator": "border-top",
+        "top_padding": "pt-s",
+        "bottom_padding": "pb-s",
+        "visibility": "",
+        "hide_when_empty": false,
+        "show_at_specific_time_of_day": false,
+        "show_time_morning": true,
+        "show_time_afternoon": true,
+        "show_time_evening": true,
+        "show_time_night": true,
+        "heading_tag": "h2"
+      },
+      "disabled": true
+    },
+    "1759066764f787c8b1": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true,
+        "color_scheme": "",
+        "line_separator": "",
+        "top_padding": "pt-0",
+        "bottom_padding": "pb-0",
+        "visibility": "",
+        "show_at_specific_time_of_day": false,
+        "show_time_morning": true,
+        "show_time_afternoon": true,
+        "show_time_evening": true,
+        "show_time_night": true
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "cart",
+    "featured-collection",
+    "1759066764f787c8b1"
+  ]
+}

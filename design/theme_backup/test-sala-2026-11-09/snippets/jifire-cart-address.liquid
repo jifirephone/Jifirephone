@@ -1,0 +1,48 @@
+{% doc %}
+Allows the shopper to select the destination governorate and the matching Alwaseet delivery region on the cart page.
+{% enddoc %}
+<div class="jf-address-card" id="jf-cart-address" data-address-state="missing" dir="rtl" data-saved-city="{{ cart.attributes['المحافظة'] | escape }}" data-saved-region="{{ cart.attributes['المنطقة'] | escape }}" data-saved-region-id="{{ cart.attributes['_alwaseet_region_id'] | escape }}">
+  <div class="jf-address-compact-head"><div class="jf-address-compact-title"><span aria-hidden="true">📍</span><div><h3>عنوان التوصيل</h3><p id="jf-address-compact-summary">حدد المحافظة والمنطقة لإتمام الطلب</p></div></div><button type="button" id="jf-address-toggle" aria-expanded="true" aria-controls="jf-address-edit">تحديد العنوان</button></div><div id="jf-address-edit"><p class="jf-address-short-hint">يرجى اختيار المحافظة والمنطقة بدقة لضمان وصول الطلب.</p>
+  <div class="jf-address-grid">
+    <div class="jf-field"><label for="jf-cart-city">المحافظة <span aria-hidden="true">*</span></label>
+      <select class="jf-picker-native" id="jf-cart-city" aria-describedby="jf-address-obligation" form="cart" name="attributes[المحافظة]" autocomplete="address-level1" aria-required="true" required>
+        <option value="">اختَر المحافظة</option>
+        <option value="بغداد" data-city-code="1" data-regions-url="{{ 'jifire-regions-1.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'بغداد' %}selected{% endif %}>بغداد</option>
+<option value="كربلاء" data-city-code="2" data-regions-url="{{ 'jifire-regions-2.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'كربلاء' %}selected{% endif %}>كربلاء</option>
+<option value="الانبار - الرمادي" data-city-code="3" data-regions-url="{{ 'jifire-regions-3.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'الانبار - الرمادي' %}selected{% endif %}>الانبار - الرمادي</option>
+<option value="الحلة - بابل" data-city-code="4" data-regions-url="{{ 'jifire-regions-4.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'الحلة - بابل' %}selected{% endif %}>الحلة - بابل</option>
+<option value="البصرة" data-city-code="5" data-regions-url="{{ 'jifire-regions-5.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'البصرة' %}selected{% endif %}>البصرة</option>
+<option value="دهوك" data-city-code="6" data-regions-url="{{ 'jifire-regions-6.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'دهوك' %}selected{% endif %}>دهوك</option>
+<option value="ديالى" data-city-code="7" data-regions-url="{{ 'jifire-regions-7.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'ديالى' %}selected{% endif %}>ديالى</option>
+<option value="اربيل" data-city-code="8" data-regions-url="{{ 'jifire-regions-8.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'اربيل' %}selected{% endif %}>اربيل</option>
+<option value="كركوك" data-city-code="9" data-regions-url="{{ 'jifire-regions-9.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'كركوك' %}selected{% endif %}>كركوك</option>
+<option value="العمارة - ميسان" data-city-code="10" data-regions-url="{{ 'jifire-regions-10.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'العمارة - ميسان' %}selected{% endif %}>العمارة - ميسان</option>
+<option value="السماوة - المثنى" data-city-code="11" data-regions-url="{{ 'jifire-regions-11.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'السماوة - المثنى' %}selected{% endif %}>السماوة - المثنى</option>
+<option value="النجف" data-city-code="12" data-regions-url="{{ 'jifire-regions-12.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'النجف' %}selected{% endif %}>النجف</option>
+<option value="نينوى" data-city-code="13" data-regions-url="{{ 'jifire-regions-13.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'نينوى' %}selected{% endif %}>نينوى</option>
+<option value="الديوانية - القادسية" data-city-code="14" data-regions-url="{{ 'jifire-regions-14.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'الديوانية - القادسية' %}selected{% endif %}>الديوانية - القادسية</option>
+<option value="صلاح الدين - تكريت" data-city-code="15" data-regions-url="{{ 'jifire-regions-15.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'صلاح الدين - تكريت' %}selected{% endif %}>صلاح الدين - تكريت</option>
+<option value="السليمانية" data-city-code="16" data-regions-url="{{ 'jifire-regions-16.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'السليمانية' %}selected{% endif %}>السليمانية</option>
+<option value="الناصرية - ذي قار" data-city-code="17" data-regions-url="{{ 'jifire-regions-17.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'الناصرية - ذي قار' %}selected{% endif %}>الناصرية - ذي قار</option>
+<option value="الكوت - واسط" data-city-code="18" data-regions-url="{{ 'jifire-regions-18.json' | asset_url }}" {% if cart.attributes['المحافظة'] == 'الكوت - واسط' %}selected{% endif %}>الكوت - واسط</option>
+      </select>
+      <button type="button" id="jf-city-picker" class="jf-picker-trigger" data-jf-picker="city" aria-haspopup="dialog" aria-controls="jf-location-sheet" aria-label="اختيار المحافظة" hidden>
+        <span class="jf-picker-trigger-copy"><span class="jf-picker-current">اختَر المحافظة</span></span>
+        <svg class="jf-picker-chevron" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+    </div>
+    <div class="jf-field"><label for="jf-cart-region">المنطقة <span aria-hidden="true">*</span></label>
+      <select class="jf-picker-native" id="jf-cart-region" aria-describedby="jf-address-obligation" form="cart" name="attributes[المنطقة]" aria-required="true" required disabled>
+        <option value="">اختَر المحافظة أولاً</option>
+      </select>
+      <button type="button" id="jf-region-picker" class="jf-picker-trigger" data-jf-picker="region" aria-haspopup="dialog" aria-controls="jf-location-sheet" aria-label="اختيار المنطقة" hidden disabled>
+        <span class="jf-picker-trigger-copy"><span class="jf-picker-current">اختَر المحافظة أولاً</span></span>
+        <svg class="jf-picker-chevron" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+    </div>
+  </div>
+  <input type="hidden" form="cart" id="jf-cart-city-code" name="attributes[_alwaseet_city_id]" value="{{ cart.attributes['_alwaseet_city_id'] | escape }}">
+  <input type="hidden" form="cart" id="jf-cart-region-code" name="attributes[_alwaseet_region_id]" value="{{ cart.attributes['_alwaseet_region_id'] | escape }}">
+  </div><div class="jf-address-hint" id="jf-address-obligation" role="status" aria-live="polite"><span class="jf-obligation-icon" aria-hidden="true">!</span><span class="jf-obligation-copy"><strong id="jf-alert-title">تنبيه مهم</strong><span id="jf-alert-text">اختيار المحافظة والمنطقة إجباري حتى تتمكن من إتمام الطلب.</span></span></div>
+  <p id="jf-cart-error" class="jf-address-error" role="alert" hidden></p>
+</div>

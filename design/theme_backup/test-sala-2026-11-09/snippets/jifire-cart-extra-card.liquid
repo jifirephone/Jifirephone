@@ -1,0 +1,23 @@
+{% doc %}
+Renders a compact product suggestion card for the cart page.
+@param {product} item - Suggested store product
+{% enddoc %}
+<article class="jf-extra-card">
+  <a href="{{ item.url }}" class="jf-extra-photo" aria-label="{{ item.title | escape }}">
+    {%- if item.featured_image -%}
+      {{ item.featured_image | image_url: width: 400 | image_tag: alt: item.title, loading: 'lazy', widths: '160,240,400', sizes: '(max-width:749px) 150px, 220px' }}
+    {%- endif -%}
+  </a>
+  <div class="jf-extra-info">
+    <a href="{{ item.url }}" class="jf-extra-name">{{ item.title | escape }}</a>
+    <strong class="jf-extra-price">{{ item.price | money }}</strong>
+    {%- if item.has_only_default_variant -%}
+      <form action="{{ routes.cart_add_url }}" method="post" class="jf-extra-form">
+        <input type="hidden" name="id" value="{{ item.selected_or_first_available_variant.id }}">
+        <button type="submit" name="add" class="jf-extra-buy">أضف للسلة <span aria-hidden="true">+</span></button>
+      </form>
+    {%- else -%}
+      <a href="{{ item.url }}" class="jf-extra-buy">اختَر المواصفات</a>
+    {%- endif -%}
+  </div>
+</article>
