@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>سلة جي فاير</title>
+<style>
+/* Ji Fire cart redesign proposal (2026-11-09). Calm, one accent colour (brand gold), black primary action.
+   Grouping: add-on services sit under the device they belong to. One total, one pay button (sticky). */
+@font-face{font-family:Cairo;src:url(cairo-arabic.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:Cairo;src:url(cairo-latin.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122}
+:root{--bg:#F6F5F2;--card:#FFFFFF;--ink:#16151A;--muted:#7B7884;--line:#ECEAE5;--gold:#F3B406;--gold-soft:#FFF6DA;--ok:#1F8A4C;--r:18px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);font-family:Cairo,system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;padding-bottom:110px}
+.wrap{max-width:430px;margin:0 auto;padding:0 16px}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 0 10px}
+header h1{font-size:22px;font-weight:800}
+header h1 span{color:var(--muted);font-weight:600;font-size:16px;margin-inline-start:6px}
+header a{font-size:14px;font-weight:700;color:var(--ink);text-decoration:none;opacity:.7}
+.steps{display:flex;align-items:center;gap:8px;margin:6px 0 16px;font-size:12px;font-weight:700;color:var(--muted)}
+.steps i{flex:1;height:2px;background:var(--line);border-radius:2px}
+.steps i.on{background:var(--ink)}
+.steps b{display:inline-flex;align-items:center;gap:6px}
+.steps b em{width:22px;height:22px;border-radius:11px;display:inline-flex;align-items:center;justify-content:center;font-style:normal;background:var(--line);color:var(--muted);font-size:12px}
+.steps b.done em{background:var(--ink);color:#fff}.steps b.now{color:var(--ink)}.steps b.now em{background:var(--gold);color:#000}
+.ship{display:flex;align-items:center;gap:12px;background:var(--gold-soft);border-radius:var(--r);padding:12px 14px;margin-bottom:14px}
+.ship svg{flex-shrink:0}
+.ship p{font-size:14px;font-weight:700}.ship small{display:block;font-size:12px;color:#8a6a00;font-weight:600}
+.card{background:var(--card);border-radius:var(--r);padding:14px;margin-bottom:12px;box-shadow:0 1px 0 rgba(0,0,0,.03)}
+.item{display:flex;gap:12px;align-items:flex-start}
+.item+.item{border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+.thumb{width:64px;height:64px;border-radius:14px;background:#F2F1EE;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.thumb img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.thumb.big{width:84px;height:84px}
+.info{flex:1;min-width:0}
+.name{font-size:14px;font-weight:700;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.meta{font-size:12px;color:var(--muted);font-weight:600;margin-top:2px}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.price{font-size:15px;font-weight:800;direction:ltr}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;height:32px}
+.qty button{width:32px;height:32px;border:0;background:none;font-size:18px;color:var(--ink);font-family:inherit}
+.qty span{min-width:22px;text-align:center;font-size:14px;font-weight:800}
+.del{border:0;background:none;color:var(--muted);font-size:12px;font-weight:700;font-family:inherit;display:inline-flex;gap:4px;align-items:center}
+.addons{margin-top:12px;border-radius:14px;background:#FAFAF8;border:1px dashed #E2DFD8;padding:10px 12px}
+.addons h4{font-size:12px;font-weight:800;color:var(--muted);margin-bottom:6px}
+.addon{display:flex;align-items:center;gap:10px;padding:6px 0}
+.addon .thumb{width:38px;height:38px;border-radius:10px}
+.addon p{flex:1;font-size:13px;font-weight:700}
+.addon .price{font-size:13px}
+.addon .x{width:24px;height:24px;border-radius:12px;border:0;background:var(--line);color:var(--muted);font-size:14px;line-height:24px}
+.section{font-size:13px;font-weight:800;color:var(--muted);margin:18px 2px 8px}
+.code{display:flex;gap:8px}
+.code input{flex:1;height:44px;border-radius:12px;border:1px solid var(--line);padding:0 14px;font-family:inherit;font-size:14px;background:#fff}
+.code button{height:44px;padding:0 18px;border-radius:12px;border:1px solid var(--ink);background:#fff;font-family:inherit;font-weight:800;font-size:14px}
+.addr{display:flex;align-items:center;gap:12px}
+.addr .pin{width:40px;height:40px;border-radius:12px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.addr p{flex:1;font-size:14px;font-weight:700}.addr small{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.addr a{font-size:13px;font-weight:800;color:var(--ink)}
+.sum div{display:flex;justify-content:space-between;font-size:14px;font-weight:600;color:var(--muted);padding:4px 0}
+.sum div b{color:var(--ink);font-weight:700;direction:ltr}
+.sum .free b{color:var(--ok)}
+.sum .total{border-top:1px solid var(--line);margin-top:6px;padding-top:10px;color:var(--ink);font-size:16px;font-weight:800}
+.sum .total b{font-size:20px;font-weight:900}
+.sum .inst{margin-top:8px;font-size:12px;color:var(--muted);font-weight:600;background:#FAFAF8;border-radius:10px;padding:8px 10px;display:block}
+.upsell{display:flex;gap:10px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.mini{min-width:150px;background:#fff;border-radius:16px;padding:10px}
+.mini .thumb{width:100%;height:96px}
+.mini p{font-size:12px;font-weight:700;margin-top:6px;height:34px;overflow:hidden;line-height:1.4}
+.mini .row{margin-top:6px}
+.mini .add{width:30px;height:30px;border-radius:15px;border:0;background:var(--ink);color:var(--gold);font-size:18px;font-weight:800}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:14px;padding:12px 16px 18px}
+.bar small{display:block;font-size:12px;color:var(--muted);font-weight:700}
+.bar strong{font-size:19px;font-weight:900;direction:ltr;display:block}
+.bar button{flex:1;height:54px;border-radius:16px;border:0;background:var(--ink);color:#fff;font-family:inherit;font-size:17px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px}
+.bar button span{width:8px;height:8px;border-radius:4px;background:var(--gold)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><h1>السلة<span>11 قطعة</span></h1><a href="#">متابعة التسوق ←</a></header>
+
+  <div class="steps"><b class="done"><em>✓</em>المنتجات</b><i class="on"></i><b class="now"><em>2</em>السلة</b><i></i><b><em>3</em>الدفع</b></div>
+
+  <div class="ship">
+    <svg width="36" height="36" viewBox="0 0 36 36"><circle cx="18" cy="18" r="18" fill="#F3B406"/><path d="M11 18.5l4.5 4.5L25 13.5" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <p>توصيلك مجاني<small>طلبك فوق 30,000 د.ع • لكل المحافظات</small></p>
+  </div>
+
+  <!-- device + its services -->
+  <div class="card">
+    <div class="item">
+      <div class="thumb big"><img src="iphone.jpg" alt=""></div>
+      <div class="info">
+        <div class="name">Apple iPhone 18 Pro Max</div>
+        <div class="meta">شريحة فعلية • 256GB • فضي</div>
+        <div class="row"><span class="price">2,625,000 IQD</span><span class="qty"><button>−</button><span>1</span><button>+</button></span></div>
+      </div>
+    </div>
+    <div class="addons">
+      <h4>خدمات مضافة لجهازك</h4>
+      <div class="addon"><div class="thumb"><img src="glass.jpg" alt=""></div><p>لاصق شاشة مع التركيب</p><span class="price">15,000</span><button class="x">×</button></div>
+      <div class="addon"><div class="thumb"><img src="case.jpg" alt=""></div><p>كفر حماية</p><span class="price">15,000</span><button class="x">×</button></div>
+    </div>
+  </div>
+
+  <div class="section">الإكسسوارات</div>
+  <div class="card">
+    <div class="item"><div class="thumb"><img src="anker_black.jpg" alt=""></div><div class="info"><div class="name">شاحن حائط أنكر B2679K11 | Anker Charger</div>
+      <div class="row"><span class="price">145,350 IQD</span><span class="qty"><button>−</button><span>3</span><button>+</button></span></div></div></div>
+    <div class="item"><div class="thumb"><img src="nano.jpg" alt=""></div><div class="info"><div class="name">شاحن أنكر نانو A2147K21 | Nano Charger</div>
+      <div class="row"><span class="price">17,500 IQD</span><span class="qty"><button>−</button><span>1</span><button>+</button></span></div></div></div>
+    <div class="item"><div class="thumb"><img src="anker_white.jpg" alt=""></div><div class="info"><div class="name">شاحن حائط أنكر A2149K22 | Wall Charger</div>
+      <div class="row"><span class="price">14,250 IQD</span><span class="qty"><button>−</button><span>1</span><button>+</button></span></div></div></div>
+    <div class="item"><div class="thumb"><img src="cable.jpg" alt=""></div><div class="info"><div class="name">كيبل مومكاس Mag.Link بقوة 66 واط</div>
+      <div class="row"><span class="price">11,000 IQD</span><span class="qty"><button>−</button><span>1</span><button>+</button></span></div></div></div>
+  </div>
+
+  <div class="section">كود الخصم</div>
+  <div class="card"><div class="code"><input placeholder="اكتب الكود هنا"><button>تطبيق</button></div></div>
+
+  <div class="section">التوصيل</div>
+  <div class="card"><div class="addr">
+    <div class="pin"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 22s-7-7.2-7-12a7 7 0 0 1 14 0c0 4.8-7 12-7 12z" fill="#16151A"/><circle cx="12" cy="10" r="2.6" fill="#F3B406"/></svg></div>
+    <p>البصرة — الجزائر<small>يوصلك لباب البيت</small></p><a href="#">تغيير</a></div></div>
+
+  <div class="section">ملخص الطلب</div>
+  <div class="card sum">
+    <div>المنتجات (11)<b>2,896,100 IQD</b></div>
+    <div class="free">التوصيل<b>مجاني</b></div>
+    <div class="total">المجموع<b>2,896,100 IQD</b></div>
+    <span class="inst">💳 تكدر تقسطها على 10 أشهر، شوف الشروط عند الدفع</span>
+  </div>
+
+  <div class="section">تكمّل طلبك؟</div>
+  <div class="upsell">
+    <div class="mini"><div class="thumb"><img src="anker30.jpg" alt=""></div><p>شاحن أنكر 30W PD A2698K21</p><div class="row"><span class="price">13,600</span><button class="add">+</button></div></div>
+    <div class="mini"><div class="thumb"><img src="mcdodo.jpg" alt=""></div><p>كابل مكدودو تايب سي CA2271</p><div class="row"><span class="price">3,400</span><button class="add">+</button></div></div>
+    <div class="mini"><div class="thumb"><img src="anker_white.jpg" alt=""></div><p>شاحن حائط أنكر A2149K22</p><div class="row"><span class="price">14,250</span><button class="add">+</button></div></div>
+  </div>
+</div>
+
+<div class="bar"><div class="wrap">
+  <div><small>المجموع</small><strong>2,896,100 IQD</strong></div>
+  <button>إتمام الطلب<span></span></button>
+</div></div>
+</body>
+</html>
