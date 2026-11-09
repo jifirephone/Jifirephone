@@ -19,7 +19,7 @@ const tag = process.argv[3] || 'before';
   console.log(await add('samsung-65w-wall-charger', 1));
   await p.goto(`https://jifirephone.com/cart?preview_theme_id=${THEME}`, {waitUntil: 'domcontentloaded'});
   await p.waitForTimeout(5000);
-  if (css) { await p.addStyleTag({content: css}); await p.waitForTimeout(800); }
+  if (css) { await p.evaluate((c) => { const s = document.createElement('style'); s.textContent = c; document.body.appendChild(s); }, css); await p.waitForTimeout(800); }
   await p.evaluate(() => document.querySelectorAll('[class*="preview-bar"], #preview-bar-iframe, #PBarNextFrameWrapper').forEach((e) => e.remove()));
   await p.screenshot({path: `work/cartfix/${tag}_full.png`, fullPage: true});
   if (tag === 'before') {
