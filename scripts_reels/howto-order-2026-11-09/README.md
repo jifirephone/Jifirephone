@@ -13,3 +13,9 @@ A video published after that advertises an expired code: the VO says «كود ا
 Price note: the site shows 17 Pro Max 2,100,000; the owner's offer ad uses «يبدي من 1,950,000».
 
 Script (voicecheck PASS, Iraqi 100 %, hook «تريد خصم خمسة وعشرين ألف؟» 78 STRONG, ~25 s, loop on «خصم خمسة وعشرين ألف»): vo_script.txt
+
+## v1 preview — `out/preview_howto_order.mp4` (30.4 s, −14.5 LUFS)
+Owner's ElevenLabs take (27.1 s, all words right). `remotion/src/howto/HowTo.tsx`: 10 scenes cut in the VO pauses, real site
+pieces in `remotion/public/howto/` (gitignored, re-capture with `work/howto/pieces.js` logic), tap cursor, rings, gold bursts,
+redrawn sign-in card (masked number «07X XXX XXXX»), SFX `sfx_cues.json`. On-screen code j2026 / «ينتهي 10/11» come from the site
+captures: re-capture when the owner sets a new code.
