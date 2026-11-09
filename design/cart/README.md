@@ -10,3 +10,9 @@ Luxury black header with a gold glow showing the order total and chips (free del
 white sheet with rounded top, 3-segment progress; hero card for the device with spec chips and on/off toggles for its
 protection services; accessories list; ticket-shaped code field; address card; receipt-style summary with a torn edge;
 trust row (delivery, cash/instalments, WhatsApp support); upsell row; floating black pay bar with a gold «إتمام الطلب».
+
+## v3 «Black Edition» (`cart_v3.html`) — owner asked for even more luxury
+Fully dark page (#09090B) with soft gold glows, glass cards with hairline edges, the device card framed by a gold gradient
+border, ivory product tiles, light-weight titles with heavy gold numbers, gold progress line for free delivery, «باقة الحماية»
+with gold checks, gold-outline code field and buttons, gold-gradient text for the total, trust tiles, and a floating
+gold-gradient «إتمام الطلب» button with a shine and «دفع آمن عبر جي فاير للموبايل».
