@@ -16,3 +16,8 @@ Fully dark page (#09090B) with soft gold glows, glass cards with hairline edges,
 border, ivory product tiles, light-weight titles with heavy gold numbers, gold progress line for free delivery, «باقة الحماية»
 with gold checks, gold-outline code field and buttons, gold-gradient text for the total, trust tiles, and a floating
 gold-gradient «إتمام الطلب» button with a shine and «دفع آمن عبر جي فاير للموبايل».
+
+## v4 light themes — owner: «مش اسود، ابيض وذهبي او ابيض وازرق»
+Same v3 layout on white, two themes from one stylesheet (CSS variables): `cart_v4_gold.html` (brand gold #F3B406, dark text on
+the gold button) and `cart_v4_blue.html` (the site's blue #1F6FD1, white text on the blue button). Soft accent glow at the top,
+white cards with soft shadows, accent-gradient border on the device card, dashed accent code field, accent pay button with shine.

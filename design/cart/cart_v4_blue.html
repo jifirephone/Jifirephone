@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>سلة جي فاير</title>
+<style>
+/* Ji Fire cart, proposal v4 (2026-11-09): the v3 layout in a light luxury theme. Owner: «مش اسود، ابيض وذهبي او ابيض وازرق». */
+@font-face{font-family:Cairo;src:url(cairo-arabic.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:Cairo;src:url(cairo-latin.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122}
+:root{--bg:#FFFFFF;--card:#FFFFFF;--edge:#E8EDF5;--txt:#111827;--muted:#7D8796;--acc:#1F6FD1;--acc2:#4A93F0;--accd:#1559AD;--soft:#EEF5FF;--tile:#F3F6FA;--price:#111827;--onacc:#FFFFFF;--glow:rgba(31,111,209,.12);--shadow:rgba(31,111,209,.32)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:Cairo,system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:130px;
+  background-image:radial-gradient(90% 35% at 85% -5%,var(--glow),transparent 60%)}
+.w{max-width:430px;margin:0 auto;padding:0 18px}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0 8px}
+.ib{width:42px;height:42px;border-radius:14px;background:#fff;border:1px solid var(--edge);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(20,20,30,.05)}
+.ib svg{stroke:var(--txt)}
+.nav img{height:42px}
+.hd{margin:16px 0 6px;display:flex;align-items:flex-end;justify-content:space-between}
+.hd h1{font-size:34px;font-weight:300}
+.hd h1 b{font-weight:900}
+.hd span{font-size:13px;color:var(--muted);font-weight:700;padding-bottom:8px}
+.free{margin:12px 0 20px;background:var(--soft);border-radius:18px;padding:12px 14px}
+.free .t{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:var(--txt)}
+.free .t b{color:var(--accd);font-weight:900}
+.free .bar{height:4px;border-radius:4px;background:rgba(0,0,0,.06);margin-top:10px;position:relative;overflow:hidden}
+.free .bar i{position:absolute;inset:0;background:linear-gradient(90deg,var(--accd),var(--acc),var(--acc2))}
+.card{background:var(--card);border:1px solid var(--edge);border-radius:26px;box-shadow:0 14px 36px rgba(20,20,30,.06)}
+.hero{padding:16px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;border-radius:26px;padding:1.5px;background:linear-gradient(135deg,var(--acc),transparent 40%,transparent 70%,var(--acc2));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.hero .top{display:flex;gap:16px;align-items:center}
+.tile{background:var(--tile);border-radius:20px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.tile img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+.hero .tile{width:120px;height:140px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.03)}
+.hero .lbl{font-size:11px;font-weight:900;color:var(--accd);letter-spacing:.4px}
+.hero h2{font-size:21px;font-weight:300;direction:ltr;text-align:right;margin-top:2px}
+.hero h2 b{font-weight:800}
+.hero .sp{font-size:12px;color:var(--muted);font-weight:700;margin-top:4px}
+.hero .pr{font-size:22px;font-weight:900;color:var(--price);direction:ltr;text-align:right;margin-top:8px}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--edge);border-radius:999px;height:34px;background:#fff}
+.qty button{width:34px;height:34px;border:0;background:none;color:var(--txt);font-size:17px}
+.qty span{min-width:20px;text-align:center;font-weight:900;font-size:14px}
+.hero .qrow{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--edge)}
+.hero .qrow small{font-size:12px;color:var(--muted);font-weight:700}
+.prot{margin-top:14px;border-radius:18px;background:var(--soft);padding:6px 12px}
+.prot h4{font-size:12px;font-weight:900;color:var(--accd);padding:6px 0 2px}
+.pi{display:flex;align-items:center;gap:12px;padding:8px 0}
+.pi+.pi{border-top:1px solid rgba(0,0,0,.05)}
+.pi .tile{width:40px;height:40px;border-radius:12px;background:#fff}
+.pi p{flex:1;font-size:13px;font-weight:700}
+.pi .p{font-size:13px;font-weight:800;direction:ltr}
+.ck{width:24px;height:24px;border-radius:12px;background:linear-gradient(135deg,var(--acc2),var(--acc));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ck svg{stroke:var(--onacc)}
+.sec{display:flex;justify-content:space-between;align-items:baseline;margin:28px 4px 12px}
+.sec h3{font-size:15px;font-weight:900}.sec h3:before{content:"";display:inline-block;width:14px;height:3px;background:var(--acc);vertical-align:middle;margin-left:8px;border-radius:3px}
+.sec small{font-size:12px;color:var(--muted);font-weight:700}
+.list{padding:4px 14px}
+.it{display:flex;align-items:center;gap:12px;padding:13px 0}
+.it+.it{border-top:1px solid var(--edge)}
+.it .tile{width:56px;height:56px;border-radius:16px}
+.it .nm{flex:1;min-width:0}
+.it .nm p{font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.it .nm b{display:block;font-size:14px;font-weight:900;direction:ltr;text-align:right;margin-top:3px}
+.code{display:flex;align-items:center;gap:10px;padding:8px 8px 8px 14px;border-radius:18px;background:#fff;border:1.5px dashed var(--acc);box-shadow:0 10px 26px rgba(20,20,30,.05)}
+.code svg{stroke:var(--accd)}
+.code input{flex:1;background:none;border:0;outline:0;color:var(--txt);font-family:inherit;font-size:14px;font-weight:700;min-width:0}
+.code input::placeholder{color:var(--muted)}
+.code button{height:40px;padding:0 18px;border-radius:13px;border:0;background:linear-gradient(135deg,var(--acc2),var(--acc));color:var(--onacc);font-family:inherit;font-weight:900;font-size:14px}
+.addr{display:flex;align-items:center;gap:14px;padding:14px}
+.addr .pin{width:46px;height:46px;border-radius:15px;background:var(--soft);display:flex;align-items:center;justify-content:center}
+.addr .pin path{fill:var(--accd)}
+.addr p{flex:1;font-size:14px;font-weight:900}.addr p small{display:block;font-size:12px;color:var(--muted);font-weight:700}
+.addr a{font-size:12px;font-weight:900;color:var(--accd);text-decoration:none;background:var(--soft);padding:6px 12px;border-radius:999px}
+.sum{padding:18px}
+.sum .l{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);font-weight:700;padding:5px 0}
+.sum .l b{color:var(--txt);font-weight:800;direction:ltr}
+.sum .l.ok b{color:#16A05A}
+.sum .tot{margin-top:10px;padding-top:14px;border-top:1.5px dashed var(--edge);display:flex;justify-content:space-between;align-items:center}
+.sum .tot span{font-size:15px;font-weight:800}
+.sum .tot b{font-size:28px;font-weight:900;direction:ltr;color:var(--price)}
+.sum .inst{margin-top:12px;font-size:12px;color:var(--muted);font-weight:700;display:flex;gap:8px;align-items:center;background:var(--soft);padding:9px 12px;border-radius:12px}
+.sum .inst i{width:6px;height:6px;border-radius:3px;background:var(--acc);display:inline-block}
+.trust{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.trust div{text-align:center;padding:12px 6px;border-radius:18px;background:#fff;border:1px solid var(--edge);font-size:11px;font-weight:800;color:var(--muted);line-height:1.5;box-shadow:0 8px 20px rgba(20,20,30,.04)}
+.trust svg{display:block;margin:0 auto 6px;stroke:var(--accd)}
+.ups{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding-bottom:6px}
+.mini{min-width:150px;padding:10px;border-radius:22px;background:#fff;border:1px solid var(--edge);box-shadow:0 8px 20px rgba(20,20,30,.04)}
+.mini .tile{width:100%;height:100px;border-radius:16px}
+.mini p{font-size:12px;font-weight:800;margin-top:8px;height:34px;overflow:hidden;line-height:1.4}
+.mini .r{display:flex;justify-content:space-between;align-items:center;margin-top:4px}
+.mini .r b{font-size:14px;font-weight:900;direction:ltr}
+.mini .r button{width:32px;height:32px;border-radius:11px;border:0;background:var(--soft);color:var(--accd);font-size:18px;font-weight:900}
+.paybar{position:fixed;left:0;right:0;bottom:0;padding:14px 18px 20px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(255,255,255,.95) 35%)}
+.pay{max-width:394px;margin:0 auto;height:64px;border-radius:22px;background:linear-gradient(135deg,var(--acc2) 0%,var(--acc) 50%,var(--accd) 100%);display:flex;align-items:center;
+  justify-content:space-between;padding:0 22px;color:var(--onacc);box-shadow:0 16px 36px var(--shadow),inset 0 1px 0 rgba(255,255,255,.5);position:relative;overflow:hidden}
+.pay:after{content:"";position:absolute;top:0;bottom:0;width:60px;left:30%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg)}
+.pay b{font-size:17px;font-weight:900;display:flex;align-items:center;gap:10px}
+.pay b svg{stroke:var(--onacc)}
+.pay span{font-size:16px;font-weight:900;direction:ltr}
+.sec2{font-size:11px;color:var(--muted);text-align:center;margin-top:8px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="w">
+  <div class="nav">
+    <div class="ib"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></div>
+    <img src="logo.png" alt="جي فاير">
+    <div class="ib"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.4-9.3-9.1C1.3 8.6 3.5 5 7 5c2 0 3.4 1.1 5 3 1.6-1.9 3-3 5-3 3.5 0 5.7 3.6 4.3 6.9C19 16.6 12 21 12 21z"/></svg></div>
+  </div>
+
+  <div class="hd"><h1><b>سلتك</b> الخاصة</h1><span>11 قطعة</span></div>
+
+  <div class="free"><div class="t"><span>التوصيل لباب البيت</span><b>مجاني ✓</b></div><div class="bar"><i></i></div></div>
+
+  <div class="card hero">
+    <div class="top">
+      <div class="tile"><img src="iphone.jpg" alt=""></div>
+      <div>
+        <div class="lbl">جهازك الجديد</div>
+        <h2><b>iPhone 18</b> Pro Max</h2>
+        <div class="sp">شريحة فعلية • 256GB • فضي</div>
+        <div class="pr">2,625,000 IQD</div>
+      </div>
+    </div>
+    <div class="prot">
+      <h4>باقة الحماية</h4>
+      <div class="pi"><div class="tile"><img src="glass.jpg" alt=""></div><p>لاصق شاشة مع التركيب</p><span class="p">15,000</span><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span></div>
+      <div class="pi"><div class="tile"><img src="case.jpg" alt=""></div><p>كفر حماية</p><span class="p">15,000</span><span class="ck"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span></div>
+    </div>
+    <div class="qrow"><small>الكمية</small><span class="qty"><button>−</button><span>1</span><button>+</button></span></div>
+  </div>
+
+  <div class="sec"><h3>الإكسسوارات</h3><small>4 منتجات</small></div>
+  <div class="card list">
+    <div class="it"><div class="tile"><img src="anker_black.jpg" alt=""></div><div class="nm"><p>شاحن حائط أنكر B2679K11</p><b>145,350 IQD</b></div><span class="qty"><button>−</button><span>3</span><button>+</button></span></div>
+    <div class="it"><div class="tile"><img src="nano.jpg" alt=""></div><div class="nm"><p>شاحن أنكر نانو A2147K21</p><b>17,500 IQD</b></div><span class="qty"><button>−</button><span>1</span><button>+</button></span></div>
+    <div class="it"><div class="tile"><img src="anker_white.jpg" alt=""></div><div class="nm"><p>شاحن حائط أنكر A2149K22</p><b>14,250 IQD</b></div><span class="qty"><button>−</button><span>1</span><button>+</button></span></div>
+    <div class="it"><div class="tile"><img src="cable.jpg" alt=""></div><div class="nm"><p>كيبل مومكاس Mag.Link 66W</p><b>11,000 IQD</b></div><span class="qty"><button>−</button><span>1</span><button>+</button></span></div>
+  </div>
+
+  <div class="sec"><h3>كود الخصم</h3></div>
+  <div class="code"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"  stroke-width="1.8" stroke-linecap="round"><path d="M3 9V6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a3 3 0 0 0 0 6v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a3 3 0 0 0 0-6z"/><path d="M15 9l-6 6"/></svg><input placeholder="اكتب كود الخصم"><button>تطبيق</button></div>
+
+  <div class="sec"><h3>عنوان التوصيل</h3></div>
+  <div class="card addr"><div class="pin"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 22s-7-7.2-7-12a7 7 0 0 1 14 0c0 4.8-7 12-7 12z" fill="#000"/><circle cx="12" cy="10" r="2.6" fill="#fff"/></svg></div>
+    <p>البصرة، حي الجزائر<small>لباب البيت</small></p><a href="#">تغيير</a></div>
+
+  <div class="sec"><h3>ملخص الطلب</h3></div>
+  <div class="card sum">
+    <div class="l">المنتجات (11)<b>2,896,100 IQD</b></div>
+    <div class="l ok">التوصيل<b>مجاني</b></div>
+    <div class="tot"><span>الإجمالي</span><b>2,896,100 IQD</b></div>
+    <div class="inst"><i></i>تكدر تقسطها، الشروط تطلع عند الدفع</div>
+  </div>
+
+  <div class="trust">
+    <div><svg width="22" height="22" viewBox="0 0 24 24" fill="none"  stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>توصيل لكل<br>المحافظات</div>
+    <div><svg width="22" height="22" viewBox="0 0 24 24" fill="none"  stroke-width="1.7" stroke-linecap="round"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg>نقد<br>وأقساط</div>
+    <div><svg width="22" height="22" viewBox="0 0 24 24" fill="none"  stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>دعم<br>واتساب</div>
+  </div>
+
+  <div class="sec"><h3>تكمّل طلبك؟</h3><small>اختياري</small></div>
+  <div class="ups">
+    <div class="mini"><div class="tile"><img src="anker30.jpg" alt=""></div><p>شاحن أنكر 30W PD</p><div class="r"><b>13,600</b><button>+</button></div></div>
+    <div class="mini"><div class="tile"><img src="mcdodo.jpg" alt=""></div><p>كابل مكدودو تايب سي</p><div class="r"><b>3,400</b><button>+</button></div></div>
+    <div class="mini"><div class="tile"><img src="nano.jpg" alt=""></div><p>شاحن أنكر نانو</p><div class="r"><b>17,500</b><button>+</button></div></div>
+  </div>
+</div>
+
+<div class="paybar"><div class="pay"><b><svg width="18" height="18" viewBox="0 0 24 24" fill="none"  stroke-width="2.4" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>إتمام الطلب</b><span>2,896,100 IQD</span></div>
+  <div class="sec2">دفع آمن عبر جي فاير للموبايل</div></div>
+</body>
+</html>
