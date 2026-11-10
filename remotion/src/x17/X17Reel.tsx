@@ -165,8 +165,8 @@ const span = (i: number): [number, number] => [fr(CUTS[i]), fr(CUTS[i + 1])];
 const Overlay: React.FC<{f: number}> = ({f}) => {
   const inS = ([a, b]: [number, number]) => f >= a && f < b;
   const e: React.ReactNode[] = [];
-  if (inS(span(0))) e.push(<Head key="s1" f={loc(f, 0)} at={2} text="آيفونك مقفل؟" gold={['مقفل؟']} anim="scale" size={100} />);
-  if (inS(span(1))) e.push(<Head key="s2" f={loc(f, 1)} at={2} text="لا تفرمت جهازك!" gold={['تفرمت']} anim="scale" size={104} red />);
+  if (inS(span(0))) e.push(<Head key="s1" f={loc(f, 0)} at={2} text="جهازك قافل آيكلود بعده ما فرمت؟" gold={['آيكلود']} anim="scale" size={72} />);
+  if (inS(span(1))) e.push(<Head key="s2" f={loc(f, 1)} at={2} text="لا تفرمته قبل لا تشوف هذا الفيديو!" gold={['تفرمته']} anim="scale" size={68} red />);
   if (inS(span(2))) e.push(<Head key="s3" f={loc(f, 2)} at={3} text="من iPhone X لـ 17 Pro Max" gold={['X', '17', 'Pro', 'Max']} anim="rise" size={78} />);
   if (inS(span(3))) {
     e.push(<Head key="s4" f={loc(f, 3)} at={3} text="نفتح القفل" gold={['نفتح']} anim="blur" size={92} y={300} />);
