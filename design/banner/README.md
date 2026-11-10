@@ -24,5 +24,5 @@ Matches the store's real Quoli review-reward codes (QUO-*, 5,000 IQD each, activ
 
 ## product post (iPhone 16 Pro Max) — `prod.html` → `out/post_iphone16promax.png` (1536×1024)
 Owner (2026-11-10): same نسق as a reference ad, details from it: iPhone 16 Pro Max, 256GB, A18 Pro, 1,700,000 IQD (owner's price).
-Dark studio bg + lit podium with gold rim glow, gold iPhone on it; logo top-left; white name pill with Apple mark;
+Dark studio bg + lit podium with gold rim glow, real iPhone 16 Pro Max Desert Titanium cutout from the store catalog (cdn.shopify.com), white keyed out (cut16.py); logo top-left; white name pill with Apple mark;
 spec chips 256GB (right) / A18 Pro (left); price pill «السعر داخل التطبيق» + «1,700,000 IQD»; CTA «اطلب الآن داخل التطبيق» + app mini-phone.
