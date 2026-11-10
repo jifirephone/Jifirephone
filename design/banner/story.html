@@ -1,0 +1,56 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Cairo;src:url(cairo-arabic.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:Cairo;src:url(cairo-latin.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0a0f22}
+.st{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Cairo,sans-serif;background:
+  radial-gradient(70% 45% at 50% 30%,rgba(243,180,6,.16),transparent 60%),
+  radial-gradient(100% 70% at 50% 60%,#16203f,#0a0f22 62%,#060914)}
+.dots{position:absolute;inset:0;opacity:.4;background-image:radial-gradient(#F3B406 1px,transparent 1.8px);background-size:34px 34px;-webkit-mask:radial-gradient(85% 70% at 50% 45%,#000,transparent 78%)}
+.sw{position:absolute;inset:0;pointer-events:none}
+.safe{position:absolute;left:0;right:0;top:240px;bottom:300px;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 70px}
+.logo{width:270px;margin-top:6px}
+.limited{margin-top:14px;display:inline-flex;align-items:center;gap:12px;padding:12px 32px;border-radius:999px;background:rgba(243,180,6,.12);border:2px solid #F3B406;color:#FFD966;font-weight:900;font-size:34px;box-shadow:0 0 36px rgba(243,180,6,.2)}
+.khasm{margin-top:24px;font-size:82px;font-weight:900;color:#fff;line-height:.9;letter-spacing:-1px;position:relative}
+.khasm .spark{position:absolute;top:-26px;left:-30px}
+.amt{display:flex;align-items:baseline;gap:14px;direction:rtl;margin-top:6px}
+.amt .n{font-size:162px;font-weight:900;line-height:.82;background:linear-gradient(180deg,#FFECAE,#F6C117 52%,#C98F00);-webkit-background-clip:text;color:transparent;direction:ltr;filter:drop-shadow(0 14px 30px rgba(243,180,6,.45))}
+.amt .cur{font-size:66px;font-weight:900;color:#F3B406}
+.plus{margin-top:8px;display:flex;align-items:center;gap:18px;color:#fff}
+.plus .p{font-size:70px;font-weight:900;color:#F3B406}
+.ship{display:inline-flex;align-items:center;gap:16px;font-size:56px;font-weight:900;color:#fff}
+.ship svg{width:58px;height:58px;color:#F3B406}
+.chips{margin-top:24px;display:flex;flex-direction:column;gap:16px;width:100%;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:16px;padding:18px 40px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(243,180,6,.35);font-size:42px;font-weight:800;color:#EDE7D6}
+.chip svg{width:40px;height:40px;color:#F3B406;flex-shrink:0}
+.chip b{color:#FFD966}
+.pill{margin-top:28px;display:inline-flex;flex-direction:column;align-items:center;padding:20px 80px 26px;border-radius:28px;border:3px solid #F3B406;background:rgba(243,180,6,.07);box-shadow:0 0 54px rgba(243,180,6,.3),inset 0 0 30px rgba(243,180,6,.08)}
+.pill .lbl{font-size:40px;font-weight:800;color:#D8CFB6}
+.pill .code{font-size:92px;font-weight:900;color:#fff;letter-spacing:1px;direction:ltr;line-height:1.05}
+.phone{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%) rotate(3deg);width:440px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.6));z-index:2}
+.pglow{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);width:520px;height:320px;border-radius:50%;background:radial-gradient(ellipse,rgba(243,180,6,.3),transparent 65%);opacity:.5;z-index:1}
+</style></head><body>
+<div class="st">
+  <div class="dots"></div>
+  <svg class="sw" viewBox="0 0 1080 1920" preserveAspectRatio="none">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9c6f12"/><stop offset=".5" stop-color="#FFDD77"/><stop offset="1" stop-color="#9c6f12"/></linearGradient></defs>
+    <path d="M-40 230 Q 300 120 560 210 T 1120 170" fill="none" stroke="url(#g)" stroke-width="7" opacity=".85"/>
+    <path d="M-40 1720 Q 340 1600 620 1700 T 1120 1660" fill="none" stroke="url(#g)" stroke-width="7" opacity=".85"/>
+  </svg>
+  <div class="pglow"></div>
+  <div class="safe">
+    <img class="logo" src="logo.png">
+    <div class="limited"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 2h6"/></svg> العرض لفترة محدودة</div>
+    <div class="khasm"><svg class="spark" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#FFD966" stroke-width="2.6" stroke-linecap="round"><path d="M12 3v6M18.4 5.6l-4 4M5.6 5.6l4 4"/></svg>خصم</div>
+    <div class="amt"><span class="cur">د.ع</span><span class="n">25,000</span></div>
+    <div class="plus"><span class="p">+</span><span class="ship"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/></svg> توصيل مجاني</span></div>
+    <div class="chips">
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 6"/></svg>كل المنتجات مشمولة</div>
+      <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M5 7h9a3 3 0 0 1 0 6H8a3 3 0 0 0 0 6h9"/></svg>للطلبات فوق <b>200,000 د.ع</b></div>
+    </div>
+    <div class="pill"><span class="lbl">استخدم الكود</span><span class="code">jifirecode</span></div>
+  </div>
+  <img class="phone" src="iphone.png">
+</div>
+</body></html>

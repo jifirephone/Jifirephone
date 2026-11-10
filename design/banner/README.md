@@ -10,3 +10,9 @@ Code **jifirecode** VERIFIED active on Shopify (read-only): «Ji Fire | خصم 2
 Upload the PNG as a homepage carousel slide (or hand `disc.html` to the dev). Re-render if the code/amount changes.
 
 ## iphone-16 options — `banner_options.jpg` (built 2026-11-10, set aside): 3 background themes (black-gold / blue / light).
+
+## story — `story.html` → `out/story_discount_jifirecode.png` (1080×1920, FB/IG story)
+Owner asked (2026-11-10): 25,000 discount + free delivery, all products included, from 200,000 up, limited-time.
+Content inside the story safe zone (clear of top profile bar / bottom reply bar): logo · «العرض لفترة محدودة» · «خصم 25,000 د.ع»
+· «+ توصيل مجاني» · «كل المنتجات مشمولة» · «للطلبات فوق 200,000 د.ع» · code pill «استخدم الكود jifirecode» · gold iPhone bleed.
+Code jifirecode verified active (25,000, min 200,000). Free delivery is site-wide (owner's standing policy).
