@@ -15,9 +15,9 @@ const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 
 const fr = (s: number) => Math.round(s * FPS);
 
 // scene starts (video seconds); provisional until the VO lands, then cuts move into the VO's real pauses
-const CUTS = [0, 2.4, 5.6, 8.8, 11.7, 13.3, 17.1, 20.5, 24.5];
-const END_FROM = fr(24.5);
-export const X17_FRAMES = fr(27.8);
+const CUTS = [0, 2.55, 5.47, 8.53, 11.74, 13.8, 18.2, 22.3, 26.1];
+const END_FROM = fr(26.1);
+export const X17_FRAMES = fr(29.4);
 const TAIL = 12;
 
 // each scene: a slice of a graded clip + a slow push; src seconds, not scene-local
@@ -29,8 +29,8 @@ const SRC: Src[] = [
   {clip: 'p2', in: 2.0, speed: 1.3},// S4 flashing on the box
   {clip: 'p2', in: 6.6, speed: 1.2},// S5 بسرعة
   {clip: 'p2', in: 8.8},            // S6 disclaimer (dimmed behind the card)
-  {clip: 'p3', in: 5.8},            // S7 globe → boots to home (reveal) + address
-  {clip: 'p3', in: 7.6},            // S8 working home + CTA
+  {clip: 'p3', in: 5.4},            // S7 globe → boots to home (reveal) + address
+  {clip: 'p3', in: 7.5},            // S8 working home + CTA
 ];
 
 const Clip: React.FC<{i: number}> = ({i}) => {
