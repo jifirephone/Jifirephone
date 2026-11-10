@@ -1,0 +1,62 @@
+[
+{
+"t": 0.05,
+"type": "bloom",
+"gain": 0.7
+},
+{
+"t": 1.6,
+"type": "riser",
+"gain": 0.78
+},
+{
+"t": 2.5,
+"type": "soft_pop",
+"gain": 0.75
+},
+{
+"t": 5.48,
+"type": "swish",
+"gain": 0.78
+},
+{
+"t": 8.75,
+"type": "shimmer",
+"gain": 0.78
+},
+{
+"t": 9.9,
+"type": "tick",
+"gain": 0.75
+},
+{
+"t": 11.65,
+"type": "bloom",
+"gain": 0.78
+},
+{
+"t": 12.9,
+"type": "pad_swell",
+"gain": 0.78
+},
+{
+"t": 17.05,
+"type": "bloom",
+"gain": 0.78
+},
+{
+"t": 17.9,
+"type": "chime",
+"gain": 0.7
+},
+{
+"t": 20.48,
+"type": "chime_low",
+"gain": 0.78
+},
+{
+"t": 24.3,
+"type": "pad_swell",
+"gain": 0.7
+}
+]
