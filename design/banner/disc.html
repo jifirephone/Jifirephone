@@ -1,0 +1,50 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Cairo;src:url(cairo-arabic.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:Cairo;src:url(cairo-latin.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0a0f22}
+.ban{position:relative;width:1920px;height:720px;overflow:hidden;background:
+  radial-gradient(60% 120% at 78% 25%,rgba(243,180,6,.13),transparent 55%),
+  radial-gradient(80% 130% at 50% 45%,#141d3a,#0a0f22 58%,#070a16);font-family:Cairo,sans-serif}
+.dots{position:absolute;inset:0;opacity:.45;background-image:radial-gradient(#F3B406 .9px,transparent 1.6px);background-size:30px 30px;-webkit-mask:radial-gradient(92% 92% at 50% 42%,#000,transparent 74%)}
+.sw{position:absolute;inset:0;pointer-events:none}
+/* zones */
+.logo{position:absolute;left:80px;top:50%;transform:translateY(-50%);width:360px;text-align:center}
+.logo img{width:100%}
+.vline{position:absolute;left:560px;top:22%;height:56%;width:2px;background:linear-gradient(#F3B40600,#F3B406cc,#F3B40600)}
+.center{position:absolute;left:580px;width:820px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.khasm{font-size:104px;font-weight:900;color:#fff;line-height:.9;letter-spacing:-2px;text-shadow:0 6px 30px rgba(0,0,0,.5);position:relative}
+.khasm .spark{position:absolute;top:-30px;left:-38px}
+.amt{display:flex;align-items:baseline;gap:16px;direction:rtl;margin-top:4px}
+.amt .n{font-size:142px;font-weight:900;line-height:.85;background:linear-gradient(180deg,#FFECAE,#F6C117 52%,#C98F00);-webkit-background-clip:text;color:transparent;direction:ltr;filter:drop-shadow(0 12px 26px rgba(243,180,6,.4))}
+.amt .cur{font-size:64px;font-weight:900;color:#F3B406}
+.pill{margin-top:18px;display:inline-flex;flex-direction:column;align-items:center;gap:0;padding:14px 64px 18px;border-radius:22px;border:2px solid #F3B406;background:rgba(243,180,6,.06);box-shadow:0 0 44px rgba(243,180,6,.28),inset 0 0 26px rgba(243,180,6,.07)}
+.pill .lbl{font-size:30px;font-weight:800;color:#D8CFB6}
+.pill .code{font-size:66px;font-weight:900;color:#fff;letter-spacing:1px;direction:ltr;line-height:1.05}
+.cond{margin-top:16px;font-size:25px;font-weight:700;color:#9AA6BE}
+.cond b{color:#F3B406}
+.phone{position:absolute;right:44px;top:50%;transform:translateY(-50%) rotate(6deg);width:470px;filter:drop-shadow(0 26px 50px rgba(0,0,0,.6))}
+.rglow{position:absolute;right:90px;top:50%;transform:translateY(-50%);width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(243,180,6,.4),transparent 62%);opacity:.3}
+</style></head><body>
+<div class="ban">
+  <div class="dots"></div>
+  <svg class="sw" viewBox="0 0 1920 720" preserveAspectRatio="none">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9c6f12"/><stop offset=".5" stop-color="#FFDD77"/><stop offset="1" stop-color="#9c6f12"/></linearGradient></defs>
+    <path d="M-40 140 Q 480 -50 1050 110 T 2000 50" fill="none" stroke="url(#g)" stroke-width="8" opacity=".92"/>
+    <path d="M-40 108 Q 520 -80 1120 78" fill="none" stroke="url(#g)" stroke-width="3" opacity=".45"/>
+    <path d="M-40 650 Q 720 775 1320 600 T 2000 672" fill="none" stroke="url(#g)" stroke-width="8" opacity=".92"/>
+    <path d="M520 712 Q 1150 800 2000 600" fill="none" stroke="url(#g)" stroke-width="3" opacity=".45"/>
+  </svg>
+  <div class="logo"><img src="logo.png"></div>
+  <div class="vline"></div>
+  <div class="rglow"></div>
+  <img class="phone" src="iphone.png">
+  <div class="center">
+    <div class="khasm"><svg class="spark" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#FFD966" stroke-width="2.6" stroke-linecap="round"><path d="M12 3v6M18.4 5.6l-4 4M5.6 5.6l4 4"/></svg>خصم</div>
+    <div class="amt"><span class="cur">د.ع</span><span class="n">25,000</span></div>
+    <div class="pill"><span class="lbl">استخدم الكود</span><span class="code">jifirecode</span></div>
+    <div class="cond">صالح للطلبات فوق <b>200,000 د.ع</b></div>
+  </div>
+</div>
+</body></html>
