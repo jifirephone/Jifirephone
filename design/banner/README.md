@@ -16,3 +16,8 @@ Owner asked (2026-11-10): 25,000 discount + free delivery, all products included
 Content inside the story safe zone (clear of top profile bar / bottom reply bar): logo · «العرض لفترة محدودة» · «خصم 25,000 د.ع»
 · «+ توصيل مجاني» · «كل المنتجات مشمولة» · «للطلبات فوق 200,000 د.ع» · code pill «استخدم الكود jifirecode» · gold iPhone bleed.
 Code jifirecode verified active (25,000, min 200,000). Free delivery is site-wide (owner's standing policy).
+
+## story 2 (review reward) — `story2.html` → `out/story_review_reward_5k.png` (1080×1920)
+Owner (2026-11-10): review any product bought in the app → 5,000 IQD gift code by email; prominent; small note at the side.
+Matches the store's real Quoli review-reward codes (QUO-*, 5,000 IQD each, active). Prominent solid-gold reward badge
+«هدية فورية · 5,000 د.ع · كود خصم على بريدك» + 3 numbered steps + small note «يوصلك طلب التقييم على بريدك… النظام يعطيك كود 5,000».
