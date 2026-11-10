@@ -1,0 +1,59 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:Cairo;src:url(cairo-arabic.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0600-06FF,U+0750-077F,U+08A0-08FF,U+200C-200E,U+FB50-FDFF,U+FE70-FEFC}
+@font-face{font-family:Cairo;src:url(cairo-latin.woff2) format('woff2');font-weight:200 1000;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#2a2a2e}
+.ad{position:relative;width:1536px;height:1024px;overflow:hidden;font-family:Cairo,sans-serif;background:
+  radial-gradient(90% 70% at 72% 32%,#45454b,#303035 48%,#232327 78%);isolation:isolate}
+.surface{position:absolute;left:0;right:0;bottom:0;height:40%;background:linear-gradient(180deg,#26262b,#1b1b1f);box-shadow:0 -1px 0 #ffffff10}
+.warm{position:absolute;right:-5%;top:10%;width:55%;height:80%;background:radial-gradient(circle at 60% 50%,rgba(255,170,70,.14),transparent 60%);z-index:0}
+.vig{position:absolute;inset:0;background:radial-gradient(75% 75% at 60% 45%,transparent 55%,rgba(0,0,0,.55));z-index:5;pointer-events:none}
+/* podium */
+.podium{position:absolute;right:150px;bottom:92px;width:600px;height:140px;border-radius:50%;background:radial-gradient(ellipse at 50% 35%,#d9d4cb,#8f8a82 60%,#3a3833 100%);box-shadow:0 30px 60px rgba(0,0,0,.5);z-index:1}
+.ring{position:absolute;right:132px;bottom:78px;width:636px;height:172px;border-radius:50%;border:4px solid #F3B406;filter:blur(2px);box-shadow:0 0 50px 8px rgba(243,180,6,.6),inset 0 0 40px rgba(243,180,6,.4);opacity:.9;z-index:2}
+.phone{position:absolute;right:170px;bottom:150px;width:470px;transform:rotate(4deg);filter:drop-shadow(0 40px 50px rgba(0,0,0,.6));z-index:3}
+.logo{position:absolute;left:70px;top:48px;width:250px;z-index:6}
+.wrap{position:absolute;left:70px;top:336px;z-index:6;display:flex;flex-direction:column;gap:24px;align-items:flex-start}
+.name{display:inline-flex;align-items:center;gap:20px;padding:14px 34px 14px 24px;border-radius:22px;background:linear-gradient(135deg,#ffffff,#eceae6);box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.name svg{width:50px;height:58px;color:#1a1a1a}
+.name span{font-size:60px;font-weight:900;color:#17171a;direction:ltr;letter-spacing:-.5px}
+.specs{display:flex;gap:20px}
+.spec{display:inline-flex;align-items:center;gap:18px;padding:16px 34px;border-radius:20px;background:rgba(15,15,18,.72);border:2px solid #F3B406;box-shadow:0 10px 26px rgba(0,0,0,.4)}
+.spec svg{width:38px;height:38px;color:#F3B406}
+.spec .d{width:2px;height:40px;background:#F3B40655}
+.spec span{font-size:44px;font-weight:900;color:#fff;direction:ltr}
+.price{display:inline-flex;align-items:stretch;border-radius:22px;overflow:hidden;box-shadow:0 0 60px rgba(243,180,6,.45),0 16px 34px rgba(0,0,0,.45)}
+.price .lbl{display:flex;align-items:center;padding:20px 34px;background:linear-gradient(135deg,#ffffff,#ece9e3);font-size:38px;font-weight:900;color:#17171a;line-height:1.1;text-align:center}
+.price .val{display:flex;align-items:baseline;gap:12px;padding:20px 44px;background:linear-gradient(135deg,#FFE9A8,#F3B406 55%,#D79A05)}
+.price .val .n{font-size:68px;font-weight:900;color:#141007;direction:ltr}
+.price .val .c{font-size:38px;font-weight:900;color:#3d2c04}
+.cta-row{display:flex;align-items:center;gap:26px;margin-top:8px}
+.cta{display:inline-flex;align-items:center;gap:20px;padding:22px 46px;border-radius:999px;background:linear-gradient(135deg,#1b1b1f,#34302a);border:2px solid #F3B406;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.cta svg{width:44px;height:44px;color:#F3B406}
+.cta span{font-size:46px;font-weight:900;color:#fff}
+.mini{width:120px;height:150px;border-radius:22px;background:#0c0c10;border:3px solid #2a2a30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;box-shadow:0 14px 30px rgba(0,0,0,.5);transform:rotate(-6deg)}
+.mini img{width:72px}
+.mini svg{width:34px;height:34px;color:#F3B406}
+</style></head><body>
+<div class="ad">
+  <div class="warm"></div>
+  <div class="surface"></div>
+  <div class="ring"></div><div class="podium"></div>
+  <img class="phone" src="iphone.png">
+  <div class="vig"></div>
+  <img class="logo" src="logo.png">
+  <div class="wrap">
+    <div class="name"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 1c0 1.5-1.2 3-2.7 2.9C13.1 2.4 14.4 1 16 1zm3.3 16.7c-.5 1.2-1.1 2.3-2 3.3-.8.8-1.3 1-2.2 1-.9 0-1.2-.6-2.5-.6s-1.6.6-2.5.6-1.5-.4-2.3-1.2C4.3 18.7 3 15.3 3 12.1c0-2.9 1.9-4.5 3.8-4.5 1 0 1.9.7 2.5.7.6 0 1.6-.8 2.8-.7.5 0 1.9.2 2.8 1.5-2.4 1.5-2 4.9.4 5.6z"/></svg><span>iPhone 16 Pro Max</span></div>
+    <div class="specs">
+      <div class="spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg><span>256GB</span></div>
+      <div class="spec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></svg><span>A18 Pro</span></div>
+    </div>
+    <div class="price"><div class="lbl">السعر داخل<br>التطبيق</div><div class="val"><span class="c">IQD</span><span class="n">1,700,000</span></div></div>
+    <div class="cta-row">
+      <div class="cta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h2l2 10h9l2-7H7"/><circle cx="9" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/></svg><span>اطلب الآن داخل التطبيق</span></div>
+      <div class="mini"><img src="logo.png"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h2l2 10h9l2-7H7"/><circle cx="9" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/></svg></div>
+    </div>
+  </div>
+</div>
+</body></html>

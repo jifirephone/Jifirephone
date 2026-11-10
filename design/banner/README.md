@@ -21,3 +21,8 @@ Code jifirecode verified active (25,000, min 200,000). Free delivery is site-wid
 Owner (2026-11-10): review any product bought in the app → 5,000 IQD gift code by email; prominent; small note at the side.
 Matches the store's real Quoli review-reward codes (QUO-*, 5,000 IQD each, active). Prominent solid-gold reward badge
 «هدية فورية · 5,000 د.ع · كود خصم على بريدك» + 3 numbered steps + small note «يوصلك طلب التقييم على بريدك… النظام يعطيك كود 5,000».
+
+## product post (iPhone 16 Pro Max) — `prod.html` → `out/post_iphone16promax.png` (1536×1024)
+Owner (2026-11-10): same نسق as a reference ad, details from it: iPhone 16 Pro Max, 256GB, A18 Pro, 1,700,000 IQD (owner's price).
+Dark studio bg + lit podium with gold rim glow, gold iPhone on it; logo top-left; white name pill with Apple mark;
+spec chips 256GB (right) / A18 Pro (left); price pill «السعر داخل التطبيق» + «1,700,000 IQD»; CTA «اطلب الآن داخل التطبيق» + app mini-phone.
