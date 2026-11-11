@@ -1,0 +1,13 @@
+[
+{"t":0.05,"type":"bloom","gain":0.68},
+{"t":1.75,"type":"riser","gain":0.72},
+{"t":5.70,"type":"swish","gain":0.72},
+{"t":7.95,"type":"tick","gain":0.70},
+{"t":8.60,"type":"shimmer","gain":0.72},
+{"t":12.20,"type":"bloom","gain":0.72},
+{"t":13.90,"type":"pad_swell","gain":0.72},
+{"t":14.45,"type":"chime","gain":0.62},
+{"t":18.10,"type":"bloom","gain":0.72},
+{"t":21.40,"type":"chime_low","gain":0.72},
+{"t":25.65,"type":"pad_swell","gain":0.62}
+]

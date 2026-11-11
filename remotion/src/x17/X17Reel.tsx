@@ -15,9 +15,9 @@ const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 
 const fr = (s: number) => Math.round(s * FPS);
 
 // scene starts (video seconds); provisional until the VO lands, then cuts move into the VO's real pauses
-const CUTS = [0, 2.55, 5.47, 8.53, 11.74, 13.8, 18.2, 22.3, 26.1];
-const END_FROM = fr(26.1);
-export const X17_FRAMES = fr(29.4);
+const CUTS = [0, 2.95, 6.35, 8.65, 12.25, 14.25, 18.15, 21.45, 25.7];
+const END_FROM = fr(25.7);
+export const X17_FRAMES = fr(29.0);
 const TAIL = 12;
 
 // each scene: a slice of a graded clip + a slow push; src seconds, not scene-local

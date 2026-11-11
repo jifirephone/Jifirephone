@@ -35,3 +35,11 @@ Cut sentences only inside real silences (silencedetect −45 dB), no de-esser, k
 | بس انتبه، المبلّغ عنه فقدان ما نشتغله | p2/p3 dim | full caution card |
 | جهازك مالك ونسيت الرمز؟ تعال لجي فاير | p3 boot→home | صار شغّال! |
 | جي فاير للموبايل، النجف، ميلاد، شارع الحولي | p4 home | address card → end card |
+
+## Delivered take (2026-11-11)
+Owner's ElevenLabs file held the script twice; **take 2** used (hook «جهازك قافل آيكلود، وبعده ما فرمت؟»
+matches the on-screen text; take 1 opened with a different line). Final-audio Whisper check: all words present,
+Iraqi 100%, «7» and «11» correct, caution line intact, no فصحى. Reel re-timed to this take
+(CUTS updated), SFX remapped (`work/x17voN/sfx_cues_v2.json`), mix −14.9 LUFS.
+Final: `out/preview_x17_unlock_7to11_vo.mp4` (29.0 s). VO said «نتجاوز قفل الآيكلاود» (= bypass) in place
+of «نخطيلك»; same meaning, honest.
