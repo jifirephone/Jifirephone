@@ -25,7 +25,7 @@ type Src = {clip: string; in: number; scale?: number; speed?: number};
 const SRC: Src[] = [
   {clip: 'p1', in: 2.5},            // S1 hook — locked «iPhone غير متوفر»
   {clip: 'p1', in: 5.0},            // S2 «لا تفرمت!»
-  {clip: 'p1', in: 7.6},            // S3 من X لل 17
+  {clip: 'p1', in: 7.6},            // S3 من 7 لل 11 (VO device line muted; screen says 7→11)
   {clip: 'p2', in: 2.0, speed: 1.3},// S4 flashing on the box
   {clip: 'p2', in: 6.6, speed: 1.2},// S5 بسرعة
   {clip: 'p2', in: 8.8},            // S6 disclaimer (dimmed behind the card)
@@ -167,7 +167,7 @@ const Overlay: React.FC<{f: number}> = ({f}) => {
   const e: React.ReactNode[] = [];
   if (inS(span(0))) e.push(<Head key="s1" f={loc(f, 0)} at={2} text="جهازك قافل آيكلود بعده ما فرمت؟" gold={['آيكلود']} anim="scale" size={72} />);
   if (inS(span(1))) e.push(<Head key="s2" f={loc(f, 1)} at={2} text="لا تفرمته قبل لا تشوف هذا الفيديو!" gold={['تفرمته']} anim="scale" size={68} red />);
-  if (inS(span(2))) e.push(<Head key="s3" f={loc(f, 2)} at={3} text="من iPhone X لـ 17 Pro Max" gold={['X', '17', 'Pro', 'Max']} anim="rise" size={78} />);
+  if (inS(span(2))) e.push(<Head key="s3" f={loc(f, 2)} at={3} text="من iPhone 7 لـ 11 Pro Max" gold={['7', '11', 'Pro', 'Max']} anim="rise" size={78} />);
   if (inS(span(3))) {
     e.push(<Head key="s4" f={loc(f, 3)} at={3} text="نفتح القفل" gold={['نفتح']} anim="blur" size={92} y={300} />);
     e.push(<Pill key="s4p" f={loc(f, 3)} at={fr(1.3)} y={430} icon={<Signal />}>والخط يشتغل عادي</Pill>);
