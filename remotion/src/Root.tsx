@@ -13,6 +13,7 @@ import {Explainer, EXPLAINER_FRAMES} from './explainer/Explainer';
 import {HowTo, HOWTO_FRAMES} from './howto/HowTo';
 import {X17Reel, X17_FRAMES} from './x17/X17Reel';
 import {Disc25, DISC25_FRAMES} from './disc25/Disc25';
+import {Disc25b, DISC25B_FRAMES} from './disc25/Disc25b';
 import {loadBrandFonts} from './fonts';
 
 loadBrandFonts();
@@ -39,6 +40,7 @@ export const RemotionRoot: React.FC = () => (
       durationInFrames={CONV2_FRAMES} />
     <Composition id="X17Reel" component={X17Reel} width={1080} height={1920} fps={30} durationInFrames={X17_FRAMES} />
     <Composition id="Disc25" component={Disc25} width={1080} height={1920} fps={30} durationInFrames={DISC25_FRAMES} />
+    <Composition id="Disc25b" component={Disc25b} width={1080} height={1920} fps={30} durationInFrames={DISC25B_FRAMES} />
     <Composition id="HowTo" component={HowTo} width={1080} height={1920} fps={30} durationInFrames={HOWTO_FRAMES} />
     <Composition id="Explainer" component={Explainer} width={1080} height={1920} fps={30} durationInFrames={EXPLAINER_FRAMES} />
     <Composition id="ExplainerStyle" component={ExplainerStyle} width={1080} height={1920} fps={30} durationInFrames={60} />
