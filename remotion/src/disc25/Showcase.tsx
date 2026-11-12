@@ -23,12 +23,13 @@ const BRANDS: Brand[] = [
   {en: 'Infinix', ar: 'إنفنكس', tint: '#ECFBEF', devs: [{img: 'in60.png', name: 'Note 60 Pro'}, {img: 'gt50.jpg', name: 'GT 50 Pro'}]},
   {en: 'Tablets', ar: 'تابات', tint: '#F3EEFB', devs: [{img: 'x8b.png', name: 'Pad X8B'}, {img: 'bv60.jpg', name: 'Blackview Tab 60'}]},
 ];
-const B = 2.0;
-const DUR = [2.6, ...BRANDS.map(() => B), 2.6, 3.2, 5.2, 3.4];
-const STARTS: number[] = [];
-DUR.reduce((a, d, i) => { STARTS[i] = a; return a + d; }, 0);
+// Cuts follow the owner's voice (Arafat Almnshid take 2, starts at 0.15 s): hook, 7 brands, used, app, discount, offers, end card.
+const STARTS = [0, 2.2, 2.78, 3.66, 4.28, 4.98, 5.64, 6.73, 7.22, 9.41, 12.15, 18.9, 23.9];
+const DUR = STARTS.map((t, i) => (STARTS[i + 1] ?? 27.3) - t);
 export const SHOW_STARTS = STARTS;
-export const SHOW_FRAMES = S(DUR.reduce((a, b) => a + b, 0));
+export const SHOW_FRAMES = S(27.3);
+// spoken letters of «jifirecode», seconds from the start of the discount scene
+const LET = [3.18, 3.64, 3.98, 4.34, 4.6, 4.74, 5.18, 5.62, 5.92, 6.14];
 
 const Chip: React.FC = () => (
   <div style={{position: 'absolute', top: 230, right: 64, width: 220, height: 132, borderRadius: 26, background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 10px 24px rgba(0,0,0,0.25)'}}>
@@ -38,7 +39,7 @@ const Chip: React.FC = () => (
 
 const Card: React.FC<{d: Dev; w: number; lf: number; i: number; dir: number}> = ({d, w, lf, i, dir}) => {
   const {fps} = useVideoConfig();
-  const a = spring({frame: lf - 4 - i * 4, fps, config: {damping: 14, stiffness: 130}});
+  const a = spring({frame: lf - 1 - i * 2, fps, config: {damping: 15, stiffness: 200}});
   const off = (1 - a) * 260;
   const tr = dir === 0 ? `translateY(${off}px)` : dir === 1 ? `translateX(${off}px)` : dir === 2 ? `translateX(${-off}px)` : `scale(${0.6 + 0.4 * a})`;
   const fl = Math.sin(lf / 14 + i * 1.7) * 7;
@@ -55,7 +56,7 @@ const Card: React.FC<{d: Dev; w: number; lf: number; i: number; dir: number}> = 
 
 const BrandScene: React.FC<{b: Brand; lf: number; n: number}> = ({b, lf, n}) => {
   const {fps} = useVideoConfig();
-  const t = spring({frame: lf, fps, config: {damping: 15, stiffness: 140}});
+  const t = spring({frame: lf, fps, config: {damping: 16, stiffness: 220}});
   const w = b.devs.length === 3 ? 312 : 440;
   const zoom = 1 + lf * 0.0009;
   return (
@@ -120,7 +121,7 @@ const AppScene: React.FC<{lf: number}> = ({lf}) => {
   const t = spring({frame: lf, fps, config: {damping: 15}});
   const p = spring({frame: lf - 6, fps, config: {damping: 15, stiffness: 100}});
   const all = BRANDS.flatMap((b) => b.devs).slice(0, 12);
-  const scroll = interpolate(lf, [14, S(3.2)], [0, -560], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const scroll = interpolate(lf, [10, S(2.7)], [0, -560], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill style={{background: `radial-gradient(90% 60% at 50% 30%, #fff, ${CREAM})`, alignItems: 'center'}}>
       <div style={{marginTop: 400, fontFamily: F, fontWeight: 900, fontSize: 84, color: INK, direction: 'rtl', opacity: t}}>كلها بـ<span style={{color: GOLDD}}>تطبيق جي فاير</span></div>
@@ -163,10 +164,40 @@ const Offers: React.FC<{lf: number}> = ({lf}) => {
   return (
     <AbsoluteFill style={{background: `radial-gradient(90% 60% at 50% 30%, #fff, ${CREAM})`}}>
       <div style={{position: 'absolute', top: 400, left: 64, right: 64}}>
-        <div style={{textAlign: 'center', fontFamily: F, fontWeight: 900, fontSize: 96, color: INK, direction: 'rtl', opacity: t, transform: `scale(${0.85 + 0.15 * t})`}}>و<span style={{color: GOLDD}}>فوكاها</span></div>
-        <Row lf={lf} at={10} big={<>خصم {ltr('25,000')} د.ع</>} sub={<>كود {ltr('jifirecode')} · أقل فاتورة {ltr('200,000')}</>} icon={ic(<><path d="M20 12v8H4v-8M2 7h20v5H2zM12 22V7M12 7S10 2 7.5 3.5 9 7 12 7zM12 7s2-5 4.5-3.5S15 7 12 7z" /></>)} />
-        <Row lf={lf} at={34} big="توصيل مجاني" sub="لكل محافظات العراق" icon={ic(<><path d="M1 4h13v11H1zM14 8h4l3 3v4h-7z" /><circle cx="5.5" cy="17.5" r="1.8" /><circle cx="17.5" cy="17.5" r="1.8" /></>)} />
-        <Row lf={lf} at={58} big="ضمان شهر" sub="مع وصل ضمان" icon={ic(<><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z" /><path d="M8.5 12l2.5 2.5 4.5-5" /></>)} />
+        <div style={{height: 60, opacity: t}} />
+        <Row lf={lf} at={-30} big={<>خصم {ltr('25,000')} د.ع</>} sub={<>كود {ltr('jifirecode')} · أقل فاتورة {ltr('200,000')}</>} icon={ic(<><path d="M20 12v8H4v-8M2 7h20v5H2zM12 22V7M12 7S10 2 7.5 3.5 9 7 12 7zM12 7s2-5 4.5-3.5S15 7 12 7z" /></>)} />
+        <Row lf={lf} at={2} big="توصيل مجاني" sub="لكل محافظات العراق" icon={ic(<><path d="M1 4h13v11H1zM14 8h4l3 3v4h-7z" /><circle cx="5.5" cy="17.5" r="1.8" /><circle cx="17.5" cy="17.5" r="1.8" /></>)} />
+        <Row lf={lf} at={66} big="ضمان شهر" sub="مع وصل ضمان" icon={ic(<><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z" /><path d="M8.5 12l2.5 2.5 4.5-5" /></>)} />
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const Discount: React.FC<{lf: number}> = ({lf}) => {
+  const {fps} = useVideoConfig();
+  const a = spring({frame: lf, fps, config: {damping: 14, stiffness: 150}});
+  const b = spring({frame: lf - 12, fps, config: {damping: 12, stiffness: 140}});
+  const box = spring({frame: lf - S(2.6), fps, config: {damping: 14, stiffness: 140}});
+  const min = spring({frame: lf - S(6.4), fps, config: {damping: 15}});
+  return (
+    <AbsoluteFill style={{background: `radial-gradient(90% 60% at 50% 30%, #fff, ${CREAM})`}}>
+      <div style={{position: 'absolute', top: 420, left: 64, right: 64, textAlign: 'center', fontFamily: F, fontWeight: 900, direction: 'rtl'}}>
+        <div style={{fontSize: 70, color: '#5b5140', opacity: a}}>وفوكاها</div>
+        <div style={{display: 'inline-block', marginTop: 10, padding: '14px 46px', borderRadius: 36, background: `linear-gradient(135deg,#FFE79A,${GOLD} 55%,${GOLDD})`,
+          boxShadow: '0 24px 50px rgba(201,143,0,0.35)', opacity: b, transform: `scale(${0.7 + 0.3 * b})`}}>
+          <span style={{fontSize: 70, color: '#2a1f05'}}>خصم </span><span style={{fontSize: 140, color: '#1b1405'}}>{ltr('25,000')}</span><span style={{fontSize: 70, color: '#2a1f05'}}> د.ع</span>
+        </div>
+      </div>
+      <div style={{position: 'absolute', top: 870, left: 64, right: 64, textAlign: 'center', opacity: box, transform: `translateY(${(1 - box) * 80}px)`}}>
+        <div style={{fontFamily: F, fontWeight: 900, fontSize: 52, color: INK, direction: 'rtl'}}>بالكود</div>
+        <div style={{marginTop: 16, padding: '34px 20px', borderRadius: 34, background: '#fff', border: `4px dashed ${GOLDD}`, boxShadow: '0 24px 50px rgba(60,45,10,0.14)', direction: 'ltr', whiteSpace: 'nowrap'}}>
+          {'jifirecode'.split('').map((ch, i) => {
+            const on = spring({frame: lf - S(LET[i]), fps, config: {damping: 10, stiffness: 220}});
+            return <span key={i} style={{display: 'inline-block', fontFamily: F, fontWeight: 900, fontSize: 132, lineHeight: 1, color: on > 0.05 ? INK : '#d4ccb8',
+              transform: `translateY(${-24 * Math.sin(Math.min(1, on) * Math.PI)}px)`, textShadow: on > 0.05 ? `0 0 ${18 * (1 - Math.min(1, on))}px ${GOLD}` : 'none'}}>{ch}</span>;
+          })}
+        </div>
+        <div style={{marginTop: 26, fontFamily: F, fontWeight: 800, fontSize: 42, color: '#5b5140', direction: 'rtl', opacity: min}}>للطلبات من {ltr('200,000')} د.ع وفوك</div>
       </div>
     </AbsoluteFill>
   );
@@ -179,7 +210,7 @@ export const Showcase: React.FC = () => {
   const lf = f - S(STARTS[idx]);
   const nb = BRANDS.length;
   if (idx === DUR.length - 1) return <AbsoluteFill style={{background: '#000'}}><EndCard /></AbsoluteFill>;
-  const body = idx === 0 ? <Hook lf={lf} /> : idx <= nb ? <BrandScene b={BRANDS[idx - 1]} lf={lf} n={idx - 1} /> : idx === nb + 1 ? <Used lf={lf} /> : idx === nb + 2 ? <AppScene lf={lf} /> : <Offers lf={lf} />;
+  const body = idx === 0 ? <Hook lf={lf} /> : idx <= nb ? <BrandScene b={BRANDS[idx - 1]} lf={lf} n={idx - 1} /> : idx === nb + 1 ? <Used lf={lf} /> : idx === nb + 2 ? <AppScene lf={lf} /> : idx === nb + 3 ? <Discount lf={lf} /> : <Offers lf={lf} />;
   // quick white flash between scenes (soft, 5 frames)
   const flash = interpolate(lf, [0, 5], [0.85, 0], {extrapolateRight: 'clamp'});
   return (
