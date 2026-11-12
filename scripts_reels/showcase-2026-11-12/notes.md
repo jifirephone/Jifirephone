@@ -23,3 +23,16 @@ Final-audio Whisper: all 47 words present. Mix −14.0 LUFS. Final: `out/preview
 - First brands were too fast: music-only pauses inserted at the real dips after آيفون (+0.8 s), سامسونج (+0.6), ريلمي (+0.3), شاومي (+0.3).
   iPhone now holds 1.5 s, Samsung 1.4 s. Cuts re-mapped (STARTS), SFX `sfx_cues_vo2.json`, 28.5 s, −13.9 LUFS.
 - Final-audio Whisper: every remaining word present. Final: `out/preview_showcase_brands_vo2.mp4`.
+
+## Reference-style version (2026-11-13)
+Owner sent a reference reel (85 s, creator talking-head + motion panels) and asked to take its transitions, text and sounds.
+Technique only, nothing copied (no footage, text, music or logo):
+- dark teal blurred backdrop with drifting soft «+» shapes; frosted glass panel with window dots;
+- word-by-word captions, active word in a filled box (brand **gold** instead of the reference's lime);
+- stacked kinetic words (كل / الماركات / بمكان واحد; توصيل مجاني / لكل العراق / ضمان سنة للجديد / وشهر للمستعمل);
+- typed pill «Ji Fire for Mobile» + badge; ring counter 0 → 25,000 on «خصم خمسة وعشرين ألف»; the code typed into an input field letter by letter as it is spelled;
+- app card with a «حمّل» button that gets pressed (→ «تم ✓»), like the reference's follow card;
+- zoom-blur transitions (8 frames) with a light sweep on section changes;
+- sound: short airy whoosh on every cut (3 alternating types), ticks for the counter and each typed letter, chime on completion, pops on stacked words.
+Same voice/timing as Showcase vo2. `remotion/src/disc25/ShowcaseRef.tsx`, captions `refCaps.json`, SFX `sfx_cues_refstyle.json`.
+Final: `out/preview_showcase_refstyle.mp4` (28.5 s, −13.9 LUFS). The reference video itself is not committed.
