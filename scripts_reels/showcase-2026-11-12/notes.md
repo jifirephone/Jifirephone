@@ -15,3 +15,11 @@ Scenes cut on the words (STARTS in Showcase.tsx): one brand per spoken name (~0.
 New discount scene: «وفوكاها / خصم 25,000 د.ع / بالكود» with each letter of «jifirecode» lighting up as it is spelled out.
 Offer rows land on «وتوصيل مجاني» and «وضمان شهر». «جي فاير للموبايل» is said over the end card.
 Final-audio Whisper: all 47 words present. Mix −14.0 LUFS. Final: `out/preview_showcase_brands_vo.mp4` (27.3 s).
+
+## v2 (2026-11-12) — owner feedback
+- Warranty (owner): **1 year for new devices, 1 month for used**, with a warranty receipt. Row now «ضمان سنة للجديد / وشهر للمستعمل · مع وصل ضمان».
+  The VO said «وضمان شهر» for everything, so «شهر» was cut (at the «ش» onset, 46.875 s raw); the line now reads «وضمان، وصل ضمان».
+- The «laugh»: the AI voice rendered «ويه» (before «وصل ضمان») as a laugh-like «وإيه»; removed (47.50–48.08 raw, between real silences).
+- First brands were too fast: music-only pauses inserted at the real dips after آيفون (+0.8 s), سامسونج (+0.6), ريلمي (+0.3), شاومي (+0.3).
+  iPhone now holds 1.5 s, Samsung 1.4 s. Cuts re-mapped (STARTS), SFX `sfx_cues_vo2.json`, 28.5 s, −13.9 LUFS.
+- Final-audio Whisper: every remaining word present. Final: `out/preview_showcase_brands_vo2.mp4`.

@@ -1,6 +1,6 @@
 // Ji Fire — brand & device showcase (light style), 2026-11-12.
 // Real catalog images (in-stock products read from the store). No prices shown.
-// Offers: jifirecode 25,000 IQD (min 200,000, verified), free delivery (on site), 1-month warranty + receipt (owner-stated).
+// Offers: jifirecode 25,000 IQD (min 200,000, verified), free delivery (on site), warranty 1 year new / 1 month used + receipt (owner, 2026-11-12).
 import React from 'react';
 import {AbsoluteFill, Img, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {color} from '../brand';
@@ -23,11 +23,11 @@ const BRANDS: Brand[] = [
   {en: 'Infinix', ar: 'إنفنكس', tint: '#ECFBEF', devs: [{img: 'in60.png', name: 'Note 60 Pro'}, {img: 'gt50.jpg', name: 'GT 50 Pro'}]},
   {en: 'Tablets', ar: 'تابات', tint: '#F3EEFB', devs: [{img: 'x8b.png', name: 'Pad X8B'}, {img: 'bv60.jpg', name: 'Blackview Tab 60'}]},
 ];
-// Cuts follow the owner's voice (Arafat Almnshid take 2, starts at 0.15 s): hook, 7 brands, used, app, discount, offers, end card.
-const STARTS = [0, 2.2, 2.78, 3.66, 4.28, 4.98, 5.64, 6.73, 7.22, 9.41, 12.15, 18.9, 23.9];
-const DUR = STARTS.map((t, i) => (STARTS[i + 1] ?? 27.3) - t);
+// Cuts follow the owner's voice (Arafat Almnshid take 2, starts at 0.15 s; music-only gaps after the first brand names so they read slower): hook, 7 brands, used, app, discount, offers, end card.
+const STARTS = [0, 2.2, 3.72, 5.15, 6.09, 7.14, 7.55, 8.73, 9.22, 11.41, 14.15, 20.9, 25.03];
+const DUR = STARTS.map((t, i) => (STARTS[i + 1] ?? 28.5) - t);
 export const SHOW_STARTS = STARTS;
-export const SHOW_FRAMES = S(27.3);
+export const SHOW_FRAMES = S(28.5);
 // spoken letters of «jifirecode», seconds from the start of the discount scene
 const LET = [3.18, 3.64, 3.98, 4.34, 4.6, 4.74, 5.18, 5.62, 5.92, 6.14];
 
@@ -167,7 +167,7 @@ const Offers: React.FC<{lf: number}> = ({lf}) => {
         <div style={{height: 60, opacity: t}} />
         <Row lf={lf} at={-30} big={<>خصم {ltr('25,000')} د.ع</>} sub={<>كود {ltr('jifirecode')} · أقل فاتورة {ltr('200,000')}</>} icon={ic(<><path d="M20 12v8H4v-8M2 7h20v5H2zM12 22V7M12 7S10 2 7.5 3.5 9 7 12 7zM12 7s2-5 4.5-3.5S15 7 12 7z" /></>)} />
         <Row lf={lf} at={2} big="توصيل مجاني" sub="لكل محافظات العراق" icon={ic(<><path d="M1 4h13v11H1zM14 8h4l3 3v4h-7z" /><circle cx="5.5" cy="17.5" r="1.8" /><circle cx="17.5" cy="17.5" r="1.8" /></>)} />
-        <Row lf={lf} at={66} big="ضمان شهر" sub="مع وصل ضمان" icon={ic(<><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z" /><path d="M8.5 12l2.5 2.5 4.5-5" /></>)} />
+        <Row lf={lf} at={66} big="ضمان سنة للجديد" sub="وشهر للمستعمل · مع وصل ضمان" icon={ic(<><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z" /><path d="M8.5 12l2.5 2.5 4.5-5" /></>)} />
       </div>
     </AbsoluteFill>
   );
