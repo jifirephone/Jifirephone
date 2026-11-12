@@ -9,7 +9,8 @@ import {Person} from './Toon';
 
 const FPS = 30;
 const S = (s: number) => Math.round(s * FPS);
-const DUR = [2.4, 3.2, 3.0, 1.8, 2.6, 3.8, 2.8, 3.4, 3.8, 2.2, 2.8, 3.4];
+// timed to the owner's ElevenLabs take (voice = master clock); 2.4 s music-only pause for the order scene
+const DUR = [1.15, 2.5, 4.7, 1.6, 1.6, 5.15, 3.35, 2.4, 2.1, 1.65, 4.7, 3.4];
 const STARTS: number[] = [];
 DUR.reduce((a, d, i) => { STARTS[i] = a; return a + d; }, 0);
 const TOTAL = DUR.reduce((a, b) => a + b, 0);
@@ -171,7 +172,7 @@ const CrowdShop: React.FC<{lf: number}> = ({lf}) => (
       </At>
     ))}
     <At x={360} y={980}><Person mood="worried" blink={blinkAt(lf, 2)} /></At>
-    <Caption lf={lf} red>تدز وتنطر دورك</Caption>
+    <Caption lf={lf} red>تفتر وتنطر دورك</Caption>
   </AbsoluteFill>
 );
 
@@ -218,9 +219,9 @@ const AppProduct: React.FC<{lf: number}> = ({lf}) => {
   const pin = spring({frame: lf, fps, config: {damping: 15, stiffness: 95}});
   const img = spring({frame: lf - 8, fps, config: {damping: 14}});
   const info = spring({frame: lf - 18, fps, config: {damping: 15}});
-  const tapT = (lf - 62) / 14;
+  const tapT = (lf - 104) / 14;
   const tap = tapT > 0 && tapT < 1 ? Math.sin(tapT * Math.PI) : 0;
-  const ring = Math.min(1, Math.max(0, (lf - 66) / 18));
+  const ring = Math.min(1, Math.max(0, (lf - 108) / 18));
   return (
     <AbsoluteFill style={{background: 'radial-gradient(120% 90% at 50% 25%,#2a2113,#120d07 60%,#060402)', alignItems: 'center'}}>
       <div style={{marginTop: 236, fontFamily: F, fontWeight: 900, fontSize: 68, color: W, direction: 'rtl', opacity: pin}}>بكبسة زر داخل <span style={{color: GOLD}}>التطبيق</span></div>
@@ -242,7 +243,7 @@ const AppProduct: React.FC<{lf: number}> = ({lf}) => {
         <div style={{position: 'absolute', left: 16, right: 16, bottom: 26, height: 62, borderRadius: 16, transform: `scale(${1 - 0.06 * tap})`,
           background: `linear-gradient(135deg,#FFD966,${GOLD})`, display: 'flex', alignItems: 'center', justifyContent: 'center',
           fontFamily: F, fontWeight: 900, fontSize: 24, color: '#2a1f05', boxShadow: `0 0 ${10 + tap * 30}px rgba(243,180,6,0.9)`}}>اشترِ الآن</div>
-        {lf > 56 ? <div style={{position: 'absolute', left: 150, bottom: 28, width: 58, height: 58, borderRadius: '50%', border: '4px solid #fff', background: 'rgba(255,255,255,0.35)', opacity: 1 - ring, transform: `scale(${0.6 + ring * 1.4})`}} /> : null}
+        {lf > 100 ? <div style={{position: 'absolute', left: 150, bottom: 28, width: 58, height: 58, borderRadius: '50%', border: '4px solid #fff', background: 'rgba(255,255,255,0.35)', opacity: 1 - ring, transform: `scale(${0.6 + ring * 1.4})`}} /> : null}
       </BigPhone>
       <Caption lf={lf} top={1336}>اختار اللي يعجبك واكبس</Caption>
     </AbsoluteFill>
@@ -264,7 +265,8 @@ const StepRow: React.FC<{lf: number; at: number; label: string; value: string}> 
 };
 
 // completing the order
-const OrderDone: React.FC<{lf: number}> = ({lf}) => {
+const OrderDone: React.FC<{lf: number}> = ({lf: raw}) => {
+  const lf = raw * 1.3;
   const {fps} = useVideoConfig();
   const pin = spring({frame: lf, fps, config: {damping: 16}});
   const done = spring({frame: lf - 62, fps, config: {damping: 11, stiffness: 130}});
@@ -324,10 +326,10 @@ const CodeStep: React.FC<{lf: number}> = ({lf}) => {
 
 const Deliver: React.FC<{lf: number}> = ({lf}) => {
   const {fps} = useVideoConfig();
-  const t = ease(Math.min(1, lf / 62));
+  const t = ease(Math.min(1, lf / 44));
   const x = 1120 - t * 790;
-  const moving = lf < 62;
-  const box = spring({frame: lf - 70, fps, config: {damping: 11, stiffness: 140}});
+  const moving = lf < 44;
+  const box = spring({frame: lf - 46, fps, config: {damping: 11, stiffness: 140}});
   return (
     <AbsoluteFill>
       <AbsoluteFill style={{background: 'linear-gradient(180deg,#7cc8ff,#d8f1ff 62%)'}} />
@@ -338,7 +340,7 @@ const Deliver: React.FC<{lf: number}> = ({lf}) => {
       <div style={{position: 'absolute', left: 6, top: 1062, transform: 'scale(1.2)', transformOrigin: 'top left'}}><House open={box} /></div>
       <div style={{position: 'absolute', left: x, top: 1075, transform: 'scale(1.15)', transformOrigin: 'top left'}}><Van roll={-(1120 - x) * 0.9} moving={moving} lf={lf} /></div>
       <div style={{position: 'absolute', left: 236, top: 1284, transform: `scale(${box})`, transformOrigin: 'bottom center'}}><Box w={130} /></div>
-      <Caption lf={lf} top={400}>ويوصلك لباب البيت</Caption>
+      <Caption lf={lf} top={400}>ويوصلك لباب بيتك</Caption>
     </AbsoluteFill>
   );
 };
@@ -383,7 +385,7 @@ export const VsReel: React.FC = () => {
   for (let i = 0; i < DUR.length; i++) { if (sec >= STARTS[i]) idx = i; }
   const isEnd = idx === DUR.length - 1;
   const lf = f - S(STARTS[idx]);
-  const enterP = Math.min(1, lf / S(0.4));
+  const enterP = Math.min(1, lf / S(0.2));
   const fade = ease(enterP);
 
   return (

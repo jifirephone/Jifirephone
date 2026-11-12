@@ -33,3 +33,10 @@ When the take arrives: re-time scenes to it, lay music/SFX under (final −14 LU
 - New «إتمام الطلب» scene: order summary, 3 checked steps (السلة / عنوان التوصيل / التوصيل مجاني), «تم الطلب بنجاح».
 - Scooter replaced by a full Ji Fire delivery van (black box, gold cabin, logo, «توصيل مجاني لباب البيت», spinning wheels), daytime street, box at the door.
 - 12 scenes, 34.9 s, SFX `work/vsreel/cues3.json`, −14 LUFS. Final preview `out/preview_vs_cartoon_v2.mp4`.
+
+## VO laid (2026-11-12)
+Owner sent two ElevenLabs takes of his own edited script («تروح للمحلات، تفتر، وتنطر دورك، ويمكن ما تحصل تريده… تفتح تطبيق جي فاير للموبايل…»).
+Near-identical; take 1 (906f40d5) used (cleaner «وانتظار»). Voice runs whole; one 2.4 s music-only pause inserted in the real silence
+at 20.08 s for the order scene. Scenes re-timed to the voice (DUR in VsReel.tsx), captions matched to the spoken words
+(«تفتر وتنطر دورك», «لباب بيتك»). Final-audio Whisper: 55/55 words, no فصحى. Mix −14.1 LUFS.
+Final: `out/preview_vs_cartoon_vo.mp4` (34.3 s). SFX `work/vsvo/cues.json`.
