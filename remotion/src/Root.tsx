@@ -17,6 +17,7 @@ import {Disc25b, DISC25B_FRAMES} from './disc25/Disc25b';
 import {VsReel, VS_FRAMES} from './explainer/VsReel';
 import {Showcase, SHOW_FRAMES} from './disc25/Showcase';
 import {ShowcaseRef, REF_FRAMES} from './disc25/ShowcaseRef';
+import {TypeReel, TYPE_FRAMES} from './disc25/TypeReel';
 import {loadBrandFonts} from './fonts';
 
 loadBrandFonts();
@@ -47,6 +48,7 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="VsReel" component={VsReel} width={1080} height={1920} fps={30} durationInFrames={VS_FRAMES} />
     <Composition id="Showcase" component={Showcase} width={1080} height={1920} fps={30} durationInFrames={SHOW_FRAMES} />
     <Composition id="ShowcaseRef" component={ShowcaseRef} width={1080} height={1920} fps={30} durationInFrames={REF_FRAMES} />
+    <Composition id="TypeReel" component={TypeReel} width={1080} height={1920} fps={30} durationInFrames={TYPE_FRAMES} />
     <Composition id="HowTo" component={HowTo} width={1080} height={1920} fps={30} durationInFrames={HOWTO_FRAMES} />
     <Composition id="Explainer" component={Explainer} width={1080} height={1920} fps={30} durationInFrames={EXPLAINER_FRAMES} />
     <Composition id="ExplainerStyle" component={ExplainerStyle} width={1080} height={1920} fps={30} durationInFrames={60} />
