@@ -26,3 +26,10 @@ Preview (music only, VO optional): `out/preview_vs_cartoon.mp4`.
 جي فاير للموبايل، تسوق بكل راحة من الموقع او التطبيق.
 ```
 When the take arrives: re-time scenes to it, lay music/SFX under (final −14 LUFS), Whisper-verify.
+
+## v2 (2026-11-12) — owner feedback
+- In-app display rebuilt as a clean app screen (not a screenshot): real HONOR X9e Pro image, «يبدأ من 639,000 د.ع» (store reading),
+  chips, free-delivery strip, glowing «اشترِ الآن» with tap ripple; phone 30% larger.
+- New «إتمام الطلب» scene: order summary, 3 checked steps (السلة / عنوان التوصيل / التوصيل مجاني), «تم الطلب بنجاح».
+- Scooter replaced by a full Ji Fire delivery van (black box, gold cabin, logo, «توصيل مجاني لباب البيت», spinning wheels), daytime street, box at the door.
+- 12 scenes, 34.9 s, SFX `work/vsreel/cues3.json`, −14 LUFS. Final preview `out/preview_vs_cartoon_v2.mp4`.
