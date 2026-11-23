@@ -30,3 +30,28 @@ When the take arrives: cut it into the six lines inside real silences, place eac
 update `vo[].t/end` in `remotion/src/commercial/config.json` to the real word times, re-render, then mix:
 voice + music ducked (sidechain) + SFX → −14 LUFS for `jifire_commercial_final.mp4`, and voice + SFX (no music) for the no-music version.
 Check on arrival: «تدور» not «تبحث», «تلكه», «إلك», «هسه» stay Iraqi; «جي فاير» clear; nothing rendered as a laugh.
+
+
+---
+## v2 — continuous read, no cutting (2026-11-24)
+ElevenLabs ignores `<break>` tags, so v1 had to be split. v2 is written to be read **in one go**: each scene's text is sized to the
+scene's length at this voice's measured pace (70 words / 33.6 s ≈ 2.08 words/s), so the lines land on their scenes by themselves.
+Generate with **Speed 0.95** (simulated: every line starts within ±0.3 s of its scene). The device names in line 2 follow the
+carousel order (one per second). 105 words, voicecheck PASS 100, Iraqi 100 %.
+```
+تدور على موبايل جديد؟ وتريد تتسوق وانت مرتاح؟
+بجي فاير، تلكه ايفون ثمنطعش برو ماكس، وسبعطعش برو ماكس، وسامسونج، وريدمي، وبوكو، وريلمي، وتكنو، وانفنكس، وكل الماركات، جديد ومستعمل.
+وحتى الأجهزة المستعملة، تشوف الذاكرة، والبطارية، والحالة، والملحقات، والسعر، كلشي واضح قدامك قبل لا تشتري.
+ومن مكانك، ادخل موقع جي فاير أو حمّل التطبيق مالتنا، اختار الجهاز اللي يعجبك، وكمّل طلبك بكبسة زر وحدة.
+وين ما تكون بالعراق، احنا نوصلك لكل المحافظات، والتوصيل مجاني للطلبات المشمولة، وهدفنا يوصلك طلبك بأقل من أربعة وعشرين ساعة.
+جي فاير للموبايل... عالم الأجهزة بين إيديك. تلكانا بالنجف، شارع الحولي، قرب جامع المنتظر، أو اطلب من الموقع والتطبيق. تصفح، اختار، واطلب هسه!
+```
+| Scene | Picture | Line lands (sim.) |
+|---|---|---|
+| 0–5 | logo | 0.5–4.5 |
+| 5–15 | 18 Pro Max → 17 Pro Max → Samsung → Redmi → POCO → realme → TECNO → Infinix → brands | 4.8–14.9 |
+| 15–23 | used device cards | 15.2–22.8 |
+| 23–33 | site → app → checkout | 23.0–32.6 |
+| 33–43 | map → delivery | 32.9–43.0 |
+| 43–55 | logo orbit → address & links | 43.2–54.9 |
+On arrival: the whole take is laid as one piece from 0.5 s (only a uniform speed nudge if the total length is off), captions re-timed to the words.
