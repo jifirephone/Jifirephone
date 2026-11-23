@@ -19,8 +19,9 @@ const ltr = (s: string) => <span style={{direction: 'ltr', unicodeBidi: 'isolate
 const goldText: React.CSSProperties = {background: `linear-gradient(180deg, ${GOLD2} 0%, ${GOLD} 45%, ${GD} 100%)`, WebkitBackgroundClip: 'text', color: 'transparent'};
 
 // scene windows (seconds)
-export const SC = {logo: [0, 5], world: [5, 15], used: [15, 23], digital: [23, 33], delivery: [33, 43], finale: [43, 55], end: [55, 58.4]} as const;
-export const COMMERCIAL_FRAMES = S(58.4);
+const TL = C.timeline;
+export const SC = TL.scenes as Record<'logo' | 'world' | 'used' | 'digital' | 'delivery' | 'finale' | 'end', [number, number]>;
+export const COMMERCIAL_FRAMES = S(SC.end[1]);
 
 // ---------- shared layers ----------
 const Particles: React.FC<{f: number; n?: number; converge?: number}> = ({f, n = 46, converge = 0}) => (
@@ -75,12 +76,30 @@ const Device: React.FC<{img: string; h: number; x: number; y: number; ry?: numbe
 );
 
 // ---------- captions (voice-over lines, gold keywords, word stagger) ----------
+// caption tokens: an Arabic prefix (و/ب) is split off a Latin word, consecutive Latin/number words merge into one LTR run
+type Tok = {txt: string; ltr: boolean; wi: number};
+const tokenize = (text: string): Tok[] => {
+  const out: Tok[] = [];
+  text.split(' ').forEach((w, wi) => {
+    const m = w.match(/^([\u0600-\u06FF]*)([A-Za-z0-9][A-Za-z0-9+.%-]*)([،؟!.]*)$/);
+    if (m) {
+      if (m[1]) out.push({txt: m[1], ltr: false, wi});
+      const prev = out[out.length - 1];
+      if (prev && prev.ltr && !m[1]) prev.txt += ' ' + m[2]; else out.push({txt: m[2], ltr: true, wi});
+      if (m[3]) out.push({txt: m[3], ltr: false, wi});
+    } else out.push({txt: w, ltr: false, wi});
+  });
+  return out;
+};
+
 const Captions: React.FC<{t: number}> = ({t}) => {
+  if (t >= SC.finale[0] + TL.finaleStack - 0.1) return null; // the closing lines are already on screen
   const line = C.vo.find((v) => t >= v.t - 0.05 && t <= v.end + 0.2);
   if (!line) return null;
   const words = line.text.split(' ');
   const per = (line.end - line.t) / words.length;
   const wi = Math.min(words.length - 1, Math.max(0, Math.floor((t - line.t) / per)));
+  const toks = tokenize(line.text);
   const chunks: number[][] = [];
   for (let i = 0; i < words.length; i += 5) chunks.push(words.slice(i, i + 5).map((_, k) => i + k));
   const ch = chunks.find((c) => c.includes(wi)) ?? chunks[0];
@@ -88,12 +107,12 @@ const Captions: React.FC<{t: number}> = ({t}) => {
   const cin = clamp((t - (line.t + ch[0] * per)) / 0.12);
   return (
     <div style={{position: 'absolute', top: 1300, left: 64, right: 230, display: 'flex', flexWrap: 'wrap', gap: '2px 14px', direction: 'rtl', opacity: out * cin, transform: `translateY(${(1 - cin) * 12}px)`}}>
-      {ch.map((i) => {
-        const w = words[i];
-        const a = clamp((t - (line.t + i * per)) / 0.1);
-        const key = line.gold.some((g) => w.replace(/[،؟!.]/g, '').includes(g));
+      {toks.filter((k) => ch.includes(k.wi)).map((k, i) => {
+        const a = clamp((t - (line.t + k.wi * per)) / 0.1);
+        const key = line.gold.some((g) => k.txt.replace(/[،؟!.]/g, '').includes(g));
+        const glue = /^[،؟!.]+$/.test(k.txt);
         return <span key={i} style={{fontFamily: F, fontWeight: 900, fontSize: 52, lineHeight: 1.28, color: key ? GOLD : W, opacity: 0.3 + 0.7 * a,
-          textShadow: '0 4px 0 rgba(0,0,0,0.8), 0 8px 22px rgba(0,0,0,0.85)'}}>{w}</span>;
+          direction: k.ltr ? 'ltr' : 'rtl', unicodeBidi: 'isolate', marginLeft: glue ? -14 : 0, textShadow: '0 4px 0 rgba(0,0,0,0.8), 0 8px 22px rgba(0,0,0,0.85)'}}>{k.txt}</span>;
       })}
     </div>
   );
@@ -144,12 +163,15 @@ const S1: React.FC<{lf: number}> = ({lf}) => {
 
 // ---------- S2 device world ----------
 const S2: React.FC<{lf: number}> = ({lf}) => {
-  const D = C.devices, per = S(1.0), carEnd = per * D.length; // 7 devices × 1 s, then 3 s brand world
+  const D = C.devices, T = TL.devices.map(S), carEnd = S(TL.cloud); // each device enters on its spoken name
   if (lf < carEnd) {
-    const k = Math.floor(lf / per), l = lf - k * per;
+    let k = 0;
+    for (let i = 0; i < T.length; i++) if (lf >= T[i]) k = i;
+    const l = lf - T[k], per = (T[k + 1] ?? carEnd) - T[k];
     const d = D[k];
     const zoom = k % 2 === 1; // alternate whip pan / zoom-through
-    const inP = eExpo(l / 7), outP = eExpo((l - (per - 6)) / 6);
+    const tin = Math.min(7, per / 3), tout = Math.min(6, per / 3);
+    const inP = eExpo(l / tin), outP = eExpo((l - (per - tout)) / tout);
     const ry = interpolate(l, [0, per], [55, -25]);
     const x = zoom ? 540 : 540 + (1 - inP) * 1100 - outP * 1100;
     const s = zoom ? (0.4 + 0.6 * inP) * (1 + outP * 2.2) : 1;
@@ -164,7 +186,7 @@ const S2: React.FC<{lf: number}> = ({lf}) => {
           <Device img={d.img} h={640} x={x} y={800} ry={ry} s={s} o={1 - outP * (zoom ? 1 : 0.2)} />
         </AbsoluteFill>
         <div style={{position: 'absolute', top: 1150, left: 0, right: 0, textAlign: 'center', fontFamily: F, fontWeight: 900, fontSize: 60, color: W, direction: 'ltr', opacity: clamp(l / 6) * (1 - outP)}}>{d.name}</div>
-        <Streaks f={l} at={per - 8} dur={14} />
+        <Streaks f={l} at={per - Math.min(8, per / 2)} dur={Math.min(14, per)} />
       </AbsoluteFill>
     );
   }
@@ -208,7 +230,7 @@ const S3: React.FC<{lf: number}> = ({lf}) => {
         <div style={{position: 'absolute', bottom: 14, right: 18, fontFamily: F, fontWeight: 800, fontSize: 24, color: 'rgba(255,255,255,0.85)', direction: 'rtl'}}>صورة الجهاز نفسه</div>
       </div>
       {U.rows.map(([k, v], i) => {
-        const at = S(1.0 + i * 0.5);
+        const at = S(TL.usedRows[i]);
         const a = spring({frame: lf - at, fps, config: {damping: 13, stiffness: 190}});
         const price = i === U.rows.length - 1;
         return (
@@ -235,13 +257,13 @@ const Phone3D: React.FC<{lf: number; children: React.ReactNode; ry: number; rx?:
 
 const S4: React.FC<{lf: number}> = ({lf}) => {
   const {fps} = useVideoConfig();
-  const site = lf < S(4.5);
-  const swap = clamp((lf - S(4.5)) / 6);
-  const ry = interpolate(lf, [0, S(10)], [-22, 18]);
+  const site = lf < S(TL.appSwitch);
+  const swap = clamp((lf - S(TL.appSwitch)) / 6);
+  const ry = interpolate(lf, [0, S(SC.digital[1] - SC.digital[0])], [-22, 18]);
   const intro = spring({frame: lf, fps, config: {damping: 16, stiffness: 90}});
-  const sc = interpolate(lf, [10, S(4.4)], [0, -560], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  const l2 = lf - S(4.5);
-  const cartT = S(8.0);
+  const sc = interpolate(lf, [10, S(TL.appSwitch) - 3], [0, -560], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const l2 = lf - S(TL.appSwitch);
+  const cartT = S(TL.checkout);
   const url = (txt: string, a: number) => <div style={{display: 'inline-block', padding: '10px 26px', borderRadius: 16, background: GOLD, color: '#141210', fontFamily: F, fontWeight: 900, fontSize: 54, direction: 'ltr',
     transform: `scale(${a})`}}>{txt}</div>;
   return (
@@ -274,9 +296,9 @@ const S4: React.FC<{lf: number}> = ({lf}) => {
         </>
       ) : null}
       <div style={{position: 'absolute', top: 340, left: 0, right: 0, textAlign: 'center'}}>
-        {site ? url(C.site, spring({frame: lf - 6, fps, config: {damping: 12, stiffness: 180}})) : url(C.app, spring({frame: lf - S(4.5) - 4, fps, config: {damping: 12, stiffness: 180}}))}
+        {site ? url(C.site, spring({frame: lf - 6, fps, config: {damping: 12, stiffness: 180}})) : url(C.app, spring({frame: lf - S(TL.appSwitch) - 4, fps, config: {damping: 12, stiffness: 180}}))}
       </div>
-      <AbsoluteFill style={{background: `rgba(255,255,255,${clamp(1 - Math.abs(lf - S(4.5)) / 4) * 0.7})`}} />
+      <AbsoluteFill style={{background: `rgba(255,255,255,${clamp(1 - Math.abs(lf - S(TL.appSwitch)) / 4) * 0.7})`}} />
     </AbsoluteFill>
   );
 };
@@ -319,9 +341,9 @@ const LineArt: React.FC<{l: number}> = ({l}) => {
 
 const S5: React.FC<{lf: number}> = ({lf}) => {
   const {fps} = useVideoConfig();
-  const mapPhase = lf < S(5);
+  const mapPhase = lf < S(TL.mapEnd);
   const [nx, ny] = P(44.34, 32.03);
-  const tilt = 34 - 10 * eOut(lf / S(5));
+  const tilt = 34 - 10 * eOut(lf / S(TL.mapEnd));
   return (
     <AbsoluteFill style={{background: '#000'}}>
       <Bg f={lf} glow={0.14} y={50} />
@@ -347,9 +369,9 @@ const S5: React.FC<{lf: number}> = ({lf}) => {
         </>
       ) : (
         <>
-          <LineArt l={lf - S(5)} />
+          <LineArt l={lf - S(TL.mapEnd)} />
           {C.delivery.slice(1).map((t, i) => {
-            const a = spring({frame: lf - S(5) - S(0.5 + i * 1.6), fps, config: {damping: 14, stiffness: 160}});
+            const a = spring({frame: lf - S(TL.mapEnd) - S(0.5 + i * 1.6), fps, config: {damping: 14, stiffness: 160}});
             return <div key={t} style={{position: 'absolute', top: 330 + i * 140, left: 64, right: 230, textAlign: 'right', direction: 'rtl', fontFamily: F, fontWeight: 900, fontSize: i ? 38 : 50, lineHeight: 1.3,
               color: i ? 'rgba(255,255,255,0.8)' : W, opacity: clamp(a * 1.5), transform: `translateX(${(1 - a) * 80}px)`}}>{i ? t : <><span style={goldText}>توصيل مجاني</span> للطلبات المشمولة</>}</div>;
           })}
@@ -364,8 +386,8 @@ const S5: React.FC<{lf: number}> = ({lf}) => {
 const S6: React.FC<{lf: number}> = ({lf}) => {
   const {fps} = useVideoConfig();
   const gather = eExpo(clamp(lf / S(1.6)));
-  const stack = lf >= S(5);
-  const l2 = lf - S(5);
+  const stack = lf >= S(TL.finaleStack);
+  const l2 = lf - S(TL.finaleStack);
   const logoA = spring({frame: lf - 8, fps, config: {damping: 13, stiffness: 120}});
   const D = C.devices;
   return (
@@ -396,7 +418,7 @@ const S6: React.FC<{lf: number}> = ({lf}) => {
           })}
         </div>
       ) : null}
-      <AbsoluteFill style={{background: `rgba(255,240,200,${clamp(1 - Math.abs(lf - S(5)) / 4) * 0.6})`}} />
+      <AbsoluteFill style={{background: `rgba(255,240,200,${clamp(1 - Math.abs(lf - S(TL.finaleStack)) / 4) * 0.6})`}} />
     </AbsoluteFill>
   );
 };
