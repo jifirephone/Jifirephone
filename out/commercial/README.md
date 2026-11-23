@@ -1,11 +1,14 @@
 # Commercial deliverables (2026-11-23)
 | File | What |
 |---|---|
+| `jifire_commercial_final.mp4` | **Final**: picture + owner's ElevenLabs VO (Ali Al Bazzaz) + ducked music + SFX, −14 LUFS |
+| `jifire_commercial_no-music.mp4` | VO + SFX, no music (−14 LUFS) |
 | `jifire_commercial_no-vo.mp4` | Full picture + music + SFX, captions burned in (VO pending). H.264, 1080×1920, yuv420p, bt709, AAC, faststart, 58.4 s, −13.8 LUFS |
 | `jifire_commercial_no-music_no-vo.mp4` | Same picture, SFX only (−16 LUFS). The "no music" version with voice is made when the VO arrives |
 | `cover_9x16.png`, `cover_4x5.jpg` | Cover / thumbnail |
 | `storyboard.jpg`, `STORYBOARD.md` | Shot-by-shot plan |
 | `VOICEOVER.md` | ElevenLabs text, settings, timing |
+| `stems/voice.wav`, `stems/voiceover_elevenlabs_raw.mp3` | Placed voice track (each line on its scene) + the original take |
 | `stems/music.wav`, `stems/sfx.wav`, `stems/sfx_cues.json` | Separate music and SFX stems + the cue list |
 | `sfx_library/*.wav` | The 10 individual sounds (impact, sub_drop, metal_hit, glitch, ui_click, rev_riser, whoosh, whoosh_l, logo_reveal, sweep) |
 
