@@ -2,40 +2,173 @@
   "_note": "Edit this file to change devices, the used-device card, texts, links or the voice-over timing. Images live in remotion/public/. Re-render with: npx remotion render Commercial out.mp4 --browser-executable=/opt/pw-browsers/chromium",
   "fps": 30,
   "bpm": 120,
-  "brand": {"en": "JI FIRE FOR MOBILE", "ar": "جي فاير للموبايل", "tagline": "عالم الأجهزة بين إيديك"},
+  "brand": {
+    "en": "JI FIRE FOR MOBILE",
+    "ar": "جي فاير للموبايل",
+    "tagline": "عالم الأجهزة بين إيديك"
+  },
   "address": "النجف الأشرف — شارع الحولي — قرب جامع المنتظر",
   "site": "jifirephone.com",
   "app": "app.jifrephone.workers.dev",
   "devices": [
-    {"img": "cine/ip17.png", "name": "iPhone 17 Pro Max", "brand": "Apple"},
-    {"img": "cine/s26.png", "name": "Galaxy S26 Ultra", "brand": "Samsung"},
-    {"img": "cine/rn14.png", "name": "Redmi Note 14 Pro+", "brand": "Xiaomi"},
-    {"img": "cine/pf7.png", "name": "POCO F7 Ultra", "brand": "POCO"},
-    {"img": "cine/rm16.png", "name": "realme 16 Pro+", "brand": "realme"},
-    {"img": "cine/tc40.png", "name": "TECNO Camon 40 Pro", "brand": "TECNO"},
-    {"img": "cine/gt50.png", "name": "Infinix GT 50 Pro", "brand": "Infinix"}
+    {
+      "img": "cine/ip17.png",
+      "name": "iPhone 17 Pro Max",
+      "brand": "Apple"
+    },
+    {
+      "img": "cine/s26.png",
+      "name": "Galaxy S26 Ultra",
+      "brand": "Samsung"
+    },
+    {
+      "img": "cine/rn14.png",
+      "name": "Redmi Note 14 Pro+",
+      "brand": "Xiaomi"
+    },
+    {
+      "img": "cine/pf7.png",
+      "name": "POCO F7 Ultra",
+      "brand": "POCO"
+    },
+    {
+      "img": "cine/rm16.png",
+      "name": "realme 16 Pro+",
+      "brand": "realme"
+    },
+    {
+      "img": "cine/tc40.png",
+      "name": "TECNO Camon 40 Pro",
+      "brand": "TECNO"
+    },
+    {
+      "img": "cine/gt50.png",
+      "name": "Infinix GT 50 Pro",
+      "brand": "Infinix"
+    }
   ],
-  "brandsCloud": ["Apple", "Samsung", "Xiaomi", "Redmi", "POCO", "HONOR", "TECNO", "Infinix", "Anker", "HOCO", "Oraimo"],
-  "categories": ["هواتف", "أجهزة لوحية", "سماعات", "ساعات ذكية", "شواحن", "إكسسوارات", "أجهزة ألعاب"],
+  "brandsCloud": [
+    "Apple",
+    "Samsung",
+    "Xiaomi",
+    "Redmi",
+    "POCO",
+    "HONOR",
+    "TECNO",
+    "Infinix",
+    "Anker",
+    "HOCO",
+    "Oraimo"
+  ],
+  "categories": [
+    "هواتف",
+    "أجهزة لوحية",
+    "سماعات",
+    "ساعات ذكية",
+    "شواحن",
+    "إكسسوارات",
+    "أجهزة ألعاب"
+  ],
   "used": {
     "_source": "Shopify, read 2026-11-23: 'آيفون 17 برو ماكس مستعمل 256GB شرق أوسط AFA – بطارية 98% – نظافة 100%' (SKU 2265, 1 in stock). Change when sold.",
     "img": "show/u17.jpg",
     "name": "iPhone 17 Pro Max",
     "rows": [
-      ["الذاكرة", "256GB"],
-      ["البطارية", "98%"],
-      ["الحالة", "نظافة 100%"],
-      ["الملحقات", "كاملة"],
-      ["السعر", "1,825,000 د.ع"]
+      [
+        "الذاكرة",
+        "256GB"
+      ],
+      [
+        "البطارية",
+        "98%"
+      ],
+      [
+        "الحالة",
+        "نظافة 100%"
+      ],
+      [
+        "الملحقات",
+        "كاملة"
+      ],
+      [
+        "السعر",
+        "1,825,000 د.ع"
+      ]
     ]
   },
-  "delivery": ["توصيل لجميع محافظات العراق", "توصيل مجاني للطلبات المشمولة", "المدة المستهدفة أقل من 24 ساعة، حسب الظروف"],
+  "delivery": [
+    "توصيل لجميع محافظات العراق",
+    "توصيل مجاني للطلبات المشمولة",
+    "المدة المستهدفة أقل من 24 ساعة، حسب الظروف"
+  ],
   "vo": [
-    {"t": 0.6, "end": 4.6, "text": "تدور على موبايل جديد؟ وتريد تتسوق براحتك؟", "gold": ["موبايل", "براحتك"]},
-    {"t": 5.6, "end": 10.8, "text": "بجي فاير للموبايل، تلكه عالم من الموبايلات والأجهزة والإكسسوارات!", "gold": ["جي", "فاير", "عالم"]},
-    {"t": 15.6, "end": 21.0, "text": "وحتى المستعمل، تفاصيل الجهاز واضحة إلك قبل لا تشتري!", "gold": ["المستعمل", "واضحة"]},
-    {"t": 23.6, "end": 30.6, "text": "ومن مكانك، افتح موقعنا أو تطبيق جي فاير، اختار جهازك واطلبه بكبسة زر!", "gold": ["موقعنا", "تطبيق", "بكبسة"]},
-    {"t": 33.6, "end": 41.0, "text": "وين ما تكون بالعراق، جي فاير يوفرلك التوصيل لجميع المحافظات، وهدفنا يوصلك طلبك بأسرع وقت!", "gold": ["التوصيل", "المحافظات", "بأسرع"]},
-    {"t": 44.0, "end": 50.5, "text": "جي فاير للموبايل... عالم الأجهزة بين إيديك! تصفح، اختار، واطلب هسه!", "gold": ["عالم", "إيديك", "هسه"]}
+    {
+      "t": 0.6,
+      "end": 4.6,
+      "text": "تدور على موبايل جديد؟ وتريد تتسوق براحتك؟",
+      "gold": [
+        "موبايل",
+        "براحتك"
+      ]
+    },
+    {
+      "t": 5.6,
+      "end": 10.8,
+      "text": "بجي فاير للموبايل، تلكه عالم من الموبايلات والأجهزة والإكسسوارات!",
+      "gold": [
+        "جي",
+        "فاير",
+        "عالم"
+      ]
+    },
+    {
+      "t": 12.2,
+      "end": 14.8,
+      "text": "جديد ومستعمل، وكل الماركات.",
+      "gold": [
+        "جديد",
+        "مستعمل",
+        "الماركات"
+      ]
+    },
+    {
+      "t": 15.6,
+      "end": 21.0,
+      "text": "وحتى المستعمل، تفاصيل الجهاز واضحة إلك قبل لا تشتري!",
+      "gold": [
+        "المستعمل",
+        "واضحة"
+      ]
+    },
+    {
+      "t": 23.6,
+      "end": 30.6,
+      "text": "ومن مكانك، افتح موقعنا أو تطبيق جي فاير، اختار جهازك واطلبه بكبسة زر!",
+      "gold": [
+        "موقعنا",
+        "تطبيق",
+        "بكبسة"
+      ]
+    },
+    {
+      "t": 33.6,
+      "end": 41.0,
+      "text": "وين ما تكون بالعراق، جي فاير يوفرلك التوصيل لجميع المحافظات، وهدفنا يوصلك طلبك بأسرع وقت!",
+      "gold": [
+        "التوصيل",
+        "المحافظات",
+        "بأسرع"
+      ]
+    },
+    {
+      "t": 44.0,
+      "end": 50.5,
+      "text": "جي فاير للموبايل... عالم الأجهزة بين إيديك! تصفح، اختار، واطلب هسه!",
+      "gold": [
+        "عالم",
+        "إيديك",
+        "هسه"
+      ]
+    }
   ]
 }
