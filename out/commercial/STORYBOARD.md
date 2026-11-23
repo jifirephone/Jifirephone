@@ -12,7 +12,7 @@ Picture: `storyboard.jpg`. Source: `remotion/src/commercial/Commercial.tsx` + `c
 | 5 | 33–38 s | Illustrative Iraq map (dots for the 18 governorate centres, no borders), gold lines from النجف الأشرف | 3D tilt settling, lines drawn one by one, pulsing pins | impact + sub drop, soft ticks | توصيل لجميع محافظات العراق |
 | 5b | 38–43 s | Gold line-art: box closes and gets taped → van drives with speed lines → box at the door ✓ (labelled «رسوم توضيحية») | stroke-draw animation | whoosh, metal hit, click on ✓ | توصيل مجاني للطلبات المشمولة · المدة المستهدفة أقل من 24 ساعة، حسب الظروف |
 | 6 | 43–48 s | Devices orbit and gather around the logo | elliptical orbit with depth (scale/opacity), gold back-light | riser → impact, logo reveal | — |
-| 6b | 48–55 s | Contact stack | white flash, staggered rise | impact + metal hit, clicks | JI FIRE FOR MOBILE · جي فاير للموبايل · النجف الأشرف — شارع الحولي — قرب جامع المنتظر · jifirephone.com · حمّل تطبيق جي فاير للموبايل |
+| 6b | 48–55 s | Contact stack | white flash, staggered rise | impact + metal hit, clicks | JI FIRE FOR MOBILE · جي فاير للموبايل · النجف الأشرف — ميلاد — شارع الحولي · jifirephone.com · حمّل تطبيق جي فاير للموبايل |
 | End | 55–58.4 s | Brand end card (black, logo, «التقنية باعلى ذروتها») | — | sub drop + soft chord | — |
 
 Captions: the six VO lines, rolling 5-word chunks, gold keywords, y 1300–1430 (Instagram safe zone).
