@@ -20,6 +20,7 @@ import {ShowcaseRef, REF_FRAMES} from './disc25/ShowcaseRef';
 import {TypeReel, TYPE_FRAMES} from './disc25/TypeReel';
 import {StoreBeat, BEAT_FRAMES} from './disc25/StoreBeat';
 import {AppShow, APPSHOW_FRAMES} from './disc25/AppShow';
+import {Commercial, COMMERCIAL_FRAMES} from './commercial/Commercial';
 import {loadBrandFonts} from './fonts';
 
 loadBrandFonts();
@@ -53,6 +54,7 @@ export const RemotionRoot: React.FC = () => (
     <Composition id="TypeReel" component={TypeReel} width={1080} height={1920} fps={30} durationInFrames={TYPE_FRAMES} />
     <Composition id="StoreBeat" component={StoreBeat} width={1080} height={1920} fps={30} durationInFrames={BEAT_FRAMES} />
     <Composition id="AppShow" component={AppShow} width={1080} height={1920} fps={30} durationInFrames={APPSHOW_FRAMES} />
+    <Composition id="Commercial" component={Commercial} width={1080} height={1920} fps={30} durationInFrames={COMMERCIAL_FRAMES} />
     <Composition id="HowTo" component={HowTo} width={1080} height={1920} fps={30} durationInFrames={HOWTO_FRAMES} />
     <Composition id="Explainer" component={Explainer} width={1080} height={1920} fps={30} durationInFrames={EXPLAINER_FRAMES} />
     <Composition id="ExplainerStyle" component={ExplainerStyle} width={1080} height={1920} fps={30} durationInFrames={60} />
