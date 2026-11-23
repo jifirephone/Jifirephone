@@ -239,7 +239,7 @@ const S4: React.FC<{lf: number}> = ({lf}) => {
   const swap = clamp((lf - S(4.5)) / 6);
   const ry = interpolate(lf, [0, S(10)], [-22, 18]);
   const intro = spring({frame: lf, fps, config: {damping: 16, stiffness: 90}});
-  const sc = interpolate(lf, [10, S(4.4)], [0, -1500], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const sc = interpolate(lf, [10, S(4.4)], [0, -560], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const l2 = lf - S(4.5);
   const cartT = S(8.0);
   const url = (txt: string, a: number) => <div style={{display: 'inline-block', padding: '10px 26px', borderRadius: 16, background: GOLD, color: '#141210', fontFamily: F, fontWeight: 900, fontSize: 54, direction: 'ltr',
@@ -249,10 +249,10 @@ const S4: React.FC<{lf: number}> = ({lf}) => {
       <Bg f={lf} glow={0.18} y={46} />
       <Particles f={lf} n={24} />
       <Phone3D lf={lf} ry={ry * (0.4 + 0.6 * intro)} s={0.7 + 0.3 * intro}>
-        {site ? <Img src={staticFile('type/site.jpg')} style={{position: 'absolute', top: sc, left: 0, width: 446}} /> : (
+        {site ? <Img src={staticFile('cine/live_site.jpg')} style={{position: 'absolute', top: sc, left: 0, width: 446}} /> : (
           <>
             <AbsoluteFill style={{background: '#f6f6f8'}} />
-            <Img src={staticFile('appshow/banner.jpg')} style={{position: 'absolute', top: 30, left: 12, width: 422, borderRadius: 16, opacity: swap}} />
+            <Img src={staticFile('cine/live_banner.jpg')} style={{position: 'absolute', top: 30, left: 12, width: 422, borderRadius: 16, opacity: swap}} />
             <Img src={staticFile('appshow/samsung.jpg')} style={{position: 'absolute', top: 270, left: 12, width: 422, borderRadius: 16, opacity: swap}} />
             {lf >= cartT ? <><AbsoluteFill style={{background: '#fff'}} />
               <Img src={staticFile('appshow/iphone.jpg')} style={{position: 'absolute', top: 40, left: 12, width: 422, borderRadius: 16}} />
